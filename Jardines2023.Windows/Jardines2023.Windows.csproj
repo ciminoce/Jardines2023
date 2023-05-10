@@ -46,6 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCategoriaAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategoriaAE.Designer.cs">
+      <DependentUpon>frmCategoriaAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCategorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCategorias.Designer.cs">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCiudadAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCiudadAE.Designer.cs">
+      <DependentUpon>frmCiudadAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCiudades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCiudades.Designer.cs">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPaisAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +90,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCategoriaAE.resx">
+      <DependentUpon>frmCategoriaAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCategorias.resx">
+      <DependentUpon>frmCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCiudadAE.resx">
+      <DependentUpon>frmCiudadAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCiudades.resx">
+      <DependentUpon>frmCiudades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPaisAE.resx">
       <DependentUpon>frmPaisAE.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +119,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -106,6 +143,75 @@
       <Project>{9316c7f1-a389-4f38-b11f-ed4c2d63f6f0}</Project>
       <Name>Jardines2023.Servicios</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\america_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cash_register_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\categorize_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\city_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\client_management_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_window_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_file_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_file_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filter_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\first_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\last_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_file_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\previous_24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\print_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\restart_32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shutdown_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\used_product_50px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

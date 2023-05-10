@@ -34,11 +34,13 @@
             this.ProveedoresButton = new System.Windows.Forms.Button();
             this.ClientesButton = new System.Windows.Forms.Button();
             this.CiudadesButton = new System.Windows.Forms.Button();
-            this.PaisesButton = new System.Windows.Forms.Button();
+            this.b = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CategoriasButton
             // 
+            this.CategoriasButton.Image = global::Jardines2023.Windows.Properties.Resources.categorize_50px;
             this.CategoriasButton.Location = new System.Drawing.Point(60, 246);
             this.CategoriasButton.Name = "CategoriasButton";
             this.CategoriasButton.Size = new System.Drawing.Size(147, 76);
@@ -46,9 +48,11 @@
             this.CategoriasButton.Text = "Categorías";
             this.CategoriasButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CategoriasButton.UseVisualStyleBackColor = true;
+            this.CategoriasButton.Click += new System.EventHandler(this.CategoriasButton_Click);
             // 
             // VentasButton
             // 
+            this.VentasButton.Image = global::Jardines2023.Windows.Properties.Resources.cash_register_50px;
             this.VentasButton.Location = new System.Drawing.Point(593, 246);
             this.VentasButton.Name = "VentasButton";
             this.VentasButton.Size = new System.Drawing.Size(147, 76);
@@ -59,6 +63,7 @@
             // 
             // ProductosButton
             // 
+            this.ProductosButton.Image = global::Jardines2023.Windows.Properties.Resources.used_product_50px;
             this.ProductosButton.Location = new System.Drawing.Point(425, 246);
             this.ProductosButton.Name = "ProductosButton";
             this.ProductosButton.Size = new System.Drawing.Size(147, 76);
@@ -69,6 +74,7 @@
             // 
             // ProveedoresButton
             // 
+            this.ProveedoresButton.Image = global::Jardines2023.Windows.Properties.Resources.customer_50px;
             this.ProveedoresButton.Location = new System.Drawing.Point(242, 246);
             this.ProveedoresButton.Name = "ProveedoresButton";
             this.ProveedoresButton.Size = new System.Drawing.Size(147, 76);
@@ -79,6 +85,7 @@
             // 
             // ClientesButton
             // 
+            this.ClientesButton.Image = global::Jardines2023.Windows.Properties.Resources.client_management_50px;
             this.ClientesButton.Location = new System.Drawing.Point(425, 129);
             this.ClientesButton.Name = "ClientesButton";
             this.ClientesButton.Size = new System.Drawing.Size(147, 76);
@@ -89,6 +96,7 @@
             // 
             // CiudadesButton
             // 
+            this.CiudadesButton.Image = global::Jardines2023.Windows.Properties.Resources.city_50px;
             this.CiudadesButton.Location = new System.Drawing.Point(242, 129);
             this.CiudadesButton.Name = "CiudadesButton";
             this.CiudadesButton.Size = new System.Drawing.Size(147, 76);
@@ -97,16 +105,29 @@
             this.CiudadesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CiudadesButton.UseVisualStyleBackColor = true;
             // 
-            // PaisesButton
+            // b
             // 
-            this.PaisesButton.Location = new System.Drawing.Point(60, 129);
-            this.PaisesButton.Name = "PaisesButton";
-            this.PaisesButton.Size = new System.Drawing.Size(147, 76);
-            this.PaisesButton.TabIndex = 18;
-            this.PaisesButton.Text = "Países";
-            this.PaisesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PaisesButton.UseVisualStyleBackColor = true;
-            this.PaisesButton.Click += new System.EventHandler(this.PaisesButton_Click);
+            this.b.Image = global::Jardines2023.Windows.Properties.Resources.america_50px;
+            this.b.Location = new System.Drawing.Point(60, 129);
+            this.b.Name = "b";
+            this.b.Size = new System.Drawing.Size(147, 76);
+            this.b.TabIndex = 18;
+            this.b.Text = "Países";
+            this.b.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.b.UseVisualStyleBackColor = true;
+            this.b.Click += new System.EventHandler(this.PaisesButton_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Jardines2023.Windows.Properties.Resources.shutdown_48px;
+            this.btnSalir.Location = new System.Drawing.Point(593, 362);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(147, 76);
+            this.btnSalir.TabIndex = 13;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmPrincipal
             // 
@@ -114,12 +135,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CategoriasButton);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.VentasButton);
             this.Controls.Add(this.ProductosButton);
             this.Controls.Add(this.ProveedoresButton);
             this.Controls.Add(this.ClientesButton);
             this.Controls.Add(this.CiudadesButton);
-            this.Controls.Add(this.PaisesButton);
+            this.Controls.Add(this.b);
             this.Name = "frmPrincipal";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -134,7 +156,8 @@
         private System.Windows.Forms.Button ProveedoresButton;
         private System.Windows.Forms.Button ClientesButton;
         private System.Windows.Forms.Button CiudadesButton;
-        private System.Windows.Forms.Button PaisesButton;
+        private System.Windows.Forms.Button b;
+        private System.Windows.Forms.Button btnSalir;
     }
 }
 

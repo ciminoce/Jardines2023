@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows
@@ -20,6 +13,17 @@ namespace Jardines2023.Windows
         private void PaisesButton_Click(object sender, EventArgs e)
         {
             frmPaises frm=new frmPaises();
+            frm.ShowDialog();
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void CategoriasButton_Click(object sender, EventArgs e)
+        {
+            frmCategorias frm=new frmCategorias();
             frm.ShowDialog();
         }
     }

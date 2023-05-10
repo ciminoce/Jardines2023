@@ -1,32 +1,33 @@
 ﻿using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Servicios;
-using System;
 using System.Collections.Generic;
+using System;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows
 {
-    public partial class frmPaises : Form
+    public partial class frmCategorias : Form
     {
-        public frmPaises()
+        public frmCategorias()
         {
             InitializeComponent();
-            _servicio = new ServiciosPaises();
+            _servicio = new ServiciosCategorias();
         }
-        private readonly ServiciosPaises _servicio;
-        private List<Pais> lista;
+
+        private readonly ServiciosCategorias _servicio;
+        private List<Categoria> lista;
 
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void frmPaises_Load(object sender, EventArgs e)
+        private void frmCategorias_Load(object sender, EventArgs e)
         {
             try
             {
-                lista = _servicio.GetPaises();
-                lblCantidad.Text=_servicio.GetCantidad().ToString();
+                lista = _servicio.GetCategorias();
+                lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -39,10 +40,10 @@ namespace Jardines2023.Windows
         private void MostrarDatosEnGrilla()
         {
             dgvDatos.Rows.Clear();
-            foreach (var pais in lista)
+            foreach (var categoria in lista)
             {
                 DataGridViewRow r = ConstruirFila();
-                SetearFila(r, pais);
+                SetearFila(r, categoria);
                 AgregarFila(r);
             }
         }
@@ -52,33 +53,34 @@ namespace Jardines2023.Windows
             dgvDatos.Rows.Add(r);
         }
 
-        private void SetearFila(DataGridViewRow r, Pais pais)
+        private void SetearFila(DataGridViewRow r, Categoria categoria)
         {
-            r.Cells[colPais.Index].Value = pais.NombrePais;
+            r.Cells[colCategoria.Index].Value = categoria.NombreCategoria;
+            r.Cells[colDescripcion.Index].Value = categoria.Descripción;
 
-            r.Tag = pais;
+            r.Tag = categoria;
         }
 
         private DataGridViewRow ConstruirFila()
         {
-            DataGridViewRow r=new DataGridViewRow();
+            DataGridViewRow r = new DataGridViewRow();
             r.CreateCells(dgvDatos);
             return r;
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmPaisAE frm = new frmPaisAE() { Text = "Agregar país" };
+            frmCategoriaAE frm = new frmCategoriaAE() { Text = "Agregar país" };
             DialogResult dr = frm.ShowDialog(this);
-            if(dr==DialogResult.Cancel) return;
+            if (dr == DialogResult.Cancel) return;
             try
             {
-                var pais = frm.GetPais();
-                if (!_servicio.Existe(pais))
+                var categoria = frm.GetCategoria();
+                if (!_servicio.Existe(categoria))
                 {
-                    _servicio.Guardar(pais);
+                    _servicio.Guardar(categoria);
                     DataGridViewRow r = ConstruirFila();
-                    SetearFila(r,pais);
+                    SetearFila(r, categoria);
                     AgregarFila(r);
                     lblCantidad.Text = _servicio.GetCantidad().ToString();
                     MessageBox.Show("Registro agregado",
@@ -105,20 +107,20 @@ namespace Jardines2023.Windows
 
         private void tsbBorrar_Click(object sender, EventArgs e)
         {
-            if (dgvDatos.SelectedRows.Count==0)
+            if (dgvDatos.SelectedRows.Count == 0)
             {
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Pais pais = (Pais)r.Tag;
+            Categoria categoria = (Categoria)r.Tag;
             try
             {
                 //Se debe controlar que no este relacionado
-                _servicio.Borrar(pais.PaisId);
+                _servicio.Borrar(categoria.CategoriaId);
                 QuitarFila(r);
                 lblCantidad.Text = _servicio.GetCantidad().ToString();
-                MessageBox.Show("Registro borrado","Mensaje",
-                    MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Registro borrado", "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -133,5 +135,6 @@ namespace Jardines2023.Windows
         {
             dgvDatos.Rows.Remove(r);
         }
+
     }
 }

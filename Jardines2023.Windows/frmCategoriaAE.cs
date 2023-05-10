@@ -4,17 +4,18 @@ using System.Windows.Forms;
 
 namespace Jardines2023.Windows
 {
-    public partial class frmPaisAE : Form
+    public partial class frmCategoriaAE : Form
     {
-        public frmPaisAE()
+        public frmCategoriaAE()
         {
             InitializeComponent();
         }
-        private Pais pais;
-        public Pais GetPais()
+
+        public Categoria GetCategoria()
         {
-            return pais;
+            return categoria;
         }
+        private Categoria categoria;
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -25,23 +26,25 @@ namespace Jardines2023.Windows
         {
             if (ValidarDatos())
             {
-                pais=new Pais();
-                pais.NombrePais = txtNombrePais.Text;
-
+                categoria = new Categoria();
+                categoria.NombreCategoria = txtCategoria.Text;
+                categoria.Descripción = txtDescripcion.Text;
                 DialogResult = DialogResult.OK;
             }
+
         }
 
         private bool ValidarDatos()
         {
             bool valido = true;
-            if (string.IsNullOrEmpty(txtNombrePais.Text))
+            if (string.IsNullOrEmpty(txtCategoria.Text))
             {
                 valido = false;
-                errorProvider1.SetError(txtNombrePais, "Debe ingresar un nombre de país");
+                errorProvider1.SetError(txtCategoria, "Debe ingresar un nombre de país");
 
             }
             return valido;
         }
+
     }
 }

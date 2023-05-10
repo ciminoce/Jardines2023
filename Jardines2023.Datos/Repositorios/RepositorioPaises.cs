@@ -9,7 +9,6 @@ namespace Jardines2023.Datos.Repositorios
 {
     public class RepositorioPaises
     {
-        private SqlConnection _conn;
         private readonly string cadenaConexion;
         public RepositorioPaises()
         {

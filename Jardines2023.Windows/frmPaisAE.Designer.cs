@@ -56,21 +56,25 @@
             // 
             // btnOk
             // 
+            this.btnOk.Image = global::Jardines2023.Windows.Properties.Resources.ok_24px;
             this.btnOk.Location = new System.Drawing.Point(47, 101);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 49);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "OK";
+            this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Image = global::Jardines2023.Windows.Properties.Resources.cancel_24px;
             this.btnCancelar.Location = new System.Drawing.Point(325, 101);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 49);
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
