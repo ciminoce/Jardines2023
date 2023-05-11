@@ -114,6 +114,11 @@ namespace Jardines2023.Windows
             try
             {
                 //Se debe controlar que no este relacionado
+                DialogResult dr=MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
                 _servicio.Borrar(pais.PaisId);
                 QuitarFila(r);
                 lblCantidad.Text = _servicio.GetCantidad().ToString();
@@ -132,6 +137,50 @@ namespace Jardines2023.Windows
         private void QuitarFila(DataGridViewRow r)
         {
             dgvDatos.Rows.Remove(r);
+        }
+
+        private void tsbEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dgvDatos.SelectedRows[0];
+            Pais pais = (Pais)r.Tag;
+            Pais paisCopia =(Pais) pais.Clone();
+            try
+            {
+                frmPaisAE frm = new frmPaisAE() { Text = "Editar País" };
+                frm.SetPais(pais);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr==DialogResult.Cancel)
+                {
+                    return;
+                }
+                pais = frm.GetPais();
+                if (!_servicio.Existe(pais))
+                {
+                    _servicio.Guardar(pais);
+                    SetearFila(r,pais);
+                    MessageBox.Show("Registro editado", "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    SetearFila(r, paisCopia);
+                    MessageBox.Show("Registro duplicado!!", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                SetearFila(r, paisCopia);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
         }
     }
 }

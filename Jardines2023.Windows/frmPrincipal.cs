@@ -26,5 +26,11 @@ namespace Jardines2023.Windows
             frmCategorias frm=new frmCategorias();
             frm.ShowDialog();
         }
+
+        private void CiudadesButton_Click(object sender, EventArgs e)
+        {
+            frmCiudades frm=new frmCiudades();
+            frm.ShowDialog();
+        }
     }
 }

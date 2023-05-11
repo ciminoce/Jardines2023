@@ -2,10 +2,12 @@
 
 namespace Jardines2023.Entidades.Entidades
 {
-    public class Pais:ICloneable
+    public class Ciudad:ICloneable
     {
+        public int CiudadId { get; set; }
+        public string NombreCiudad { get; set; }
         public int PaisId { get; set; }
-        public string NombrePais { get; set; }
+        public Pais Pais { get; set; }
 
         public object Clone()
         {

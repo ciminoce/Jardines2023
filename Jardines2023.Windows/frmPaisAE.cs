@@ -11,6 +11,14 @@ namespace Jardines2023.Windows
             InitializeComponent();
         }
         private Pais pais;
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (pais!=null)
+            {
+                txtNombrePais.Text = pais.NombrePais;
+            }
+        }
         public Pais GetPais()
         {
             return pais;
@@ -25,7 +33,11 @@ namespace Jardines2023.Windows
         {
             if (ValidarDatos())
             {
-                pais=new Pais();
+                if (pais==null)
+                {
+                    pais=new Pais();
+
+                }
                 pais.NombrePais = txtNombrePais.Text;
 
                 DialogResult = DialogResult.OK;
@@ -42,6 +54,11 @@ namespace Jardines2023.Windows
 
             }
             return valido;
+        }
+
+        public void SetPais(Pais pais)
+        {
+            this.pais = pais;
         }
     }
 }

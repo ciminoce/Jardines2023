@@ -104,6 +104,7 @@
             this.CiudadesButton.Text = "Ciudades";
             this.CiudadesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CiudadesButton.UseVisualStyleBackColor = true;
+            this.CiudadesButton.Click += new System.EventHandler(this.CiudadesButton_Click);
             // 
             // b
             // 
