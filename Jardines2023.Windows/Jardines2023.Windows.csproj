@@ -70,6 +70,18 @@
     <Compile Include="frmCiudades.Designer.cs">
       <DependentUpon>frmCiudades.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClienteAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClienteAE.Designer.cs">
+      <DependentUpon>frmClienteAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPaisAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,18 @@
     <Compile Include="frmProductos.Designer.cs">
       <DependentUpon>frmProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProveedorAE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedorAE.Designer.cs">
+      <DependentUpon>frmProveedorAE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSeleccionarPais.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +144,12 @@
     <EmbeddedResource Include="frmCiudades.resx">
       <DependentUpon>frmCiudades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClienteAE.resx">
+      <DependentUpon>frmClienteAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPaisAE.resx">
       <DependentUpon>frmPaisAE.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProductos.resx">
       <DependentUpon>frmProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedorAE.resx">
+      <DependentUpon>frmProveedorAE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeleccionarPais.resx">
       <DependentUpon>frmSeleccionarPais.cs</DependentUpon>

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.txtNombrePais = new System.Windows.Forms.TextBox();
+            this.txtNombreCiudad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cboPaises = new System.Windows.Forms.ComboBox();
@@ -61,13 +61,13 @@
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
             // 
-            // txtNombrePais
+            // txtNombreCiudad
             // 
-            this.txtNombrePais.Location = new System.Drawing.Point(124, 73);
-            this.txtNombrePais.MaxLength = 100;
-            this.txtNombrePais.Name = "txtNombrePais";
-            this.txtNombrePais.Size = new System.Drawing.Size(300, 20);
-            this.txtNombrePais.TabIndex = 4;
+            this.txtNombreCiudad.Location = new System.Drawing.Point(124, 73);
+            this.txtNombreCiudad.MaxLength = 100;
+            this.txtNombreCiudad.Name = "txtNombreCiudad";
+            this.txtNombreCiudad.Size = new System.Drawing.Size(300, 20);
+            this.txtNombreCiudad.TabIndex = 4;
             // 
             // label1
             // 
@@ -108,7 +108,7 @@
             this.Controls.Add(this.cboPaises);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.txtNombrePais);
+            this.Controls.Add(this.txtNombreCiudad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmCiudadAE";
@@ -123,7 +123,7 @@
 
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.TextBox txtNombrePais;
+        private System.Windows.Forms.TextBox txtNombreCiudad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboPaises;
