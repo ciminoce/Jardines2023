@@ -43,8 +43,7 @@
             this.lblPaginaActual = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.label3 = new System.Windows.Forms.Label();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
@@ -55,6 +54,7 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panelGrilla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panelInferior.SuspendLayout();
@@ -121,7 +121,7 @@
             this.panelInferior.Controls.Add(this.lblPaginaActual);
             this.panelInferior.Controls.Add(this.label2);
             this.panelInferior.Controls.Add(this.lblRegistros);
-            this.panelInferior.Controls.Add(this.label1);
+            this.panelInferior.Controls.Add(this.label3);
             this.panelInferior.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelInferior.Location = new System.Drawing.Point(0, 390);
             this.panelInferior.Name = "panelInferior";
@@ -130,111 +130,96 @@
             // 
             // btnUltimo
             // 
-            this.btnUltimo.Location = new System.Drawing.Point(504, 14);
+            this.btnUltimo.Image = global::Jardines2023.Windows.Properties.Resources.last_24px;
+            this.btnUltimo.Location = new System.Drawing.Point(513, 13);
             this.btnUltimo.Name = "btnUltimo";
             this.btnUltimo.Size = new System.Drawing.Size(75, 32);
-            this.btnUltimo.TabIndex = 49;
+            this.btnUltimo.TabIndex = 69;
             this.btnUltimo.UseVisualStyleBackColor = true;
             // 
             // btnSiguiente
             // 
-            this.btnSiguiente.Location = new System.Drawing.Point(423, 14);
+            this.btnSiguiente.Image = global::Jardines2023.Windows.Properties.Resources.next_24px;
+            this.btnSiguiente.Location = new System.Drawing.Point(432, 13);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
-            this.btnSiguiente.TabIndex = 50;
+            this.btnSiguiente.TabIndex = 70;
             this.btnSiguiente.UseVisualStyleBackColor = true;
             // 
             // btnAnterior
             // 
-            this.btnAnterior.Location = new System.Drawing.Point(342, 14);
+            this.btnAnterior.Image = global::Jardines2023.Windows.Properties.Resources.previous_24px;
+            this.btnAnterior.Location = new System.Drawing.Point(351, 13);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(75, 32);
-            this.btnAnterior.TabIndex = 51;
+            this.btnAnterior.TabIndex = 71;
             this.btnAnterior.UseVisualStyleBackColor = true;
             // 
             // btnPrimero
             // 
-            this.btnPrimero.Location = new System.Drawing.Point(261, 14);
+            this.btnPrimero.Image = global::Jardines2023.Windows.Properties.Resources.first_24px;
+            this.btnPrimero.Location = new System.Drawing.Point(270, 13);
             this.btnPrimero.Name = "btnPrimero";
             this.btnPrimero.Size = new System.Drawing.Size(75, 32);
-            this.btnPrimero.TabIndex = 52;
+            this.btnPrimero.TabIndex = 72;
             this.btnPrimero.UseVisualStyleBackColor = true;
             // 
             // lblPaginas
             // 
             this.lblPaginas.AutoSize = true;
             this.lblPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginas.Location = new System.Drawing.Point(203, 39);
+            this.lblPaginas.Location = new System.Drawing.Point(212, 38);
             this.lblPaginas.Name = "lblPaginas";
             this.lblPaginas.Size = new System.Drawing.Size(14, 13);
-            this.lblPaginas.TabIndex = 46;
+            this.lblPaginas.TabIndex = 66;
             this.lblPaginas.Text = "0";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(169, 39);
+            this.label4.Location = new System.Drawing.Point(178, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
-            this.label4.TabIndex = 43;
+            this.label4.TabIndex = 63;
             this.label4.Text = "de";
             // 
             // lblPaginaActual
             // 
             this.lblPaginaActual.AutoSize = true;
             this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginaActual.Location = new System.Drawing.Point(143, 39);
+            this.lblPaginaActual.Location = new System.Drawing.Point(152, 38);
             this.lblPaginaActual.Name = "lblPaginaActual";
             this.lblPaginaActual.Size = new System.Drawing.Size(14, 13);
-            this.lblPaginaActual.TabIndex = 47;
+            this.lblPaginaActual.TabIndex = 67;
             this.lblPaginaActual.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(93, 39);
+            this.label2.Location = new System.Drawing.Point(102, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 44;
+            this.label2.TabIndex = 64;
             this.label2.Text = "Página:";
             // 
             // lblRegistros
             // 
             this.lblRegistros.AutoSize = true;
             this.lblRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistros.Location = new System.Drawing.Point(143, 14);
+            this.lblRegistros.Location = new System.Drawing.Point(152, 13);
             this.lblRegistros.Name = "lblRegistros";
             this.lblRegistros.Size = new System.Drawing.Size(14, 13);
-            this.lblRegistros.TabIndex = 48;
+            this.lblRegistros.TabIndex = 68;
             this.lblRegistros.Text = "0";
             // 
-            // label1
+            // label3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Cantidad de Registros:";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNuevo,
-            this.tsbBorrar,
-            this.tsbEditar,
-            this.toolStripSeparator1,
-            this.tsbFiltrar,
-            this.tsbActualizar,
-            this.toolStripSeparator2,
-            this.tsbImprimir,
-            this.toolStripSeparator3,
-            this.tsbCerrar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 15;
-            this.toolStrip1.Text = "toolStrip1";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Cantidad de Registros:";
             // 
             // tsbNuevo
             // 
@@ -314,6 +299,25 @@
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNuevo,
+            this.tsbBorrar,
+            this.tsbEditar,
+            this.toolStripSeparator1,
+            this.tsbFiltrar,
+            this.tsbActualizar,
+            this.toolStripSeparator2,
+            this.tsbImprimir,
+            this.toolStripSeparator3,
+            this.tsbCerrar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 15;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // frmProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -352,8 +356,7 @@
         private System.Windows.Forms.Label lblPaginaActual;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRegistros;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
         private System.Windows.Forms.ToolStripButton tsbEditar;
@@ -364,5 +367,6 @@
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
