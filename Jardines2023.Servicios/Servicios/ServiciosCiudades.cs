@@ -22,12 +22,47 @@ namespace Jardines2023.Servicios.Servicios
         }
         public void Borrar(int ciudadId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _repositorio.Borrar(ciudadId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Existe(Ciudad ciudad)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _repositorio.Existe(ciudad);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Ciudad> Filtrar(Pais pais)
+        {
+            try
+            {
+                var lista= _repositorio.Filtrar(pais);
+                foreach (var item in lista)
+                {
+                    item.Pais = _repoPaises.GetPaisPorId(item.PaisId);
+                }
+                return lista;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public int GetCantidad()
@@ -63,7 +98,22 @@ namespace Jardines2023.Servicios.Servicios
 
         public void Guardar(Ciudad ciudad)
         {
-            throw new NotImplementedException();
+            try
+            {
+                if (ciudad.CiudadId==0)
+                {
+                    _repositorio.Agregar(ciudad);
+                }
+                else
+                {
+                    _repositorio.Editar(ciudad);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

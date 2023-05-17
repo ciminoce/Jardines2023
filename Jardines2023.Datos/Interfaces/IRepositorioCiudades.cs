@@ -9,6 +9,7 @@ namespace Jardines2023.Datos.Interfaces
         void Borrar(int ciudadId);
         void Editar(Ciudad ciudad);
         bool Existe(Ciudad ciudad);
+        List<Ciudad> Filtrar(Pais pais);
         int GetCantidad();
         List<Ciudad> GetCiudades();
 

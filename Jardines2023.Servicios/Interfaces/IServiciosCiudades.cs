@@ -14,7 +14,6 @@ namespace Jardines2023.Servicios.Interfaces
         bool Existe(Ciudad ciudad);
         int GetCantidad();
         List<Ciudad> GetCiudades();
-
-
+        List<Ciudad> Filtrar(Pais pais);
     }
 }

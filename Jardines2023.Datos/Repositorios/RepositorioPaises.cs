@@ -98,7 +98,7 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT PaisId, NombrePais FROM Paises";
+                    string selectQuery = "SELECT PaisId, NombrePais FROM Paises ORDER BY NombrePais";
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         using (var reader = comando.ExecuteReader())
@@ -152,11 +152,28 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT COUNT(*) FROM Paises WHERE NombrePais=@NombrePais";
+                    string selectQuery;
+                    if (pais.PaisId==0)
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Paises WHERE NombrePais=@NombrePais";
+
+                    }
+                    else
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Paises WHERE NombrePais=@NombrePais AND PaisId!=@PaisId";
+
+                    }
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         comando.Parameters.Add("@NombrePais", SqlDbType.NVarChar);
                         comando.Parameters["@NombrePais"].Value = pais.NombrePais;
+                        if (pais.PaisId!=0)
+                        {
+                            comando.Parameters.Add("@PaisId", SqlDbType.Int);
+                            comando.Parameters["@PaisId"].Value = pais.PaisId;
+
+
+                        }
 
                         cantidad = (int)comando.ExecuteScalar();
                     }

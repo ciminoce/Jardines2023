@@ -1,5 +1,6 @@
 ﻿using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Servicios;
+using Jardines2023.Windows.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace Jardines2023.Windows
             try
             {
                 lista = _servicio.GetPaises();
-                lblCantidad.Text=_servicio.GetCantidad().ToString();
+                //lblCantidad.Text=_servicio.GetCantidad().ToString();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -38,33 +39,15 @@ namespace Jardines2023.Windows
 
         private void MostrarDatosEnGrilla()
         {
-            dgvDatos.Rows.Clear();
+            GridHelper.LimpiarGrilla(dgvDatos);
             foreach (var pais in lista)
             {
-                DataGridViewRow r = ConstruirFila();
-                SetearFila(r, pais);
-                AgregarFila(r);
+                DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
+                GridHelper.SetearFila(r, pais);
+                GridHelper.AgregarFila(dgvDatos, r);
             }
         }
 
-        private void AgregarFila(DataGridViewRow r)
-        {
-            dgvDatos.Rows.Add(r);
-        }
-
-        private void SetearFila(DataGridViewRow r, Pais pais)
-        {
-            r.Cells[colPais.Index].Value = pais.NombrePais;
-
-            r.Tag = pais;
-        }
-
-        private DataGridViewRow ConstruirFila()
-        {
-            DataGridViewRow r=new DataGridViewRow();
-            r.CreateCells(dgvDatos);
-            return r;
-        }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
@@ -77,10 +60,10 @@ namespace Jardines2023.Windows
                 if (!_servicio.Existe(pais))
                 {
                     _servicio.Guardar(pais);
-                    DataGridViewRow r = ConstruirFila();
-                    SetearFila(r,pais);
-                    AgregarFila(r);
-                    lblCantidad.Text = _servicio.GetCantidad().ToString();
+                    DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
+                    GridHelper.SetearFila(r,pais);
+                    GridHelper.AgregarFila(dgvDatos,r);
+                    //lblCantidad.Text = _servicio.GetCantidad().ToString();
                     MessageBox.Show("Registro agregado",
                         "Mensaje",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,8 +103,8 @@ namespace Jardines2023.Windows
                     MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (dr == DialogResult.No) { return; }
                 _servicio.Borrar(pais.PaisId);
-                QuitarFila(r);
-                lblCantidad.Text = _servicio.GetCantidad().ToString();
+                GridHelper.QuitarFila(dgvDatos,r);
+                //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado","Mensaje",
                     MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
@@ -134,10 +117,6 @@ namespace Jardines2023.Windows
             }
         }
 
-        private void QuitarFila(DataGridViewRow r)
-        {
-            dgvDatos.Rows.Remove(r);
-        }
 
         private void tsbEditar_Click(object sender, EventArgs e)
         {
@@ -161,13 +140,13 @@ namespace Jardines2023.Windows
                 if (!_servicio.Existe(pais))
                 {
                     _servicio.Guardar(pais);
-                    SetearFila(r,pais);
+                    GridHelper.SetearFila(r,pais);
                     MessageBox.Show("Registro editado", "Mensaje",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    SetearFila(r, paisCopia);
+                    GridHelper.SetearFila(r, paisCopia);
                     MessageBox.Show("Registro duplicado!!", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -175,7 +154,7 @@ namespace Jardines2023.Windows
             }
             catch (Exception ex)
             {
-                SetearFila(r, paisCopia);
+                GridHelper.SetearFila(r, paisCopia);
                 MessageBox.Show(ex.Message, "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
