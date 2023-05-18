@@ -44,6 +44,7 @@
     <Compile Include="Interfaces\IServiciosCiudades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IServiciosPaises.cs" />
+    <Compile Include="Interfaces\IServiciosCategorias.cs" />
     <Compile Include="Servicios\ServiciosCategorias.cs" />
     <Compile Include="Servicios\ServiciosCiudades.cs" />
     <Compile Include="Servicios\ServiciosPaises.cs" />

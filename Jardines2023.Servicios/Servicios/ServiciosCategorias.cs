@@ -1,11 +1,12 @@
 ﻿using Jardines2023.Datos.Repositorios;
 using Jardines2023.Entidades.Entidades;
+using Jardines2023.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace Jardines2023.Servicios.Servicios
 {
-    public class ServiciosCategorias
+    public class ServiciosCategorias : IServiciosCategorias
     {
         private readonly RepositorioCategorias _repositorio;
         public ServiciosCategorias()

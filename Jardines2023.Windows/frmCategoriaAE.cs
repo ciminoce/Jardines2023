@@ -26,7 +26,11 @@ namespace Jardines2023.Windows
         {
             if (ValidarDatos())
             {
-                categoria = new Categoria();
+                if (categoria==null)
+                {
+                    categoria = new Categoria();
+
+                }
                 categoria.NombreCategoria = txtCategoria.Text;
                 categoria.Descripción = txtDescripcion.Text;
                 DialogResult = DialogResult.OK;
@@ -45,6 +49,18 @@ namespace Jardines2023.Windows
             }
             return valido;
         }
-
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            if (categoria!=null)
+            {
+                txtCategoria.Text = categoria.NombreCategoria;
+                txtDescripcion.Text = categoria.Descripción;
+            }
+        }
+        public void SetCategoria(Categoria categoria)
+        {
+            this.categoria = categoria;
+        }
     }
 }

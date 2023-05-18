@@ -3,6 +3,7 @@ using Jardines2023.Servicios.Servicios;
 using System.Collections.Generic;
 using System;
 using System.Windows.Forms;
+using Jardines2023.Windows.Helpers;
 
 namespace Jardines2023.Windows
 {
@@ -27,7 +28,7 @@ namespace Jardines2023.Windows
             try
             {
                 lista = _servicio.GetCategorias();
-                lblCantidad.Text = _servicio.GetCantidad().ToString();
+                //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MostrarDatosEnGrilla();
             }
             catch (Exception)
@@ -39,34 +40,16 @@ namespace Jardines2023.Windows
 
         private void MostrarDatosEnGrilla()
         {
-            dgvDatos.Rows.Clear();
+            GridHelper.LimpiarGrilla(dgvDatos);
             foreach (var categoria in lista)
             {
-                DataGridViewRow r = ConstruirFila();
-                SetearFila(r, categoria);
-                AgregarFila(r);
+                DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
+                GridHelper.SetearFila(r, categoria);
+                GridHelper.AgregarFila(dgvDatos,r);
             }
         }
 
-        private void AgregarFila(DataGridViewRow r)
-        {
-            dgvDatos.Rows.Add(r);
-        }
 
-        private void SetearFila(DataGridViewRow r, Categoria categoria)
-        {
-            r.Cells[colCategoria.Index].Value = categoria.NombreCategoria;
-            r.Cells[colDescripcion.Index].Value = categoria.Descripción;
-
-            r.Tag = categoria;
-        }
-
-        private DataGridViewRow ConstruirFila()
-        {
-            DataGridViewRow r = new DataGridViewRow();
-            r.CreateCells(dgvDatos);
-            return r;
-        }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
@@ -79,9 +62,9 @@ namespace Jardines2023.Windows
                 if (!_servicio.Existe(categoria))
                 {
                     _servicio.Guardar(categoria);
-                    DataGridViewRow r = ConstruirFila();
-                    SetearFila(r, categoria);
-                    AgregarFila(r);
+                    DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
+                    GridHelper.SetearFila(r, categoria);
+                    GridHelper.AgregarFila(dgvDatos, r);
                     lblCantidad.Text = _servicio.GetCantidad().ToString();
                     MessageBox.Show("Registro agregado",
                         "Mensaje",
@@ -117,7 +100,7 @@ namespace Jardines2023.Windows
             {
                 //Se debe controlar que no este relacionado
                 _servicio.Borrar(categoria.CategoriaId);
-                QuitarFila(r);
+                GridHelper.QuitarFila(dgvDatos,r);
                 lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -131,10 +114,49 @@ namespace Jardines2023.Windows
             }
         }
 
-        private void QuitarFila(DataGridViewRow r)
+        private void tsbEditar_Click(object sender, EventArgs e)
         {
-            dgvDatos.Rows.Remove(r);
-        }
+            if (dgvDatos.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            var r = dgvDatos.SelectedRows[0];
+            Categoria categoria = (Categoria)r.Tag;
+            Categoria categoriaCopia = (Categoria)categoria.Clone();
+            try
+            {
+                frmCategoriaAE frm = new frmCategoriaAE() { Text = "Editar Categoria" };
+                frm.SetCategoria(categoria);
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+                categoria = frm.GetCategoria();
+                if (!_servicio.Existe(categoria))
+                {
+                    _servicio.Guardar(categoria);
+                    GridHelper.SetearFila(r, categoria);
+                    MessageBox.Show("Registro editado", "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    GridHelper.SetearFila(r, categoriaCopia);
+                    MessageBox.Show("Registro duplicado!!", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                }
+            }
+            catch (Exception ex)
+            {
+                GridHelper.SetearFila(r, categoriaCopia);
+                MessageBox.Show(ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+
+
+        }
     }
 }

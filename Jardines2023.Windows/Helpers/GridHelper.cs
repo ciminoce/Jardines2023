@@ -32,6 +32,10 @@ namespace Jardines2023.Windows.Helpers
                     r.Cells[0].Value = ciudad.Pais.NombrePais;
                     r.Cells[1].Value = ciudad.NombreCiudad;
                     break;
+                case Categoria categoria:
+                    r.Cells[0].Value = categoria.NombreCategoria;
+                    r.Cells[1].Value = categoria.Descripción;
+                    break;
 
             }
             r.Tag = obj;
