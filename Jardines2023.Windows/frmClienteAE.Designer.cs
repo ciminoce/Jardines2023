@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnAgregarCiudad = new System.Windows.Forms.Button();
-            this.btnAgregarPais = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,46 +43,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnAgregarPais = new System.Windows.Forms.Button();
+            this.btnAgregarCiudad = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(634, 215);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 66);
-            this.btnCancelar.TabIndex = 42;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(73, 215);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 66);
-            this.btnOK.TabIndex = 43;
-            this.btnOK.Text = "OK";
-            this.btnOK.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnOK.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarCiudad
-            // 
-            this.btnAgregarCiudad.Location = new System.Drawing.Point(428, 137);
-            this.btnAgregarCiudad.Name = "btnAgregarCiudad";
-            this.btnAgregarCiudad.Size = new System.Drawing.Size(43, 38);
-            this.btnAgregarCiudad.TabIndex = 40;
-            this.btnAgregarCiudad.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarPais
-            // 
-            this.btnAgregarPais.Location = new System.Drawing.Point(428, 91);
-            this.btnAgregarPais.Name = "btnAgregarPais";
-            this.btnAgregarPais.Size = new System.Drawing.Size(43, 38);
-            this.btnAgregarPais.TabIndex = 41;
-            this.btnAgregarPais.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -222,15 +184,57 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Cod. Postal:";
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::Jardines2023.Windows.Properties.Resources.cancel_24px;
+            this.btnCancelar.Location = new System.Drawing.Point(502, 218);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 49);
+            this.btnCancelar.TabIndex = 40;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Image = global::Jardines2023.Windows.Properties.Resources.ok_24px;
+            this.btnOk.Location = new System.Drawing.Point(224, 218);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 49);
+            this.btnOk.TabIndex = 41;
+            this.btnOk.Text = "OK";
+            this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarPais
+            // 
+            this.btnAgregarPais.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarPais.Location = new System.Drawing.Point(419, 92);
+            this.btnAgregarPais.Name = "btnAgregarPais";
+            this.btnAgregarPais.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarPais.TabIndex = 42;
+            this.btnAgregarPais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarPais.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarCiudad
+            // 
+            this.btnAgregarCiudad.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarCiudad.Location = new System.Drawing.Point(419, 140);
+            this.btnAgregarCiudad.Name = "btnAgregarCiudad";
+            this.btnAgregarCiudad.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarCiudad.TabIndex = 42;
+            this.btnAgregarCiudad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCiudad.UseVisualStyleBackColor = true;
+            // 
             // frmClienteAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 323);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnAgregarCiudad);
             this.Controls.Add(this.btnAgregarPais);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboCiudades);
             this.Controls.Add(this.cboPaises);
@@ -252,11 +256,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnAgregarCiudad;
-        private System.Windows.Forms.Button btnAgregarPais;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCelular;
         private System.Windows.Forms.Label label7;
@@ -272,5 +271,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnAgregarPais;
+        private System.Windows.Forms.Button btnAgregarCiudad;
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Jardines2023.Datos.Repositorios
 {
@@ -194,12 +195,45 @@ namespace Jardines2023.Datos.Repositorios
                         {
                             while (reader.Read())
                             {
-                                var ciudad = new Ciudad()
-                                {
-                                    CiudadId = reader.GetInt32(0),
-                                    NombreCiudad = reader.GetString(1),
-                                    PaisId = reader.GetInt32(2)
-                                };
+                                var ciudad = ConstruirCiudad(reader);
+                                lista.Add(ciudad);
+                            }
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Ciudad> GetCiudadesPorPagina(int cantidad, int paginaActual)
+        {
+            List<Ciudad> lista = new List<Ciudad>();
+            try
+            {
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery = @"SELECT CiudadId, NombreCiudad, PaisId FROM Ciudades
+                        ORDER BY PaisId, NombreCiudad
+                        OFFSET @cantidadRegistros ROWS 
+                        FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                    using (var comando = new SqlCommand(selectQuery, conn))
+                    {
+                        comando.Parameters.Add("@cantidadRegistros", SqlDbType.Int);
+                        comando.Parameters["@cantidadRegistros"].Value = cantidad * (paginaActual - 1);
+
+                        comando.Parameters.Add("@cantidadPorPagina", SqlDbType.Int);
+                        comando.Parameters["@cantidadPorPagina"].Value = cantidad;
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var ciudad = ConstruirCiudad(reader);
                                 lista.Add(ciudad);
                             }
                         }

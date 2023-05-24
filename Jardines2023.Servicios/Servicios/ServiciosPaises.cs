@@ -98,5 +98,18 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
+
+        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual)
+        {
+            try
+            {
+                return _repositorio.GetPaisesPorPagina(cantidad,paginaActual);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

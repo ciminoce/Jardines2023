@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelGrilla = new System.Windows.Forms.Panel();
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelInferior = new System.Windows.Forms.Panel();
             this.btnUltimo = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
@@ -44,71 +41,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.panelGrilla.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelInferior.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelGrilla
-            // 
-            this.panelGrilla.Controls.Add(this.dgvDatos);
-            this.panelGrilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrilla.Location = new System.Drawing.Point(0, 25);
-            this.panelGrilla.Name = "panelGrilla";
-            this.panelGrilla.Size = new System.Drawing.Size(800, 365);
-            this.panelGrilla.TabIndex = 17;
-            // 
-            // dgvDatos
-            // 
-            this.dgvDatos.AllowUserToAddRows = false;
-            this.dgvDatos.AllowUserToDeleteRows = false;
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colProveedor,
-            this.colCiudad,
-            this.colPais});
-            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
-            this.dgvDatos.MultiSelect = false;
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.RowHeadersVisible = false;
-            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(800, 365);
-            this.dgvDatos.TabIndex = 0;
-            // 
-            // colProveedor
-            // 
-            this.colProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
-            this.colProveedor.ReadOnly = true;
-            // 
-            // colCiudad
-            // 
-            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCiudad.HeaderText = "Ciudad";
-            this.colCiudad.Name = "colCiudad";
-            this.colCiudad.ReadOnly = true;
-            // 
-            // colPais
-            // 
-            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colPais.HeaderText = "País";
-            this.colPais.Name = "colPais";
-            this.colPais.ReadOnly = true;
             // 
             // panelInferior
             // 
@@ -221,83 +174,36 @@
             this.label3.TabIndex = 65;
             this.label3.Text = "Cantidad de Registros:";
             // 
-            // tsbNuevo
+            // panel1
             // 
-            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(46, 22);
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.panel1.Controls.Add(this.dgvDatos);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 54);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 336);
+            this.panel1.TabIndex = 20;
             // 
-            // tsbBorrar
+            // dgvDatos
             // 
-            this.tsbBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBorrar.Name = "tsbBorrar";
-            this.tsbBorrar.Size = new System.Drawing.Size(43, 22);
-            this.tsbBorrar.Text = "Borrar";
-            this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsbEditar
-            // 
-            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(41, 22);
-            this.tsbEditar.Text = "Editar";
-            this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbFiltrar
-            // 
-            this.tsbFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFiltrar.Name = "tsbFiltrar";
-            this.tsbFiltrar.Size = new System.Drawing.Size(41, 22);
-            this.tsbFiltrar.Text = "Filtrar";
-            this.tsbFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsbActualizar
-            // 
-            this.tsbActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbActualizar.Name = "tsbActualizar";
-            this.tsbActualizar.Size = new System.Drawing.Size(63, 22);
-            this.tsbActualizar.Text = "Actualizar";
-            this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(57, 22);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbCerrar
-            // 
-            this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrar.Name = "tsbCerrar";
-            this.tsbCerrar.Size = new System.Drawing.Size(43, 22);
-            this.tsbCerrar.Text = "Cerrar";
-            this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToResizeColumns = false;
+            this.dgvDatos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colProveedor,
+            this.colPais,
+            this.colCiudad});
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatos.MultiSelect = false;
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersVisible = false;
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatos.Size = new System.Drawing.Size(800, 336);
+            this.dgvDatos.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -306,7 +212,7 @@
             this.tsbBorrar,
             this.tsbEditar,
             this.toolStripSeparator1,
-            this.tsbFiltrar,
+            this.tsbBuscar,
             this.tsbActualizar,
             this.toolStripSeparator2,
             this.tsbImprimir,
@@ -314,24 +220,132 @@
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 15;
+            this.toolStrip1.Size = new System.Drawing.Size(800, 54);
+            this.toolStrip1.TabIndex = 19;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.Image = global::Jardines2023.Windows.Properties.Resources.new_file_32px;
+            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(46, 51);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsbBorrar
+            // 
+            this.tsbBorrar.Image = global::Jardines2023.Windows.Properties.Resources.delete_file_32px;
+            this.tsbBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBorrar.Name = "tsbBorrar";
+            this.tsbBorrar.Size = new System.Drawing.Size(43, 51);
+            this.tsbBorrar.Text = "Borrar";
+            this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsbEditar
+            // 
+            this.tsbEditar.Image = global::Jardines2023.Windows.Properties.Resources.edit_file_32px;
+            this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEditar.Name = "tsbEditar";
+            this.tsbEditar.Size = new System.Drawing.Size(41, 51);
+            this.tsbEditar.Text = "Editar";
+            this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
+            // 
+            // tsbBuscar
+            // 
+            this.tsbBuscar.Image = global::Jardines2023.Windows.Properties.Resources.filter_32px;
+            this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(46, 51);
+            this.tsbBuscar.Text = "Buscar";
+            this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsbActualizar
+            // 
+            this.tsbActualizar.Image = global::Jardines2023.Windows.Properties.Resources.restart_32px;
+            this.tsbActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbActualizar.Name = "tsbActualizar";
+            this.tsbActualizar.Size = new System.Drawing.Size(63, 51);
+            this.tsbActualizar.Text = "Actualizar";
+            this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
+            // 
+            // tsbImprimir
+            // 
+            this.tsbImprimir.Image = global::Jardines2023.Windows.Properties.Resources.print_32px;
+            this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimir.Name = "tsbImprimir";
+            this.tsbImprimir.Size = new System.Drawing.Size(57, 51);
+            this.tsbImprimir.Text = "Imprimir";
+            this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
+            // 
+            // tsbCerrar
+            // 
+            this.tsbCerrar.Image = global::Jardines2023.Windows.Properties.Resources.close_window_32px;
+            this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrar.Name = "tsbCerrar";
+            this.tsbCerrar.Size = new System.Drawing.Size(43, 51);
+            this.tsbCerrar.Text = "Cerrar";
+            this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            this.colProveedor.ReadOnly = true;
+            // 
+            // colPais
+            // 
+            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPais.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colPais.HeaderText = "Países";
+            this.colPais.Name = "colPais";
+            this.colPais.ReadOnly = true;
+            // 
+            // colCiudad
+            // 
+            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCiudad.HeaderText = "Ciudad";
+            this.colCiudad.Name = "colCiudad";
+            this.colCiudad.ReadOnly = true;
             // 
             // frmProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelGrilla);
-            this.Controls.Add(this.panelInferior);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.panelInferior);
             this.Name = "frmProveedores";
             this.Text = "frmProveedores";
-            this.panelGrilla.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panelInferior.ResumeLayout(false);
             this.panelInferior.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -340,12 +354,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panelGrilla;
-        private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProveedor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCiudad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPais;
         private System.Windows.Forms.Panel panelInferior;
         private System.Windows.Forms.Button btnUltimo;
         private System.Windows.Forms.Button btnSiguiente;
@@ -357,16 +365,21 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblRegistros;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPais;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCiudad;
+        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbFiltrar;
+        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
-        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

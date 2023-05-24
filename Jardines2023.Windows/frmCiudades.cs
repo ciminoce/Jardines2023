@@ -14,6 +14,12 @@ namespace Jardines2023.Windows
         private readonly IServiciosCiudades _servicio;
         private List<Ciudad> lista;
         int cantidad = 0;
+        //Para paginación
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 12;
+
         public frmCiudades()
         {
             InitializeComponent();
@@ -32,8 +38,12 @@ namespace Jardines2023.Windows
             {
                 DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
                 GridHelper.SetearFila(r, ciudad);
-                GridHelper.AgregarFila(dgvDatos,r);
+                GridHelper.AgregarFila(dgvDatos, r);
             }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text = paginas.ToString();
+
         }
 
 
@@ -45,40 +55,9 @@ namespace Jardines2023.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmCiudadAE frm = new frmCiudadAE() { Text = "Agregar Ciudad" };
+            frmCiudadAE frm = new frmCiudadAE(_servicio) { Text = "Agregar Ciudad" };
             DialogResult dr = frm.ShowDialog(this);
-            if (dr == DialogResult.Cancel)
-            {
-                return;
-            }
-            try
-            {
-                Ciudad ciudad = frm.GetCiudad();
-                if(!_servicio.Existe(ciudad))
-                {
-                    _servicio.Guardar(ciudad);
-                    var r = GridHelper.ConstruirFila(dgvDatos);
-                    GridHelper.SetearFila(r, ciudad);
-                    GridHelper.AgregarFila(dgvDatos, r);
-
-                    MessageBox.Show("Registro agregado",
-                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Registro duplicado",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message,
-    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ;
-            }
+            RecargarGrilla();
         }
 
         private void tsbEditar_Click(object sender, EventArgs e)
@@ -92,7 +71,7 @@ namespace Jardines2023.Windows
             Ciudad ciudadCopia = (Ciudad)ciudad.Clone();
             try
             {
-                frmCiudadAE frm = new frmCiudadAE() { Text = "Editar Ciudad" };
+                frmCiudadAE frm = new frmCiudadAE(_servicio) { Text = "Editar Ciudad" };
                 frm.SetCiudad(ciudad);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
@@ -100,20 +79,7 @@ namespace Jardines2023.Windows
                     return;
                 }
                 ciudad = frm.GetCiudad();
-                if (!_servicio.Existe(ciudad))
-                {
-                    _servicio.Guardar(ciudad);
-                    GridHelper.SetearFila(r, ciudad);
-                    MessageBox.Show("Registro editado", "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    GridHelper.SetearFila(r, ciudadCopia);
-                    MessageBox.Show("Registro duplicado!!", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
+                GridHelper.SetearFila(r, ciudad);
             }
             catch (Exception ex)
             {
@@ -143,6 +109,10 @@ namespace Jardines2023.Windows
                 if (dr == DialogResult.No) { return; }
                 _servicio.Borrar(ciudad.CiudadId);
                 GridHelper.QuitarFila(dgvDatos, r);
+                registros=_servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                lblRegistros.Text=registros.ToString();
+                lblPaginas.Text= paginas.ToString();
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -190,10 +160,10 @@ namespace Jardines2023.Windows
         {
             try
             {
-                cantidad = _servicio.GetCantidad();
-                //lblCantidad.Text = cantidad.ToString();
-                lista = _servicio.GetCiudades();
-                MostrarDatosEnGrilla();
+                //lista = _servicio.GetPaises();
+                registros = _servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
             catch (Exception)
             {
@@ -202,5 +172,47 @@ namespace Jardines2023.Windows
             }
 
         }
+
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+
+        }
+        private void MostrarPaginado()
+        {
+            lista = _servicio.GetCiudadesPorPagina(registrosPorPagina, paginaActual);
+            MostrarDatosEnGrilla();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+
+            paginaActual = paginas;
+            MostrarPaginado();  
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
+        }
+
     }
 }

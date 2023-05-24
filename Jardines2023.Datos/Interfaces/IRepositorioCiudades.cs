@@ -12,6 +12,6 @@ namespace Jardines2023.Datos.Interfaces
         List<Ciudad> Filtrar(Pais pais);
         int GetCantidad();
         List<Ciudad> GetCiudades();
-
+        List<Ciudad> GetCiudadesPorPagina(int registrosPorPagina, int paginaActual);
     }
 }

@@ -219,5 +219,42 @@ namespace Jardines2023.Datos.Repositorios
             }
             return pais;
         }
+
+        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual)
+        {
+            try
+            {
+                List<Pais> lista = new List<Pais>();
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery = @"SELECT PaisId, NombrePais FROM Paises
+                            ORDER BY NombrePais 
+                            OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                    using (var comando = new SqlCommand(selectQuery, conn))
+                    {
+                        comando.Parameters.Add("@cantidadRegistros",SqlDbType.Int);
+                        comando.Parameters["@cantidadRegistros"].Value = cantidad*(paginaActual-1);
+
+                        comando.Parameters.Add("@cantidadPorPagina", SqlDbType.Int);
+                        comando.Parameters["@cantidadPorPagina"].Value = cantidad;
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var pais = ConstruirPais(reader);
+                                lista.Add(pais);
+                            }
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

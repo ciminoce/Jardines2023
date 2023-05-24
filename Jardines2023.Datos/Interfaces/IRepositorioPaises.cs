@@ -11,6 +11,7 @@ namespace Jardines2023.Datos.Interfaces
         bool Existe(Pais pais);
         int GetCantidad();
         List<Pais> GetPaises();
+        List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual);
         Pais GetPaisPorId(int paisId);
     }
 }

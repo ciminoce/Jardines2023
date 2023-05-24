@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboPaises = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnAgregarPais = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +103,17 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnAgregarPais
+            // 
+            this.btnAgregarPais.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarPais.Location = new System.Drawing.Point(430, 28);
+            this.btnAgregarPais.Name = "btnAgregarPais";
+            this.btnAgregarPais.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarPais.TabIndex = 6;
+            this.btnAgregarPais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarPais.UseVisualStyleBackColor = true;
+            this.btnAgregarPais.Click += new System.EventHandler(this.btnAgregarPais_Click);
+            // 
             // frmCiudadAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -109,6 +121,7 @@
             this.ClientSize = new System.Drawing.Size(496, 204);
             this.Controls.Add(this.cboPaises);
             this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAgregarPais);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtNombreCiudad);
             this.Controls.Add(this.label2);
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboPaises;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnAgregarPais;
     }
 }

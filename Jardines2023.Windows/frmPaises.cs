@@ -17,6 +17,11 @@ namespace Jardines2023.Windows
         private readonly ServiciosPaises _servicio;
         private List<Pais> lista;
 
+        //Para paginación
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 12;
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -26,9 +31,9 @@ namespace Jardines2023.Windows
         {
             try
             {
-                lista = _servicio.GetPaises();
-                //lblCantidad.Text=_servicio.GetCantidad().ToString();
-                MostrarDatosEnGrilla();
+                registros=_servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
             catch (Exception)
             {
@@ -36,6 +41,7 @@ namespace Jardines2023.Windows
                 throw;
             }
         }
+
 
         private void MostrarDatosEnGrilla()
         {
@@ -46,6 +52,9 @@ namespace Jardines2023.Windows
                 GridHelper.SetearFila(r, pais);
                 GridHelper.AgregarFila(dgvDatos, r);
             }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text=paginas.ToString();
         }
 
 
@@ -160,6 +169,46 @@ namespace Jardines2023.Windows
 
             }
 
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual==paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+
+            paginaActual = paginas;
+            MostrarPaginado();
+
+        }
+
+        private void MostrarPaginado()
+        {
+            lista = _servicio.GetPaisesPorPagina(registrosPorPagina, paginaActual);
+            MostrarDatosEnGrilla();
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Jardines2023.Entidades.Entidades;
+using Jardines2023.Servicios.Interfaces;
+using Jardines2023.Servicios.Servicios;
 using Jardines2023.Windows.Helpers;
 using System;
 using System.Collections.Generic;
@@ -14,11 +16,14 @@ namespace Jardines2023.Windows
 {
     public partial class frmCiudadAE : Form
     {
-        public frmCiudadAE()
+        private IServiciosCiudades _servicio;
+        public frmCiudadAE(IServiciosCiudades servicio)
         {
+            _servicio = servicio;
             InitializeComponent();
         }
         private Ciudad ciudad;
+        private bool esEdicion=false;
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -27,6 +32,7 @@ namespace Jardines2023.Windows
             {
                 txtNombreCiudad.Text = ciudad.NombreCiudad;
                 cboPaises.SelectedValue = ciudad.PaisId;
+                esEdicion = true;
             }
         }
 
@@ -47,8 +53,63 @@ namespace Jardines2023.Windows
                 ciudad.Pais = (Pais)cboPaises.SelectedItem;
                 ciudad.PaisId = (int)cboPaises.SelectedValue;
 
-                DialogResult= DialogResult.OK;
+                try
+                {
+                    
+                    if (!_servicio.Existe(ciudad))
+                    {
+                        _servicio.Guardar(ciudad);
+
+                        if (!esEdicion)
+                        {
+                            MessageBox.Show("Registro agregado",
+                        "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult dr = MessageBox.Show("¿Desea agregar otro registro?",
+                                "Pregunta",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question,
+                                MessageBoxDefaultButton.Button2);
+                            if (dr == DialogResult.No)
+                            {
+                                DialogResult = DialogResult.OK;
+
+                            }
+                            ciudad = null;
+                            InicializarControles();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Registro editado", "Mensaje",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            DialogResult = DialogResult.OK;
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Registro duplicado",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message,
+        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ;
+                }
+
+
             }
+        }
+
+        private void InicializarControles()
+        {
+            cboPaises.SelectedIndex = 0;
+            txtNombreCiudad.Clear();
+            cboPaises.Focus();
         }
 
         private bool ValidarDatos()
@@ -76,6 +137,41 @@ namespace Jardines2023.Windows
         public void SetCiudad(Ciudad ciudad)
         {
             this.ciudad=ciudad;
+        }
+
+        private void btnAgregarPais_Click(object sender, EventArgs e)
+        {
+            var _servicioPaises = new ServiciosPaises();
+            frmPaisAE frm = new frmPaisAE() { Text = "Agregar país" };
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel) return;
+            try
+            {
+                var pais = frm.GetPais();
+                if (!_servicioPaises.Existe(pais))
+                {
+                    _servicioPaises.Guardar(pais);
+                    MessageBox.Show("Registro agregado",
+                        "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Registro existente",
+                        "Mensaje",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message,
+                    "Mensaje",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            CombosHelper.CargarComboPaises(ref cboPaises);
         }
     }
 }
