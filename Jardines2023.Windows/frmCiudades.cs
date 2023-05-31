@@ -13,7 +13,7 @@ namespace Jardines2023.Windows
     {
         private readonly IServiciosCiudades _servicio;
         private List<Ciudad> lista;
-        int cantidad = 0;
+        
         //Para paginación
         int paginaActual = 1;
         int registros = 0;
@@ -76,10 +76,21 @@ namespace Jardines2023.Windows
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
+                    GridHelper.SetearFila(r, ciudadCopia);
+
                     return;
                 }
                 ciudad = frm.GetCiudad();
-                GridHelper.SetearFila(r, ciudad);
+                if (ciudad != null)
+                {
+                    GridHelper.SetearFila(r, ciudad);
+
+                }
+                else
+                {
+                    GridHelper.SetearFila(r, ciudadCopia);
+
+                }
             }
             catch (Exception ex)
             {

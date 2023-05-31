@@ -17,6 +17,11 @@ namespace Jardines2023.Windows
 
         private readonly ServiciosCategorias _servicio;
         private List<Categoria> lista;
+        //Para paginación
+        int paginaActual = 1;
+        int registros = 0;
+        int paginas = 0;
+        int registrosPorPagina = 12;
 
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
@@ -25,11 +30,16 @@ namespace Jardines2023.Windows
 
         private void frmCategorias_Load(object sender, EventArgs e)
         {
+            RecargarGrilla();
+        }
+
+        private void RecargarGrilla()
+        {
             try
             {
-                lista = _servicio.GetCategorias();
-                //lblCantidad.Text = _servicio.GetCantidad().ToString();
-                MostrarDatosEnGrilla();
+                registros = _servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
             catch (Exception)
             {
@@ -47,45 +57,19 @@ namespace Jardines2023.Windows
                 GridHelper.SetearFila(r, categoria);
                 GridHelper.AgregarFila(dgvDatos,r);
             }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text = paginas.ToString();
+
         }
 
 
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmCategoriaAE frm = new frmCategoriaAE() { Text = "Agregar país" };
+            frmCategoriaAE frm = new frmCategoriaAE(_servicio) { Text = "Agregar país" };
             DialogResult dr = frm.ShowDialog(this);
-            if (dr == DialogResult.Cancel) return;
-            try
-            {
-                var categoria = frm.GetCategoria();
-                if (!_servicio.Existe(categoria))
-                {
-                    _servicio.Guardar(categoria);
-                    DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
-                    GridHelper.SetearFila(r, categoria);
-                    GridHelper.AgregarFila(dgvDatos, r);
-                    lblCantidad.Text = _servicio.GetCantidad().ToString();
-                    MessageBox.Show("Registro agregado",
-                        "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Registro existente",
-                        "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message,
-                    "Mensaje",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
+            RecargarGrilla();
         }
 
         private void tsbBorrar_Click(object sender, EventArgs e)
@@ -101,7 +85,7 @@ namespace Jardines2023.Windows
                 //Se debe controlar que no este relacionado
                 _servicio.Borrar(categoria.CategoriaId);
                 GridHelper.QuitarFila(dgvDatos,r);
-                lblCantidad.Text = _servicio.GetCantidad().ToString();
+                //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -125,7 +109,7 @@ namespace Jardines2023.Windows
             Categoria categoriaCopia = (Categoria)categoria.Clone();
             try
             {
-                frmCategoriaAE frm = new frmCategoriaAE() { Text = "Editar Categoria" };
+                frmCategoriaAE frm = new frmCategoriaAE(_servicio) { Text = "Editar Categoria" };
                 frm.SetCategoria(categoria);
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
@@ -156,6 +140,51 @@ namespace Jardines2023.Windows
 
             }
 
+
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == paginas)
+            {
+                return;
+            }
+            paginaActual++;
+            MostrarPaginado();
+
+        }
+        private void MostrarPaginado()
+        {
+            lista = _servicio.GetCiudadesPorPagina(registrosPorPagina, paginaActual);
+            MostrarDatosEnGrilla();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (paginaActual == 1)
+            {
+                return;
+            }
+            paginaActual--;
+            MostrarPaginado();
+
+        }
+
+        private void btnUltimo_Click(object sender, EventArgs e)
+        {
+
+            paginaActual = paginas;
+            MostrarPaginado();
+        }
+
+        private void btnPrimero_Click(object sender, EventArgs e)
+        {
+            paginaActual = 1;
+            MostrarPaginado();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
     }

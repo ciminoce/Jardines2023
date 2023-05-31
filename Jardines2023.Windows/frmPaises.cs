@@ -29,17 +29,7 @@ namespace Jardines2023.Windows
 
         private void frmPaises_Load(object sender, EventArgs e)
         {
-            try
-            {
-                registros=_servicio.GetCantidad();
-                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
-                MostrarPaginado();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            RecargarGrilla();
         }
 
 
@@ -60,38 +50,23 @@ namespace Jardines2023.Windows
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
-            frmPaisAE frm = new frmPaisAE() { Text = "Agregar país" };
+            frmPaisAE frm = new frmPaisAE(_servicio) { Text = "Agregar país" };
             DialogResult dr = frm.ShowDialog(this);
-            if(dr==DialogResult.Cancel) return;
+            RecargarGrilla();
+        }
+
+        private void RecargarGrilla()
+        {
             try
             {
-                var pais = frm.GetPais();
-                if (!_servicio.Existe(pais))
-                {
-                    _servicio.Guardar(pais);
-                    DataGridViewRow r = GridHelper.ConstruirFila(dgvDatos);
-                    GridHelper.SetearFila(r,pais);
-                    GridHelper.AgregarFila(dgvDatos,r);
-                    //lblCantidad.Text = _servicio.GetCantidad().ToString();
-                    MessageBox.Show("Registro agregado",
-                        "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Registro existente",
-                        "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
+                registros = _servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                MostrarPaginado();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show(ex.Message,
-                    "Mensaje",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                throw;
             }
         }
 
@@ -138,26 +113,24 @@ namespace Jardines2023.Windows
             Pais paisCopia =(Pais) pais.Clone();
             try
             {
-                frmPaisAE frm = new frmPaisAE() { Text = "Editar País" };
+                frmPaisAE frm = new frmPaisAE(_servicio) { Text = "Editar País" };
                 frm.SetPais(pais);
                 DialogResult dr = frm.ShowDialog(this);
-                if (dr==DialogResult.Cancel)
+                if (dr == DialogResult.Cancel)
                 {
+                    GridHelper.SetearFila(r, paisCopia);
+
                     return;
                 }
                 pais = frm.GetPais();
-                if (!_servicio.Existe(pais))
+                if (pais != null)
                 {
-                    _servicio.Guardar(pais);
-                    GridHelper.SetearFila(r,pais);
-                    MessageBox.Show("Registro editado", "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GridHelper.SetearFila(r, pais);
+
                 }
                 else
                 {
                     GridHelper.SetearFila(r, paisCopia);
-                    MessageBox.Show("Registro duplicado!!", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }

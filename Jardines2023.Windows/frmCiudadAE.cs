@@ -89,7 +89,7 @@ namespace Jardines2023.Windows
                     {
                         MessageBox.Show("Registro duplicado",
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                        ciudad = null;
                     }
 
                 }
@@ -98,7 +98,7 @@ namespace Jardines2023.Windows
 
                     MessageBox.Show(ex.Message,
         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ;
+                    
                 }
 
 
@@ -142,7 +142,7 @@ namespace Jardines2023.Windows
         private void btnAgregarPais_Click(object sender, EventArgs e)
         {
             var _servicioPaises = new ServiciosPaises();
-            frmPaisAE frm = new frmPaisAE() { Text = "Agregar país" };
+            frmPaisAE frm = new frmPaisAE(_servicioPaises) { Text = "Agregar país" };
             DialogResult dr = frm.ShowDialog(this);
             if (dr == DialogResult.Cancel) return;
             try

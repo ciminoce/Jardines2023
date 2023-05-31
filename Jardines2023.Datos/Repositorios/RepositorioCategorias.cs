@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Jardines2023.Datos.Interfaces;
 
 namespace Jardines2023.Datos.Repositorios
 {
-    public class RepositorioCategorias
+    public class RepositorioCategorias : IRepositorioCategorias
     {
         private readonly string cadenaConexion;
         public RepositorioCategorias()
@@ -82,12 +83,7 @@ namespace Jardines2023.Datos.Repositorios
                         {
                             while (reader.Read())
                             {
-                                var categoria = new Categoria()
-                                {
-                                    CategoriaId = reader.GetInt32(0),
-                                    NombreCategoria = reader.GetString(1),
-                                    Descripción = reader[2] != DBNull.Value ? reader.GetString(2) : string.Empty
-                                };
+                                var categoria = ConstruirCategoria(reader);
                                 lista.Add(categoria);
                             }
                         }
@@ -152,5 +148,52 @@ namespace Jardines2023.Datos.Repositorios
             }
         }
 
+        public List<Categoria> GetCategoriasPorPagina(int cantidad, int pagina)
+        {
+            List<Categoria> lista = new List<Categoria>();
+            try
+            {
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery = @"SELECT CategoriaId, NombreCategoria, Descripcion FROM Categorias
+                        ORDER BY NombreCategoria
+                        OFFSET @cantidadRegistros ROWS 
+                        FETCH NEXT @cantidadPorPagina ROWS ONLY";
+                    using (var comando = new SqlCommand(selectQuery, conn))
+                    {
+                        comando.Parameters.Add("@cantidadRegistros", SqlDbType.Int);
+                        comando.Parameters["@cantidadRegistros"].Value = cantidad * (pagina - 1);
+
+                        comando.Parameters.Add("@cantidadPorPagina", SqlDbType.Int);
+                        comando.Parameters["@cantidadPorPagina"].Value = cantidad;
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var categoria = ConstruirCategoria(reader);
+                                lista.Add(categoria);
+                            }
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private Categoria ConstruirCategoria(SqlDataReader reader)
+        {
+            return new Categoria()
+            {
+                CategoriaId = reader.GetInt32(0),
+                NombreCategoria = reader.GetString(1),
+                Descripción = reader[2] != DBNull.Value ? reader.GetString(2) : string.Empty
+            };
+        }
     }
 }

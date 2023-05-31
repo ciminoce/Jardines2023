@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.colCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +44,16 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnPrimero = new System.Windows.Forms.Button();
+            this.lblPaginas = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblPaginaActual = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblRegistros = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,8 +75,16 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.lblCantidad);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.btnUltimo);
+            this.splitContainer1.Panel2.Controls.Add(this.btnSiguiente);
+            this.splitContainer1.Panel2.Controls.Add(this.btnAnterior);
+            this.splitContainer1.Panel2.Controls.Add(this.btnPrimero);
+            this.splitContainer1.Panel2.Controls.Add(this.lblPaginas);
+            this.splitContainer1.Panel2.Controls.Add(this.label4);
+            this.splitContainer1.Panel2.Controls.Add(this.lblPaginaActual);
+            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.lblRegistros);
+            this.splitContainer1.Panel2.Controls.Add(this.label3);
             this.splitContainer1.Size = new System.Drawing.Size(800, 396);
             this.splitContainer1.SplitterDistance = 330;
             this.splitContainer1.TabIndex = 17;
@@ -78,8 +94,8 @@
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToResizeColumns = false;
             this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCategoria,
@@ -108,25 +124,6 @@
             this.colDescripcion.Name = "colDescripcion";
             this.colDescripcion.ReadOnly = true;
             // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCantidad.Location = new System.Drawing.Point(147, 16);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(14, 13);
-            this.lblCantidad.TabIndex = 15;
-            this.lblCantidad.Text = "0";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Cantidad de Registros:";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -145,6 +142,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(800, 54);
             this.toolStrip1.TabIndex = 16;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // tsbNuevo
             // 
@@ -235,6 +233,103 @@
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Image = global::Jardines2023.Windows.Properties.Resources.last_24px;
+            this.btnUltimo.Location = new System.Drawing.Point(519, 13);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(75, 32);
+            this.btnUltimo.TabIndex = 79;
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Image = global::Jardines2023.Windows.Properties.Resources.next_24px;
+            this.btnSiguiente.Location = new System.Drawing.Point(438, 13);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
+            this.btnSiguiente.TabIndex = 80;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Image = global::Jardines2023.Windows.Properties.Resources.previous_24px;
+            this.btnAnterior.Location = new System.Drawing.Point(357, 13);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 32);
+            this.btnAnterior.TabIndex = 81;
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Image = global::Jardines2023.Windows.Properties.Resources.first_24px;
+            this.btnPrimero.Location = new System.Drawing.Point(276, 13);
+            this.btnPrimero.Name = "btnPrimero";
+            this.btnPrimero.Size = new System.Drawing.Size(75, 32);
+            this.btnPrimero.TabIndex = 82;
+            this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            // 
+            // lblPaginas
+            // 
+            this.lblPaginas.AutoSize = true;
+            this.lblPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginas.Location = new System.Drawing.Point(218, 38);
+            this.lblPaginas.Name = "lblPaginas";
+            this.lblPaginas.Size = new System.Drawing.Size(14, 13);
+            this.lblPaginas.TabIndex = 76;
+            this.lblPaginas.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(184, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 13);
+            this.label4.TabIndex = 73;
+            this.label4.Text = "de";
+            // 
+            // lblPaginaActual
+            // 
+            this.lblPaginaActual.AutoSize = true;
+            this.lblPaginaActual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaActual.Location = new System.Drawing.Point(158, 38);
+            this.lblPaginaActual.Name = "lblPaginaActual";
+            this.lblPaginaActual.Size = new System.Drawing.Size(14, 13);
+            this.lblPaginaActual.TabIndex = 77;
+            this.lblPaginaActual.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(108, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 74;
+            this.label2.Text = "Página:";
+            // 
+            // lblRegistros
+            // 
+            this.lblRegistros.AutoSize = true;
+            this.lblRegistros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistros.Location = new System.Drawing.Point(158, 13);
+            this.lblRegistros.Name = "lblRegistros";
+            this.lblRegistros.Size = new System.Drawing.Size(14, 13);
+            this.lblRegistros.TabIndex = 78;
+            this.lblRegistros.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(37, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 75;
+            this.label3.Text = "Cantidad de Registros:";
+            // 
             // frmCategorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,8 +357,6 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbNuevo;
         private System.Windows.Forms.ToolStripButton tsbBorrar;
@@ -277,5 +370,15 @@
         private System.Windows.Forms.ToolStripButton tsbCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
+        private System.Windows.Forms.Button btnUltimo;
+        private System.Windows.Forms.Button btnSiguiente;
+        private System.Windows.Forms.Button btnAnterior;
+        private System.Windows.Forms.Button btnPrimero;
+        private System.Windows.Forms.Label lblPaginas;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPaginaActual;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblRegistros;
+        private System.Windows.Forms.Label label3;
     }
 }
