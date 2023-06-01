@@ -1,4 +1,5 @@
-﻿using Jardines2023.Entidades.Entidades;
+﻿using Jardines2023.Entidades.Dtos.Cliente;
+using Jardines2023.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace Jardines2023.Windows.Helpers
                 case Categoria categoria:
                     r.Cells[0].Value = categoria.NombreCategoria;
                     r.Cells[1].Value = categoria.Descripción;
+                    break;
+                case ClienteListDto cliente:
+                    r.Cells[0].Value = $"{cliente.Apellido}, {cliente.Nombre}";
+                    r.Cells[1].Value = cliente.NombrePais;
+                    r.Cells[2].Value = cliente.NombreCiudad;
                     break;
 
             }

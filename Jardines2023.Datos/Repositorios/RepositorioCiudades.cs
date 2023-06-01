@@ -247,5 +247,37 @@ namespace Jardines2023.Datos.Repositorios
                 throw;
             }
         }
+
+        public Ciudad GetCiudadPorId(int ciudadId)
+        {
+            Ciudad ciudad=null;
+            try
+            {
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery = "SELECT CiudadId, NombreCiudad, PaisId FROM Ciudades WHERE CiudadId=@CiudadId";
+                    using (var cmd = new SqlCommand(selectQuery, conn))
+                    {
+                        cmd.Parameters.Add("@CiudadId", SqlDbType.Int);
+                        cmd.Parameters["@CiudadId"].Value=ciudadId;
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                reader.Read();
+                                ciudad = ConstruirCiudad(reader);
+                            }
+                        }
+                    }
+                }
+                return ciudad;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

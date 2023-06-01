@@ -43,11 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IRepositorioCiudades.cs" />
+    <Compile Include="Interfaces\IRepositorioClientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IRepositorioPaises.cs" />
     <Compile Include="Interfaces\IRepositorioCategorias.cs" />
     <Compile Include="Repositorios\RepositorioCategorias.cs" />
     <Compile Include="Repositorios\RepositorioCiudades.cs" />
+    <Compile Include="Repositorios\RepositorioClientes.cs" />
     <Compile Include="Repositorios\RepositorioPaises.cs" />
   </ItemGroup>
   <ItemGroup>

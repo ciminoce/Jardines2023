@@ -13,5 +13,6 @@ namespace Jardines2023.Datos.Interfaces
         int GetCantidad();
         List<Ciudad> GetCiudades();
         List<Ciudad> GetCiudadesPorPagina(int registrosPorPagina, int paginaActual);
+        Ciudad GetCiudadPorId(int ciudadId);
     }
 }

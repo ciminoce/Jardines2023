@@ -93,6 +93,7 @@
             this.ClientesButton.Text = "Clientes";
             this.ClientesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ClientesButton.UseVisualStyleBackColor = true;
+            this.ClientesButton.Click += new System.EventHandler(this.ClientesButton_Click);
             // 
             // CiudadesButton
             // 
