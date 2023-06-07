@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCelular = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -35,7 +36,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cboCiudades = new System.Windows.Forms.ComboBox();
             this.cboPaises = new System.Windows.Forms.ComboBox();
-            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.txtNombres = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtCodPostal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +48,13 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.btnAgregarPais = new System.Windows.Forms.Button();
             this.btnAgregarCiudad = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -115,13 +122,13 @@
             this.cboPaises.Size = new System.Drawing.Size(282, 21);
             this.cboPaises.TabIndex = 31;
             // 
-            // txtCliente
+            // txtNombres
             // 
-            this.txtCliente.Location = new System.Drawing.Point(119, 27);
-            this.txtCliente.MaxLength = 255;
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(282, 20);
-            this.txtCliente.TabIndex = 29;
+            this.txtNombres.Location = new System.Drawing.Point(119, 27);
+            this.txtNombres.MaxLength = 255;
+            this.txtNombres.Name = "txtNombres";
+            this.txtNombres.Size = new System.Drawing.Size(282, 20);
+            this.txtNombres.TabIndex = 29;
             // 
             // txtDireccion
             // 
@@ -142,11 +149,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 30);
+            this.label3.Location = new System.Drawing.Point(62, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 36;
-            this.label3.Text = "Cliente:";
+            this.label3.Text = "Nombres:";
             // 
             // label5
             // 
@@ -194,6 +201,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnOk
             // 
@@ -205,6 +213,7 @@
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnAgregarPais
             // 
@@ -226,6 +235,44 @@
             this.btnAgregarCiudad.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAgregarCiudad.UseVisualStyleBackColor = true;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(417, 30);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Apellido:";
+            // 
+            // txtApellido
+            // 
+            this.txtApellido.Location = new System.Drawing.Point(474, 27);
+            this.txtApellido.MaxLength = 255;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(282, 20);
+            this.txtApellido.TabIndex = 29;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(59, 185);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Email:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(119, 182);
+            this.txtEmail.MaxLength = 255;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(352, 20);
+            this.txtEmail.TabIndex = 30;
+            // 
             // frmClienteAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,10 +285,14 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboCiudades);
             this.Controls.Add(this.cboPaises);
-            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.txtApellido);
+            this.Controls.Add(this.txtNombres);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCodPostal);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -250,6 +301,7 @@
             this.Text = "frmClienteAE";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,7 +315,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboCiudades;
         private System.Windows.Forms.ComboBox cboPaises;
-        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtCodPostal;
         private System.Windows.Forms.Label label3;
@@ -275,5 +327,10 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnAgregarPais;
         private System.Windows.Forms.Button btnAgregarCiudad;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label9;
     }
 }

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Jardines2023.Datos.Repositorios
 {

@@ -67,7 +67,32 @@ namespace Jardines2023.Datos.Repositorios
                 throw;
             }
         }
-        public void Editar(Categoria categoria) { }
+        public void Editar(Categoria categoria) {
+            try
+            {
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string updateQuery = "UPDATE Categorias SET NombreCategoria=@NombreCategoria WHERE CategoriaId=@CategoriaId";
+                    using (var cmd = new SqlCommand(updateQuery, conn))
+                    {
+                        cmd.Parameters.Add("@NombreCategoria", SqlDbType.NChar);
+                        cmd.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
+
+                        cmd.Parameters.Add("@CategoriaId", SqlDbType.Int);
+                        cmd.Parameters["@CategoriaId"].Value = categoria.CategoriaId;
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
         public List<Categoria> GetCategorias()
         {
             try
@@ -130,11 +155,28 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT COUNT(*) FROM Categorias WHERE NombreCategoria=@NombreCategoria";
+                    string selectQuery;
+                    if (categoria.CategoriaId == 0)
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Categorias WHERE NombreCategoria=@NombreCategoria";
+
+                    }
+                    else
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Categorias WHERE NombreCategoria=@NombreCategoria AND CategoriaId<>@CategoriaId";
+
+                    }
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         comando.Parameters.Add("@NombreCategoria", SqlDbType.NVarChar);
                         comando.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
+
+                        if (categoria.CategoriaId != 0)
+                        {
+                            comando.Parameters.Add("@CategoriaId", SqlDbType.Int);
+                            comando.Parameters["@CategoriaId"].Value = categoria.CategoriaId;
+
+                        }
 
                         cantidad = (int)comando.ExecuteScalar();
                     }
