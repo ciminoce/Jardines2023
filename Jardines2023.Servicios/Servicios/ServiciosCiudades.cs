@@ -4,10 +4,6 @@ using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jardines2023.Servicios.Servicios
 {
@@ -50,7 +46,7 @@ namespace Jardines2023.Servicios.Servicios
         {
             try
             {
-                var lista= _repositorio.Filtrar(pais);
+                var lista = _repositorio.Filtrar(pais);
                 foreach (var item in lista)
                 {
                     item.Pais = _repoPaises.GetPaisPorId(item.PaisId);
@@ -65,11 +61,11 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public int GetCantidad()
+        public int GetCantidad(int? paisId)
         {
             try
             {
-                return _repositorio.GetCantidad();
+                return _repositorio.GetCantidad(paisId);
             }
             catch (Exception)
             {
@@ -78,11 +74,30 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public List<Ciudad> GetCiudades()
+
+        //public List<Ciudad> GetCiudades()
+        //{
+        //    try
+        //    {
+        //        var lista= _repositorio.GetCiudades();
+        //        foreach (var item in lista)
+        //        {
+        //            item.Pais = _repoPaises.GetPaisPorId(item.PaisId);
+        //        }
+        //        return lista;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+
+        public List<Ciudad> GetCiudades(int? paisId)
         {
             try
             {
-                var lista= _repositorio.GetCiudades();
+                var lista = _repositorio.GetCiudades(paisId);
                 foreach (var item in lista)
                 {
                     item.Pais = _repoPaises.GetPaisPorId(item.PaisId);
@@ -119,7 +134,7 @@ namespace Jardines2023.Servicios.Servicios
         {
             try
             {
-                if (ciudad.CiudadId==0)
+                if (ciudad.CiudadId == 0)
                 {
                     _repositorio.Agregar(ciudad);
                 }

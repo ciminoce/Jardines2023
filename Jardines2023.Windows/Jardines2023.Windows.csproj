@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmBuscarPaisCiudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarPaisCiudad.Designer.cs">
+      <DependentUpon>frmBuscarPaisCiudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBuscarPorNombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuscarPorNombre.Designer.cs">
+      <DependentUpon>frmBuscarPorNombre.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmCategoriaAE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +147,12 @@
     <Compile Include="Helpers\GridHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmBuscarPaisCiudad.resx">
+      <DependentUpon>frmBuscarPaisCiudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBuscarPorNombre.resx">
+      <DependentUpon>frmBuscarPorNombre.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCategoriaAE.resx">
       <DependentUpon>frmCategoriaAE.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,19 +15,35 @@ namespace Jardines2023.Servicios.Servicios
         private readonly IRepositorioCiudades _repoCiudades;
         public ServiciosClientes()
         {
-            _repositorio=new RepositorioClientes();
-            _repoPais=new RepositorioPaises();
-            _repoCiudades=new RepositorioCiudades();
+            _repositorio = new RepositorioClientes();
+            _repoPais = new RepositorioPaises();
+            _repoCiudades = new RepositorioCiudades();
         }
 
         public void Borrar(int clienteId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _repositorio.Borrar(clienteId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Existe(Cliente cliente)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _repositorio.Existe(cliente);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<ClienteListDto> Filtrar(Pais pais)
@@ -48,19 +64,37 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
+        public Cliente GetClientePorId(int clienteId)
+        {
+            try
+            {
+                return _repositorio.GetClientePorId(clienteId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public List<ClienteListDto> GetClientes()
         {
             try
             {
-                var listaClientes=_repositorio.GetClientes();
-                foreach (var item in listaClientes)
-                {
-                    var pais = _repoPais.GetPaisPorId(item.PaisId);
-                    var ciudad = _repoCiudades.GetCiudadPorId(item.CiudadId);
-                    item.NombrePais = pais.NombrePais;
-                    item.NombreCiudad = ciudad.NombreCiudad;
-                }
-                return listaClientes;
+                return _repositorio.GetClientes();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<ClienteListDto> GetClientes(Pais paisFiltro, Ciudad ciudadFiltro)
+        {
+            try
+            {
+                return _repositorio.GetClientes(paisFiltro, ciudadFiltro);
             }
             catch (Exception)
             {
@@ -73,15 +107,7 @@ namespace Jardines2023.Servicios.Servicios
         {
             try
             {
-                var listaClientes = _repositorio.GetClientesPorPagina(cantidad,pagina);
-                foreach (var item in listaClientes)
-                {
-                    var pais = _repoPais.GetPaisPorId(item.PaisId);
-                    var ciudad = _repoCiudades.GetCiudadPorId(item.CiudadId);
-                    item.NombrePais = pais.NombrePais;
-                    item.NombreCiudad = ciudad.NombreCiudad;
-                }
-                return listaClientes;
+                return _repositorio.GetClientesPorPagina(cantidad, pagina);
 
             }
             catch (Exception)
@@ -95,7 +121,7 @@ namespace Jardines2023.Servicios.Servicios
         {
             try
             {
-                if (cliente.ClienteId==0)
+                if (cliente.ClienteId == 0)
                 {
                     _repositorio.Agregar(cliente);
                 }

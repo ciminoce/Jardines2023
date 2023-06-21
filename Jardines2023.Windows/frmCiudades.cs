@@ -120,7 +120,7 @@ namespace Jardines2023.Windows
                 if (dr == DialogResult.No) { return; }
                 _servicio.Borrar(ciudad.CiudadId);
                 GridHelper.QuitarFila(dgvDatos, r);
-                registros=_servicio.GetCantidad();
+                registros=_servicio.GetCantidad(null);
                 paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
                 lblRegistros.Text=registros.ToString();
                 lblPaginas.Text= paginas.ToString();
@@ -151,6 +151,8 @@ namespace Jardines2023.Windows
                 var pais = frm.GetPais();
                 lista = _servicio.Filtrar(pais);
                 tsbBuscar.BackColor = Color.Orange;
+                registros = _servicio.GetCantidad(pais.PaisId);
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
 
                 MostrarDatosEnGrilla();
             }
@@ -172,7 +174,7 @@ namespace Jardines2023.Windows
             try
             {
                 //lista = _servicio.GetPaises();
-                registros = _servicio.GetCantidad();
+                registros = _servicio.GetCantidad(null);
                 paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
                 MostrarPaginado();
             }

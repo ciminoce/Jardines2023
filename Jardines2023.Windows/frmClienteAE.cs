@@ -1,13 +1,7 @@
 ﻿using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
+using Jardines2023.Windows.Helpers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows
@@ -26,7 +20,25 @@ namespace Jardines2023.Windows
         {
             DialogResult = DialogResult.Cancel;
         }
-
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            CombosHelper.CargarComboPaises(ref cboPaises);
+            if (cliente != null)
+            {
+                esEdicion = true;
+                txtNombres.Text = cliente.Nombre;
+                txtApellido.Text = cliente.Apellido;
+                txtDireccion.Text= cliente.Direccion;
+                txtCodPostal.Text = cliente.CodigoPostal;
+                txtFijo.Text = cliente.TelefonoFijo;
+                txtCelular.Text = cliente.TelefonoMovil;
+                cboPaises.SelectedValue = cliente.PaisId;
+                CombosHelper.CargarComboCiudades(ref cboCiudades, cliente.PaisId);
+                cboCiudades.SelectedValue = cliente.CiudadId;
+                txtEmail.Text = cliente.Email;
+            }
+        }
         private void btnOk_Click(object sender, EventArgs e)
         {
             if (ValidarDatos())
@@ -35,6 +47,7 @@ namespace Jardines2023.Windows
                 {
                     cliente = new Cliente();
                 }
+                cliente.ClienteId= cliente.ClienteId;
                 cliente.Nombre = txtNombres.Text;
                 cliente.Apellido = txtApellido.Text;
                 cliente.Direccion = txtDireccion.Text;
@@ -45,7 +58,7 @@ namespace Jardines2023.Windows
                 cliente.PaisId = (int)cboPaises.SelectedValue;
                 cliente.Ciudad = (Ciudad)cboCiudades.SelectedItem;
                 cliente.CiudadId = (int)cboCiudades.SelectedValue;
-                cliente.Email=txtEmail.Text;
+                cliente.Email = txtEmail.Text;
 
                 try
                 {
@@ -67,8 +80,12 @@ namespace Jardines2023.Windows
                                 DialogResult = DialogResult.OK;
 
                             }
-                            cliente = null;
-                            InicializarControles();
+                            else
+                            {
+                                cliente = null;
+                                InicializarControles();
+
+                            }
 
                         }
                         else
@@ -107,24 +124,69 @@ namespace Jardines2023.Windows
             txtCodPostal.Clear();
             txtDireccion.Clear();
             txtEmail.Clear();
-            cboCiudades.Items.Clear();
+            //cboCiudades.Items.Clear();
             cboPaises.SelectedIndex = 0;
             txtNombres.Focus();
         }
 
         private bool ValidarDatos()
         {
-            return true;
+            bool valido = true;
+            errorProvider1.Clear();
+            if (string.IsNullOrEmpty(txtNombres.Text))
+            {
+                valido = false;
+                errorProvider1.SetError(txtNombres, "Los nombres son requeridos");
+            }
+            if (string.IsNullOrEmpty(txtApellido.Text))
+            {
+                valido = false;
+                errorProvider1.SetError(txtApellido, "El apellido es requerido");
+            }
+            if (string.IsNullOrEmpty(txtDireccion.Text))
+            {
+                valido = false;
+                errorProvider1.SetError(txtDireccion, "La dirección es requerida");
+            }
+            if (string.IsNullOrEmpty(txtCodPostal.Text))
+            {
+                valido = false;
+                errorProvider1.SetError(txtCodPostal, "El CP es requerido");
+            }
+            if (cboPaises.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cboPaises, "Debe seleccionar un país");
+            }
+            if (cboCiudades.SelectedIndex == 0)
+            {
+                valido = false;
+                errorProvider1.SetError(cboCiudades, "Debe seleccionar una ciudad");
+            }
+            return valido;
         }
 
         public void SetCliente(Cliente cliente)
         {
-            this.cliente=cliente;
+            this.cliente = cliente;
         }
 
         public Cliente GetCliente()
         {
             return cliente;
+        }
+
+        private void cboPaises_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboPaises.SelectedIndex > 0)
+            {
+                var pais = (Pais)cboPaises.SelectedItem;
+                CombosHelper.CargarComboCiudades(ref cboCiudades, pais.PaisId);
+            }
+            else
+            {
+                cboCiudades.DataSource = null;
+            }
         }
     }
 }

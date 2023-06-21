@@ -66,7 +66,7 @@
             this.groupBox1.Location = new System.Drawing.Point(509, 94);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 100);
-            this.groupBox1.TabIndex = 39;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Teléfonos ";
             // 
@@ -76,7 +76,7 @@
             this.txtCelular.MaxLength = 20;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(119, 20);
-            this.txtCelular.TabIndex = 1;
+            this.txtCelular.TabIndex = 2;
             // 
             // label7
             // 
@@ -111,7 +111,7 @@
             this.cboCiudades.Location = new System.Drawing.Point(119, 147);
             this.cboCiudades.Name = "cboCiudades";
             this.cboCiudades.Size = new System.Drawing.Size(282, 21);
-            this.cboCiudades.TabIndex = 32;
+            this.cboCiudades.TabIndex = 5;
             // 
             // cboPaises
             // 
@@ -120,23 +120,24 @@
             this.cboPaises.Location = new System.Drawing.Point(119, 101);
             this.cboPaises.Name = "cboPaises";
             this.cboPaises.Size = new System.Drawing.Size(282, 21);
-            this.cboPaises.TabIndex = 31;
+            this.cboPaises.TabIndex = 4;
+            this.cboPaises.SelectedIndexChanged += new System.EventHandler(this.cboPaises_SelectedIndexChanged);
             // 
             // txtNombres
             // 
             this.txtNombres.Location = new System.Drawing.Point(119, 27);
-            this.txtNombres.MaxLength = 255;
+            this.txtNombres.MaxLength = 50;
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(282, 20);
-            this.txtNombres.TabIndex = 29;
+            this.txtNombres.TabIndex = 0;
             // 
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(119, 63);
-            this.txtDireccion.MaxLength = 255;
+            this.txtDireccion.MaxLength = 100;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(352, 20);
-            this.txtDireccion.TabIndex = 30;
+            this.txtDireccion.TabIndex = 2;
             // 
             // txtCodPostal
             // 
@@ -144,7 +145,7 @@
             this.txtCodPostal.MaxLength = 10;
             this.txtCodPostal.Name = "txtCodPostal";
             this.txtCodPostal.Size = new System.Drawing.Size(95, 20);
-            this.txtCodPostal.TabIndex = 33;
+            this.txtCodPostal.TabIndex = 3;
             // 
             // label3
             // 
@@ -197,7 +198,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(502, 218);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 49);
-            this.btnCancelar.TabIndex = 40;
+            this.btnCancelar.TabIndex = 9;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -209,7 +210,7 @@
             this.btnOk.Location = new System.Drawing.Point(224, 218);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 49);
-            this.btnOk.TabIndex = 41;
+            this.btnOk.TabIndex = 8;
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
@@ -251,10 +252,10 @@
             // txtApellido
             // 
             this.txtApellido.Location = new System.Drawing.Point(474, 27);
-            this.txtApellido.MaxLength = 255;
+            this.txtApellido.MaxLength = 50;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(282, 20);
-            this.txtApellido.TabIndex = 29;
+            this.txtApellido.TabIndex = 1;
             // 
             // label9
             // 
@@ -268,10 +269,10 @@
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(119, 182);
-            this.txtEmail.MaxLength = 255;
+            this.txtEmail.MaxLength = 200;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(352, 20);
-            this.txtEmail.TabIndex = 30;
+            this.txtEmail.TabIndex = 7;
             // 
             // frmClienteAE
             // 

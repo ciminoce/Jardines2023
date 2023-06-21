@@ -27,5 +27,21 @@ namespace Jardines2023.Windows.Helpers
             combo.ValueMember = "PaisId";
             combo.SelectedIndex=0;
         }
+        public static void CargarComboCiudades(ref ComboBox combo, int paisId)
+        {
+            IServiciosCiudades serviciosCiudades=new ServiciosCiudades();
+            var lista = serviciosCiudades.GetCiudades(paisId);
+            var defaultCiudad = new Ciudad()
+            {
+                CiudadId = 0,
+                NombreCiudad = "Seleccione Ciudad"
+            };
+            lista.Insert(0,defaultCiudad);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreCiudad";
+            combo.ValueMember = "CiudadId";
+            combo.SelectedIndex = 0;
+
+        }
     }
 }

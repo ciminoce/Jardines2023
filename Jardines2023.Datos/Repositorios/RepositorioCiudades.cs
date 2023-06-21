@@ -164,16 +164,32 @@ namespace Jardines2023.Datos.Repositorios
             };
         }
 
-        public int GetCantidad()
+        public int GetCantidad(int? paisId)
         {
             int cantidad = 0;
             using (var con=new SqlConnection(cadenaConexion))
             {
                 con.Open();
-                string selectQuery = "SELECT COUNT(*) FROM Ciudades";
+                string selectQuery;
+                if (paisId==null)
+                {
+                    selectQuery = "SELECT COUNT(*) FROM Ciudades";
+
+                }
+                else
+                {
+                    selectQuery = "SELECT COUNT(*) FROM Ciudades WHERE PaisId=@PaisId";
+                }
                 using (var cmd=new SqlCommand(selectQuery,con))
                 {
-                    cantidad=Convert.ToInt32(cmd.ExecuteScalar());
+                    if (paisId.HasValue)
+                    {
+                        cmd.Parameters.Add("@PaisId", SqlDbType.Int);
+                        cmd.Parameters["@PaisId"].Value = paisId.Value;
+
+                    }
+
+                    cantidad = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             return cantidad;
@@ -271,6 +287,55 @@ namespace Jardines2023.Datos.Repositorios
                     }
                 }
                 return ciudad;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Ciudad> GetCiudades(int? paisId)
+        {
+            List<Ciudad> lista = new List<Ciudad>();
+            try
+            {
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery;
+                    if (paisId==null)
+                    {
+                        selectQuery = @"SELECT CiudadId, NombreCiudad, PaisId 
+                            FROM Ciudades 
+                                ORDER BY NombreCiudad";
+                    }
+                    else
+                    {
+                        selectQuery = @"SELECT CiudadId, NombreCiudad, PaisId 
+                            FROM Ciudades WHERE PaisId=@PaisId
+                                ORDER BY NombreCiudad";
+                    }
+                    using (var cmd = new SqlCommand(selectQuery, conn))
+                    {
+                        if (paisId.HasValue)
+                        {
+                            cmd.Parameters.Add("@PaisId", SqlDbType.Int);
+                            cmd.Parameters["@PaisId"].Value = paisId.Value;
+
+                        }
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var ciudad = ConstruirCiudad(reader);
+                                lista.Add(ciudad);
+                            }
+                        }
+                    }
+                }
+                return lista;
             }
             catch (Exception)
             {

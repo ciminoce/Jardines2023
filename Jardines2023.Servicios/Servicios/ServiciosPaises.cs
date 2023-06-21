@@ -39,18 +39,18 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
-        public int GetCantidad()
-        {
-            try
-            {
-                return _repositorio.GetCantidad();
-            }
-            catch (Exception)
-            {
+        //public int GetCantidad()
+        //{
+        //    try
+        //    {
+        //        return _repositorio.GetCantidad();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
 
         public bool Existe(Pais pais)
         {
@@ -99,11 +99,37 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual)
+        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual, string textoFiltro=null)
         {
             try
             {
-                return _repositorio.GetPaisesPorPagina(cantidad,paginaActual);
+                return _repositorio.GetPaisesPorPagina(cantidad,paginaActual,textoFiltro);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public List<Pais> GetPaises(string textoFiltro)
+        {
+            try
+            {
+                return _repositorio.GetPaises(textoFiltro);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int GetCantidad(string textoFiltro=null)
+        {
+            try
+            {
+                return _repositorio.GetCantidad(textoFiltro);
             }
             catch (Exception)
             {

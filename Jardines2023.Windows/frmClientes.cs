@@ -58,6 +58,11 @@ namespace Jardines2023.Windows
                 GridHelper.SetearFila(r, cliente);
                 GridHelper.AgregarFila(dgvDatos, r);
             }
+            lblRegistros.Text = registros.ToString();
+            lblPaginaActual.Text = paginaActual.ToString();
+            lblPaginas.Text = paginas.ToString();
+
+
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
@@ -74,8 +79,10 @@ namespace Jardines2023.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Cliente cliente = (Cliente)r.Tag;
-            Cliente clienteCopia = (Cliente)cliente.Clone();
+            ClienteListDto clienteDto = (ClienteListDto)r.Tag;
+            Cliente cliente = _servicio.GetClientePorId(clienteDto.ClienteId);
+            Cliente clienteCopia=(Cliente)cliente.Clone();
+            
             try
             {
                 frmClienteAE frm = new frmClienteAE(_servicio) { Text = "Editar Cliente" };
@@ -116,7 +123,7 @@ namespace Jardines2023.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Cliente cliente = (Cliente)r.Tag;
+            ClienteListDto cliente = (ClienteListDto)r.Tag;
             try
             {
                 //Se debe controlar que no este relacionado
@@ -216,5 +223,32 @@ namespace Jardines2023.Windows
             MostrarPaginado();
         }
 
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private Pais paisFiltro;
+        private Ciudad ciudadFiltro;
+        private void porPaisYCiudadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBuscarPaisCiudad frm = new frmBuscarPaisCiudad() { Text = "Seleccionar País y Ciudad a Filtrar" };
+            DialogResult dr = frm.ShowDialog(this);
+            if (dr == DialogResult.Cancel)
+            {
+                return;
+            }
+            try
+            {
+                paisFiltro = frm.GetPais();
+                ciudadFiltro=frm.GetCiudad();
+                lista=_servicio.GetClientes(paisFiltro,ciudadFiltro);
+                MostrarDatosEnGrilla();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

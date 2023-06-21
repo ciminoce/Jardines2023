@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Jardines2023.Entidades.Entidades
+﻿namespace Jardines2023.Entidades.Entidades
 {
-    public class Cliente:ICloneable
+    public class Proveedor
     {
         public int ClienteId { get; set; }
-        public string Nombre { get; set; }
+        public string NombreProveedor { get; set; }
         public string Apellido { get; set; }
         public string Direccion { get; set; }
         public string CodigoPostal { get; set; }
@@ -25,5 +19,6 @@ namespace Jardines2023.Entidades.Entidades
         {
             return this.MemberwiseClone();
         }
+
     }
 }

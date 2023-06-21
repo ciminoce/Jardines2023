@@ -14,7 +14,9 @@ namespace Jardines2023.Servicios.Interfaces
         bool Existe(Cliente cliente);
         List<ClienteListDto> Filtrar(Pais pais);
         int GetCantidad();
+        Cliente GetClientePorId(int clienteId);
         List<ClienteListDto> GetClientes();
+        List<ClienteListDto> GetClientes(Pais paisFiltro, Ciudad ciudadFiltro);
         List<ClienteListDto> GetClientesPorPagina(int registrosPorPagina, int paginaActual);
         void Guardar(Cliente cliente);
     }

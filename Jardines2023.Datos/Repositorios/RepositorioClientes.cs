@@ -52,7 +52,7 @@ namespace Jardines2023.Datos.Repositorios
                 conn.Open();
                 string updateQuery = @"UPDATE Clientes SET Nombres=@Nombres,
                                 Apellido=@Apellido, Direccion=@Direccion, 
-                                CodPostal=@CodPostal, PaisId=@PaisId, 
+                                CodigoPostal=@CodPostal, PaisId=@PaisId, 
                                 CiudadId=@CiudadId, Email=@Email, 
                                 TelefonoFijo=@TelefonoFijo, TelefonoMovil=@TelefonoMovil 
                                 WHERE ClienteId=@ClienteId";
@@ -105,12 +105,12 @@ namespace Jardines2023.Datos.Repositorios
                     string selectQuery;
                     if (cliente.ClienteId == 0)
                     {
-                        selectQuery = "SELECT COUNT(*) FROM Clientes WHERE Nombre=@Nombre AND Apellido=@Apellido";
+                        selectQuery = "SELECT COUNT(*) FROM Clientes WHERE Nombres=@Nombre AND Apellido=@Apellido";
 
                     }
                     else
                     {
-                        selectQuery = "SELECT COUNT(*) FROM Clientes WHERE Nombre=@Nombre AND Apellido=@Apellido AND ClienteId=@ClienteId";
+                        selectQuery = "SELECT COUNT(*) FROM Clientes WHERE Nombres=@Nombre AND Apellido=@Apellido AND ClienteId=@ClienteId";
 
                     }
                     using (var comando = new SqlCommand(selectQuery, conn))
@@ -121,7 +121,7 @@ namespace Jardines2023.Datos.Repositorios
                         comando.Parameters.Add("@Apellido", SqlDbType.NVarChar);
                         comando.Parameters["@Apellido"].Value = cliente.Apellido;
 
-                        if (cliente.ClienteId == 0)
+                        if (cliente.ClienteId != 0)
                         {
                             comando.Parameters.Add("@ClienteId", SqlDbType.Int);
                             comando.Parameters["@ClienteId"].Value = cliente.ClienteId;
@@ -201,7 +201,9 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = @"SELECT ClienteId, Nombres, Apellido, PaisId, CiudadId FROM Clientes
+                    string selectQuery = @"SELECT ClienteId, Nombres, Apellido, NombrePais, NombreCiudad 
+                        FROM Clientes INNER JOIN Paises ON Clientes.PaisId=Paises.PaisId
+                        INNER JOIN Ciudades ON Clientes.CiudadId=Ciudades.CiudadId
                         ORDER BY Apellido, Nombres
                         OFFSET @cantidadRegistros ROWS 
                         FETCH NEXT @cantidadPorPagina ROWS ONLY";
@@ -237,12 +239,12 @@ namespace Jardines2023.Datos.Repositorios
             using (var conn = new SqlConnection(cadenaConexion))
             {
                 conn.Open();
-                string addQuery = @"INSERT INTO Clientes (Nombres, Apellido,                               Apellido=@Apellido, Direccion=@Direccion, 
+                string addQuery = @"INSERT INTO Clientes (Nombres, Apellido, 
                                 Direccion, CodigoPostal, PaisId, CiudadId,
                                 Email, TelefonoFijo, TelefonoMovil)
                                 VALUES (@Nombres, @Apellido, @Direccion,
                                 @CodPostal, @PaisId, @CiudadId, @Email,
-                                @TelefonoFijo, @TelefonoMovil), SELECT SCOPE_IDENTITY()";
+                                @TelefonoFijo, @TelefonoMovil); SELECT SCOPE_IDENTITY()";
                 using (var cmd = new SqlCommand(addQuery, conn))
                 {
                     cmd.Parameters.Add("@Nombres", SqlDbType.NVarChar);
@@ -287,10 +289,87 @@ namespace Jardines2023.Datos.Repositorios
                 ClienteId = reader.GetInt32(0),
                 Nombre = reader.GetString(1),
                 Apellido = reader.GetString(2),
-                PaisId = reader.GetInt32(3),
-                CiudadId = reader.GetInt32(4)
+                NombrePais = reader.GetString(3),
+                NombreCiudad = reader.GetString(4)
             };
         }
 
+        public Cliente GetClientePorId(int clienteId)
+        {
+            Cliente cliente=null;
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                //TODO:Completar esto 
+                string selectQuery = @"SELECT ClienteId, Nombres, Apellido, Direccion, CodigoPostal,
+                        TelefonoFijo, TelefonoMovil,
+                        PaisId, CiudadId, Email 
+                        FROM Clientes WHERE ClienteId=@ClienteId";
+                using (var cmd = new SqlCommand(selectQuery, con))
+                {
+                    cmd.Parameters.Add("@ClienteId", SqlDbType.Int);
+                    cmd.Parameters["@ClienteId"].Value = clienteId;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            cliente = ConstruirCliente(reader);
+                        }
+                    }
+                }
+            }
+            return cliente;
+
+        }
+
+        private Cliente ConstruirCliente(SqlDataReader reader)
+        {
+            return new Cliente()
+            {
+                ClienteId = reader.GetInt32(0),
+                Nombre = reader.GetString(1),
+                Apellido = reader.GetString(2),
+                Direccion = reader.GetString(3),
+                CodigoPostal = reader.GetString(4),
+                TelefonoFijo = reader.GetString(5),
+                TelefonoMovil=reader.GetString(6),
+                PaisId = reader.GetInt32(7),
+                CiudadId = reader.GetInt32(8),
+                Email = reader.GetString(9),
+
+            };
+        }
+
+        public List<ClienteListDto> GetClientes(Pais paisFiltro, Ciudad ciudadFiltro)
+        {
+            List<ClienteListDto> lista = new List<ClienteListDto>();
+            using (var con = new SqlConnection(cadenaConexion))
+            {
+                con.Open();
+                string selectQuery = @"SELECT ClienteId, Nombres, Apellido, NombrePais, NombreCiudad 
+                        FROM Clientes INNER JOIN Paises ON Clientes.PaisId=Paises.PaisId
+                        INNER JOIN Ciudades ON Clientes.CiudadId=Ciudades.CiudadId
+                        WHERE Clientes.PaisId=@PaisId AND Clientes.CiudadId=@CiudadId
+                        ORDER BY Apellido, Nombres";
+                using (var cmd = new SqlCommand(selectQuery, con))
+                {
+                    cmd.Parameters.Add("@PaisId", SqlDbType.Int);
+                    cmd.Parameters["@PaisId"].Value = paisFiltro.PaisId;
+                    cmd.Parameters.Add("@CiudadId",SqlDbType.Int);
+                    cmd.Parameters["@CiudadId"].Value = ciudadFiltro.CiudadId;
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var clienteDto = ConstruirClienteDto(reader);
+                            lista.Add(clienteDto);
+                        }
+                    }
+                }
+            }
+            return lista;
+
+        }
     }
 }

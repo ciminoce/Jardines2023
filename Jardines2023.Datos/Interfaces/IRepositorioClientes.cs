@@ -14,5 +14,7 @@ namespace Jardines2023.Datos.Interfaces
         List<ClienteListDto> GetClientes();
         List<ClienteListDto> GetClientesPorPagina(int registrosPorPagina, int paginaActual);
         void Agregar(Cliente cliente);
+        Cliente GetClientePorId(int clienteId);
+        List<ClienteListDto> GetClientes(Pais paisFiltro, Ciudad ciudadFiltro);
     }
 }

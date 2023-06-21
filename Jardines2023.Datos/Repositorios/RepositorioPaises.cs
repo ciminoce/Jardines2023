@@ -120,7 +120,30 @@ namespace Jardines2023.Datos.Repositorios
             }
         }
 
-        public int GetCantidad()
+        //public int GetCantidad()
+        //{
+        //    try
+        //    {
+        //        int cantidad = 0;
+        //        using (var conn = new SqlConnection(cadenaConexion))
+        //        {
+        //            conn.Open();
+        //            string selectQuery = "SELECT COUNT(*) FROM Paises";
+        //            using (var comando = new SqlCommand(selectQuery, conn))
+        //            {
+        //                cantidad = (int)comando.ExecuteScalar();
+        //            }
+        //        }
+        //        return cantidad;
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
+        public int GetCantidad(string textoFiltro=null)
         {
             try
             {
@@ -128,9 +151,23 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT COUNT(*) FROM Paises";
+                    string selectQuery;
+                    if (textoFiltro==null)
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Paises";
+                    }
+                    else
+                    {
+                        selectQuery = "SELECT COUNT(*) FROM Paises WHERE NombrePais LIKE @textoFiltro";
+                    }
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
+                        if (textoFiltro!=null)
+                        {
+                            comando.Parameters.Add("@textoFiltro", SqlDbType.NVarChar);
+                            comando.Parameters["@textoFiltro"].Value = $"{textoFiltro}%";
+                        }
+
                         cantidad = (int)comando.ExecuteScalar();
                     }
                 }
@@ -142,6 +179,7 @@ namespace Jardines2023.Datos.Repositorios
 
                 throw;
             }
+
         }
 
         public bool Existe(Pais pais)
@@ -220,7 +258,7 @@ namespace Jardines2023.Datos.Repositorios
             return pais;
         }
 
-        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual)
+        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual, string textoFiltro=null)
         {
             try
             {
@@ -228,11 +266,29 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = @"SELECT PaisId, NombrePais FROM Paises
+                    string selectQuery;
+                    if (textoFiltro==null)
+                    {
+                        selectQuery = @"SELECT PaisId, NombrePais FROM Paises
                             ORDER BY NombrePais 
                             OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
+
+                    }
+                    else
+                    {
+                        selectQuery = @"SELECT PaisId, NombrePais FROM Paises WHERE NombrePais LIKE @textoFiltro
+                            ORDER BY NombrePais 
+                            OFFSET @cantidadRegistros ROWS FETCH NEXT @cantidadPorPagina ROWS ONLY";
+
+                    }
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
+                        if (textoFiltro!=null)
+                        {
+                            comando.Parameters.Add("@textoFiltro", SqlDbType.NVarChar);
+                            comando.Parameters["@textoFiltro"].Value = $"{textoFiltro}%";
+
+                        }
                         comando.Parameters.Add("@cantidadRegistros",SqlDbType.Int);
                         comando.Parameters["@cantidadRegistros"].Value = cantidad*(paginaActual-1);
 
@@ -256,5 +312,40 @@ namespace Jardines2023.Datos.Repositorios
                 throw;
             }
         }
+
+        public List<Pais> GetPaises(string textoFiltro)
+        {
+            try
+            {
+                List<Pais> lista = new List<Pais>();
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    string selectQuery = "SELECT PaisId, NombrePais FROM Paises WHERE NombrePais LIKE @textoFiltro ORDER BY NombrePais";
+                    using (var comando = new SqlCommand(selectQuery, conn))
+                    {
+                        comando.Parameters.Add("@textoFiltro", SqlDbType.NVarChar);
+                        comando.Parameters["@textoFiltro"].Value = $"{textoFiltro}%";
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            
+                            while (reader.Read())
+                            {
+                                var pais = ConstruirPais(reader);
+                                lista.Add(pais);
+                            }
+                        }
+                    }
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
     }
 }

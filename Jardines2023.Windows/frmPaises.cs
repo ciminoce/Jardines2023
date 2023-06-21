@@ -3,6 +3,7 @@ using Jardines2023.Servicios.Servicios;
 using Jardines2023.Windows.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows
@@ -22,6 +23,9 @@ namespace Jardines2023.Windows
         int registros = 0;
         int paginas = 0;
         int registrosPorPagina = 12;
+
+        bool filtroOn=false;
+        string textoFiltro = null;
         private void tsbCerrar_Click(object sender, EventArgs e)
         {
             Close();
@@ -59,7 +63,7 @@ namespace Jardines2023.Windows
         {
             try
             {
-                registros = _servicio.GetCantidad();
+                registros = _servicio.GetCantidad(null);
                 paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
                 MostrarPaginado();
             }
@@ -174,7 +178,7 @@ namespace Jardines2023.Windows
 
         private void MostrarPaginado()
         {
-            lista = _servicio.GetPaisesPorPagina(registrosPorPagina, paginaActual);
+            lista = _servicio.GetPaisesPorPagina(registrosPorPagina, paginaActual,textoFiltro);
             MostrarDatosEnGrilla();
         }
 
@@ -182,6 +186,49 @@ namespace Jardines2023.Windows
         {
             paginaActual = 1;
             MostrarPaginado();
+        }
+
+        private void tsbBuscar_Click(object sender, EventArgs e)
+        {
+            if (!filtroOn)
+            {
+                frmBuscarPorNombre frm = new frmBuscarPorNombre() { Text = "Buscar por Nombre de País" };
+                DialogResult dr = frm.ShowDialog(this);
+                if (dr == DialogResult.Cancel)
+                {
+                    return;
+                }
+                try
+                {
+                    textoFiltro = frm.GetTexto();
+                    tsbBuscar.BackColor = Color.Orange;
+                    filtroOn = true;
+                    lista = _servicio.GetPaises(textoFiltro);
+                    registros = _servicio.GetCantidad(textoFiltro);
+                    paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                    MostrarDatosEnGrilla();
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Quite el filtro activo!!!", "Advertencia",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tsbActualizar_Click(object sender, EventArgs e)
+        {
+            filtroOn=false;
+            tsbBuscar.BackColor = Color.White;
+            textoFiltro=null;
+            RecargarGrilla();
+
         }
     }
 }
