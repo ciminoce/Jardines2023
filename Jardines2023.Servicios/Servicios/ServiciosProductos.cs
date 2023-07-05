@@ -99,5 +99,17 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
+        public Producto GetProductoPorId(int productoId)
+        {
+            try
+            {
+                return _repositorio.GetProductoPorId(productoId);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

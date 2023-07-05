@@ -11,6 +11,7 @@ namespace Jardines2023.Comun.Interfaces
         void Editar(Producto producto);
         bool Existe(Producto producto);
         int GetCantidad();
+        Producto GetProductoPorId(int productoId);
         List<ProductoListDto> GetProductos();
         List<ProductoListDto> GetProductosPorPagina(int cantidad, int pagina);
 

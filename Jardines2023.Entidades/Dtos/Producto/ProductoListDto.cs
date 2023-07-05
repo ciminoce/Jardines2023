@@ -1,6 +1,8 @@
-﻿namespace Jardines2023.Entidades.Dtos.Producto
+﻿using System;
+
+namespace Jardines2023.Entidades.Dtos.Producto
 {
-    public class ProductoListDto
+    public class ProductoListDto:ICloneable
     {
         public int ProductoId { get; set; }
         public string NombreProducto { get; set; }
@@ -9,5 +11,9 @@
         public int UnidadesEnStock { get; set; }
         public bool Suspendido { get; set; }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

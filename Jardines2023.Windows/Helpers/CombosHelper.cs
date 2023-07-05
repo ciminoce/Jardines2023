@@ -1,4 +1,5 @@
-﻿using Jardines2023.Entidades.Entidades;
+﻿using Jardines2023.Entidades.Dtos.Proveedor;
+using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using Jardines2023.Servicios.Servicios;
 using System;
@@ -42,6 +43,38 @@ namespace Jardines2023.Windows.Helpers
             combo.ValueMember = "CiudadId";
             combo.SelectedIndex = 0;
 
+        }
+
+        public static void CargarComboCategorias(ref ComboBox combo)
+        {
+            IServiciosCategorias serviciosCategorias = new ServiciosCategorias();
+            var lista = serviciosCategorias.GetCategorias();
+            var defaultCategoria = new Categoria()
+            {
+                CategoriaId = 0,
+                NombreCategoria = "Seleccione Categoría"
+            };
+            lista.Insert(0, defaultCategoria);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreCategoria";
+            combo.ValueMember = "CategoriaId";
+            combo.SelectedIndex = 0;
+        }
+
+        public static void CargarComboProveedores(ref ComboBox combo)
+        {
+            IServiciosProveedores serviciosProveedores = new ServiciosProveedores();
+            var lista = serviciosProveedores.GetProveedores();
+            var defaultProveedor = new ProveedorListDto()
+            {
+                ProveedorId = 0,
+                NombreProveedor = "Seleccione Proveedor"
+            };
+            lista.Insert(0, defaultProveedor);
+            combo.DataSource = lista;
+            combo.DisplayMember = "NombreProveedor";
+            combo.ValueMember = "ProveedorId";
+            combo.SelectedIndex = 0;
         }
     }
 }

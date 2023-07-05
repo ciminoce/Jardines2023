@@ -12,6 +12,6 @@ namespace Jardines2023.Servicios.Interfaces
         int GetCantidad();
         List<ProductoListDto> GetProductos();
         List<ProductoListDto> GetProductosPorPagina(int cantidad, int pagina);
-
+        Producto GetProductoPorId(int productoId);
     }
 }

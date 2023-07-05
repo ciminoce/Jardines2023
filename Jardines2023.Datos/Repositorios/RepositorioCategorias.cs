@@ -101,7 +101,7 @@ namespace Jardines2023.Comun.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT CategoriaId, NombreCategoria, Descripcion FROM Categorias";
+                    string selectQuery = "SELECT CategoriaId, NombreCategoria, Descripcion FROM Categorias ORDER BY NombreCategoria";
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         using (var reader = comando.ExecuteReader())

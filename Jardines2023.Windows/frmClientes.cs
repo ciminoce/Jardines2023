@@ -126,7 +126,7 @@ namespace Jardines2023.Windows
             ClienteListDto cliente = (ClienteListDto)r.Tag;
             try
             {
-                //Se debe controlar que no este relacionado
+                //TODO: Se debe controlar que no este relacionado
                 DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
                     "Confirmar",
                     MessageBoxButtons.YesNo,

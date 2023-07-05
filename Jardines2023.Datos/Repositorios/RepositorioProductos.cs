@@ -26,7 +26,7 @@ namespace Jardines2023.Datos.Repositorios
                 {
                     conn.Open();
                     string insertQuery = @"INSERT INTO Productos (NombreProducto, NombreLatin, 
-                        ProveedorId, CategoriaId, PrecioUniario, UnidadesEnStock, UnidadesEnPedido,
+                        ProveedorId, CategoriaId, PrecioUnitario, UnidadesEnStock, UnidadesEnPedido,
                         NivelDeReposicion, Suspendido, Imagen) VALUES(@NombreProducto, @NombreLatin,
                         @ProveedorId, @CategoriaId, @PrecioUnitario, @UnidadesEnStock, 
                         @UnidadesEnPedido, @NivelDeReposicion, @Suspendido, @Imagen); SELECT SCOPE_IDENTITY()";
@@ -328,5 +328,41 @@ namespace Jardines2023.Datos.Repositorios
             };
         }
 
+        public Producto GetProductoPorId(int productoId)
+        {
+            try
+            {
+                Producto producto = null;
+                using (var conn = new SqlConnection(cadenaConexion))
+                {
+                    conn.Open();
+                    conn.Open();
+                    string selectQuery = @"SELECT ProductoId, NombreProducto, NombreLatin,
+                        ProveedorId, CategoriaId, PrecioUnitario, UnidadesEnStock,
+                        UnidadesEnPedido, NivelDeReposicion, Suspendido, Imagen 
+                        FROM Productos WHERE ProductoId=@ProductoId";
+                    using (var comando = new SqlCommand(selectQuery, conn))
+                    {
+                        comando.Parameters.Add("@ProductoId", SqlDbType.Int);
+                        comando.Parameters["@ProductoId"].Value =productoId;
+                        using (var reader = comando.ExecuteReader())
+                        {
+                            if(reader.HasRows)
+                            {
+                                reader.Read();
+                                producto=ConstruirProducto(reader);
+                            }
+                        }
+                    }
+                }
+                return producto;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
     }
 }

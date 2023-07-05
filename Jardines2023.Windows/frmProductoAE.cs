@@ -1,5 +1,6 @@
 ﻿using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
+using Jardines2023.Windows.Helpers;
 using System;
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace Jardines2023.Windows
         {
             return producto;
         }
-
+       
         public void SetProducto(Producto producto)
         {
             this.producto = producto;
@@ -123,6 +124,8 @@ namespace Jardines2023.Windows
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            CombosHelper.CargarComboCategorias(ref cboCategorias);
+            CombosHelper.CargarComboProveedores(ref cboProveedores);
             if (producto != null)
             {
                 esEdicion = true;

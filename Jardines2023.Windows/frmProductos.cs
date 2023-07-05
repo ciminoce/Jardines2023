@@ -81,12 +81,21 @@ namespace Jardines2023.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Producto producto = (Producto)r.Tag;
+            ProductoListDto producto = (ProductoListDto)r.Tag;
             try
             {
-                //Se debe controlar que no este relacionado
+                //TODO: Se debe controlar que no este relacionado
+                DialogResult dr = MessageBox.Show("¿Desea borrar el registro seleccionado?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (dr == DialogResult.No) { return; }
                 _servicio.Borrar(producto.ProductoId);
                 GridHelper.QuitarFila(dgvDatos, r);
+                registros = _servicio.GetCantidad();
+                paginas = FormHelper.CalcularPaginas(registros, registrosPorPagina);
+                lblRegistros.Text = registros.ToString();
+                lblPaginas.Text = paginas.ToString();
                 //lblCantidad.Text = _servicio.GetCantidad().ToString();
                 MessageBox.Show("Registro borrado", "Mensaje",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -107,8 +116,9 @@ namespace Jardines2023.Windows
                 return;
             }
             var r = dgvDatos.SelectedRows[0];
-            Producto producto = (Producto)r.Tag;
-            Producto productoCopia = (Producto)producto.Clone();
+            ProductoListDto productoDto = (ProductoListDto)r.Tag;
+            ProductoListDto productoCopia = (ProductoListDto)productoDto.Clone();
+            Producto producto = _servicio.GetProductoPorId(productoDto.ProductoId);
             try
             {
                 frmProductoAE frm = new frmProductoAE(_servicio) { Text = "Editar Producto" };
