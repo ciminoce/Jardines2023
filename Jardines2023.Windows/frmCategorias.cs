@@ -155,7 +155,7 @@ namespace Jardines2023.Windows
         }
         private void MostrarPaginado()
         {
-            lista = _servicio.GetCiudadesPorPagina(registrosPorPagina, paginaActual);
+            lista = _servicio.GetCategoriasPorPagina(registrosPorPagina, paginaActual);
             MostrarDatosEnGrilla();
         }
 

@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.CategoriasButton = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.VentasButton = new System.Windows.Forms.Button();
             this.ProductosButton = new System.Windows.Forms.Button();
             this.ProveedoresButton = new System.Windows.Forms.Button();
             this.ClientesButton = new System.Windows.Forms.Button();
             this.CiudadesButton = new System.Windows.Forms.Button();
             this.b = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CategoriasButton
@@ -49,6 +49,18 @@
             this.CategoriasButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CategoriasButton.UseVisualStyleBackColor = true;
             this.CategoriasButton.Click += new System.EventHandler(this.CategoriasButton_Click);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.Image = global::Jardines2023.Windows.Properties.Resources.shutdown_48px;
+            this.btnSalir.Location = new System.Drawing.Point(593, 362);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(147, 76);
+            this.btnSalir.TabIndex = 13;
+            this.btnSalir.Text = "Salir";
+            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // VentasButton
             // 
@@ -71,6 +83,7 @@
             this.ProductosButton.Text = "Productos";
             this.ProductosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ProductosButton.UseVisualStyleBackColor = true;
+            this.ProductosButton.Click += new System.EventHandler(this.ProductosButton_Click);
             // 
             // ProveedoresButton
             // 
@@ -119,18 +132,6 @@
             this.b.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.b.UseVisualStyleBackColor = true;
             this.b.Click += new System.EventHandler(this.PaisesButton_Click);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.Image = global::Jardines2023.Windows.Properties.Resources.shutdown_48px;
-            this.btnSalir.Location = new System.Drawing.Point(593, 362);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(147, 76);
-            this.btnSalir.TabIndex = 13;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmPrincipal
             // 

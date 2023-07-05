@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jardines2023.Entidades.Entidades
 {
-    public class Producto
+    public class Producto:ICloneable
     {
         public int ProductoId { get; set; }
         public string NombreProducto { get; set; }
@@ -20,5 +20,9 @@ namespace Jardines2023.Entidades.Entidades
         public bool Suspendido { get; set; }
         public string Imagen { get; set; }
 
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

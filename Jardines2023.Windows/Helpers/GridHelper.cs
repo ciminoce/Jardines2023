@@ -1,4 +1,5 @@
 ﻿using Jardines2023.Entidades.Dtos.Cliente;
+using Jardines2023.Entidades.Dtos.Producto;
 using Jardines2023.Entidades.Dtos.Proveedor;
 using Jardines2023.Entidades.Entidades;
 using System.Windows.Forms;
@@ -42,6 +43,13 @@ namespace Jardines2023.Windows.Helpers
                     r.Cells[0].Value = proveedor.NombreProveedor;
                     r.Cells[1].Value = proveedor.NombrePais;
                     r.Cells[2].Value = proveedor.NombreCiudad;
+                    break;
+                case ProductoListDto producto:
+                    r.Cells[0].Value = producto.NombreProducto;
+                    r.Cells[1].Value = producto.Categoria;
+                    r.Cells[2].Value = producto.PrecioUnitario;
+                    r.Cells[3].Value = producto.UnidadesEnStock;
+                    r.Cells[4].Value = producto.Suspendido;
                     break;
 
             }

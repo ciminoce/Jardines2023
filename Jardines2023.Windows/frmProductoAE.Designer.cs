@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.components = new System.ComponentModel.Container();
             this.chkSuspendido = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.nudMinimo = new System.Windows.Forms.NumericUpDown();
@@ -44,41 +43,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrecioVta = new System.Windows.Forms.TextBox();
             this.txtProducto = new System.Windows.Forms.TextBox();
+            this.btnAgregarProveedor = new System.Windows.Forms.Button();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
-            this.btnAgregarCategoria = new System.Windows.Forms.Button();
-            this.btnAgregarProveedor = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.txtLatin = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Image = global::Jardines2023.Windows.Properties.Resources.search_24px;
-            this.btnBuscar.Location = new System.Drawing.Point(581, 183);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(159, 52);
-            this.btnBuscar.TabIndex = 81;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // pbImagen
-            // 
-            this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagen.Location = new System.Drawing.Point(581, 32);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(159, 143);
-            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagen.TabIndex = 79;
-            this.pbImagen.TabStop = false;
             // 
             // chkSuspendido
             // 
             this.chkSuspendido.AutoSize = true;
-            this.chkSuspendido.Location = new System.Drawing.Point(144, 235);
+            this.chkSuspendido.Location = new System.Drawing.Point(144, 259);
             this.chkSuspendido.Name = "chkSuspendido";
             this.chkSuspendido.Size = new System.Drawing.Size(15, 14);
             this.chkSuspendido.TabIndex = 78;
@@ -87,7 +70,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 235);
+            this.label7.Location = new System.Drawing.Point(41, 259);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 13);
             this.label7.TabIndex = 77;
@@ -95,7 +78,7 @@
             // 
             // nudMinimo
             // 
-            this.nudMinimo.Location = new System.Drawing.Point(144, 200);
+            this.nudMinimo.Location = new System.Drawing.Point(144, 224);
             this.nudMinimo.Maximum = new decimal(new int[] {
             30,
             0,
@@ -119,7 +102,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 202);
+            this.label6.Location = new System.Drawing.Point(41, 226);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 13);
             this.label6.TabIndex = 72;
@@ -127,7 +110,7 @@
             // 
             // nudStock
             // 
-            this.nudStock.Location = new System.Drawing.Point(144, 166);
+            this.nudStock.Location = new System.Drawing.Point(144, 190);
             this.nudStock.Minimum = new decimal(new int[] {
             1,
             0,
@@ -146,7 +129,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 168);
+            this.label4.Location = new System.Drawing.Point(41, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 73;
@@ -155,7 +138,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 136);
+            this.label3.Location = new System.Drawing.Point(41, 160);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 74;
@@ -165,7 +148,7 @@
             // 
             this.cboProveedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProveedores.FormattingEnabled = true;
-            this.cboProveedores.Location = new System.Drawing.Point(144, 99);
+            this.cboProveedores.Location = new System.Drawing.Point(144, 123);
             this.cboProveedores.Name = "cboProveedores";
             this.cboProveedores.Size = new System.Drawing.Size(263, 21);
             this.cboProveedores.TabIndex = 70;
@@ -173,7 +156,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(41, 102);
+            this.label5.Location = new System.Drawing.Point(41, 126);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
             this.label5.TabIndex = 67;
@@ -183,7 +166,7 @@
             // 
             this.cboCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCategorias.FormattingEnabled = true;
-            this.cboCategorias.Location = new System.Drawing.Point(144, 65);
+            this.cboCategorias.Location = new System.Drawing.Point(144, 89);
             this.cboCategorias.Name = "cboCategorias";
             this.cboCategorias.Size = new System.Drawing.Size(263, 21);
             this.cboCategorias.TabIndex = 71;
@@ -191,7 +174,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(41, 68);
+            this.label2.Location = new System.Drawing.Point(41, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 68;
@@ -208,7 +191,7 @@
             // 
             // txtPrecioVta
             // 
-            this.txtPrecioVta.Location = new System.Drawing.Point(144, 133);
+            this.txtPrecioVta.Location = new System.Drawing.Point(144, 157);
             this.txtPrecioVta.MaxLength = 200;
             this.txtPrecioVta.Name = "txtPrecioVta";
             this.txtPrecioVta.Size = new System.Drawing.Size(263, 20);
@@ -222,6 +205,26 @@
             this.txtProducto.Size = new System.Drawing.Size(360, 20);
             this.txtProducto.TabIndex = 66;
             // 
+            // btnAgregarProveedor
+            // 
+            this.btnAgregarProveedor.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarProveedor.Location = new System.Drawing.Point(423, 123);
+            this.btnAgregarProveedor.Name = "btnAgregarProveedor";
+            this.btnAgregarProveedor.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarProveedor.TabIndex = 84;
+            this.btnAgregarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarProveedor.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(423, 81);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarCategoria.TabIndex = 84;
+            this.btnAgregarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
+            // 
             // btnCancelar
             // 
             this.btnCancelar.Image = global::Jardines2023.Windows.Properties.Resources.cancel_24px;
@@ -232,6 +235,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnOk
             // 
@@ -243,26 +247,50 @@
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // btnAgregarCategoria
+            // btnBuscar
             // 
-            this.btnAgregarCategoria.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(425, 56);
-            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
-            this.btnAgregarCategoria.Size = new System.Drawing.Size(36, 36);
-            this.btnAgregarCategoria.TabIndex = 84;
-            this.btnAgregarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
+            this.btnBuscar.Image = global::Jardines2023.Windows.Properties.Resources.search_24px;
+            this.btnBuscar.Location = new System.Drawing.Point(581, 183);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(159, 52);
+            this.btnBuscar.TabIndex = 81;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnBuscar.UseVisualStyleBackColor = true;
             // 
-            // btnAgregarProveedor
+            // pbImagen
             // 
-            this.btnAgregarProveedor.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
-            this.btnAgregarProveedor.Location = new System.Drawing.Point(425, 98);
-            this.btnAgregarProveedor.Name = "btnAgregarProveedor";
-            this.btnAgregarProveedor.Size = new System.Drawing.Size(36, 36);
-            this.btnAgregarProveedor.TabIndex = 84;
-            this.btnAgregarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAgregarProveedor.UseVisualStyleBackColor = true;
+            this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImagen.Location = new System.Drawing.Point(581, 32);
+            this.pbImagen.Name = "pbImagen";
+            this.pbImagen.Size = new System.Drawing.Size(159, 143);
+            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbImagen.TabIndex = 79;
+            this.pbImagen.TabStop = false;
+            // 
+            // txtLatin
+            // 
+            this.txtLatin.Location = new System.Drawing.Point(144, 55);
+            this.txtLatin.MaxLength = 200;
+            this.txtLatin.Name = "txtLatin";
+            this.txtLatin.Size = new System.Drawing.Size(360, 20);
+            this.txtLatin.TabIndex = 66;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(41, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 13);
+            this.label8.TabIndex = 69;
+            this.label8.Text = "Nombre Latín:";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmProductoAE
             // 
@@ -286,14 +314,17 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cboCategorias);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrecioVta);
+            this.Controls.Add(this.txtLatin);
             this.Controls.Add(this.txtProducto);
             this.Name = "frmProductoAE";
             this.Text = "frmProductoAE";
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,5 +352,8 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnAgregarCategoria;
         private System.Windows.Forms.Button btnAgregarProveedor;
+        private System.Windows.Forms.TextBox txtLatin;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

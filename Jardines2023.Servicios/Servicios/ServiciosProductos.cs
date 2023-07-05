@@ -1,5 +1,6 @@
 ﻿using Jardines2023.Comun.Interfaces;
 using Jardines2023.Datos.Repositorios;
+using Jardines2023.Entidades.Dtos.Producto;
 using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
@@ -26,7 +27,7 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
-        public List<Producto> GetProductos()
+        public List<ProductoListDto> GetProductos()
         {
             try
             {
@@ -85,7 +86,7 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public List<Producto> GetProductosPorPagina(int registrosPorPagina, int paginaActual)
+        public List<ProductoListDto> GetProductosPorPagina(int registrosPorPagina, int paginaActual)
         {
             try
             {

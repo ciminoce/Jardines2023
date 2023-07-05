@@ -5,38 +5,66 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using Jardines2023.Entidades.Dtos.Producto;
 
 namespace Jardines2023.Datos.Repositorios
 {
     public class RepositorioProductos : IRepositorioProductos
     {
         private readonly string cadenaConexion;
-        private readonly IServiciosProductos _servicios;
         public RepositorioProductos()
         {
-            _servicios=new ServiciosProductos
             cadenaConexion = ConfigurationManager.ConnectionStrings["MiConexion"].ToString();
         }
 
 
-        public void Agregar(Categoria categoria)
+        public void Agregar(Producto producto)
         {
             try
             {
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string insertQuery = "INSERT INTO Categorias (NombreCategoria, Descripcion) VALUES(@NombreCategoria, @Descripcion); SELECT SCOPE_IDENTITY()";
+                    string insertQuery = @"INSERT INTO Productos (NombreProducto, NombreLatin, 
+                        ProveedorId, CategoriaId, PrecioUniario, UnidadesEnStock, UnidadesEnPedido,
+                        NivelDeReposicion, Suspendido, Imagen) VALUES(@NombreProducto, @NombreLatin,
+                        @ProveedorId, @CategoriaId, @PrecioUnitario, @UnidadesEnStock, 
+                        @UnidadesEnPedido, @NivelDeReposicion, @Suspendido, @Imagen); SELECT SCOPE_IDENTITY()";
                     using (var comando = new SqlCommand(insertQuery, conn))
                     {
-                        comando.Parameters.Add("@NombreCategoria", SqlDbType.NVarChar);
-                        comando.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
+                        comando.Parameters.Add("@NombreProducto", SqlDbType.NVarChar);
+                        comando.Parameters["@NombreProducto"].Value = producto.NombreProducto;
 
-                        comando.Parameters.Add("@Descripcion", SqlDbType.NVarChar);
-                        comando.Parameters["@Descripcion"].Value = categoria.Descripción;
+                        comando.Parameters.Add("@NombreLatin", SqlDbType.NVarChar);
+                        comando.Parameters["@NombreLatin"].Value = producto.NombreLatin;
+
+                        comando.Parameters.Add("@ProveedorId", SqlDbType.Int);
+                        comando.Parameters["@ProveedorId"].Value = producto.ProveedorId;
+
+                        comando.Parameters.Add("@CategoriaId", SqlDbType.Int);
+                        comando.Parameters["@CategoriaId"].Value = producto.CategoriaId;
+
+                        comando.Parameters.Add("@PrecioUnitario", SqlDbType.Decimal);
+                        comando.Parameters["@PrecioUnitario"].Value = producto.PrecioUnitario;
+
+                        comando.Parameters.Add("@UnidadesEnStock", SqlDbType.Int);
+                        comando.Parameters["@UnidadesEnStock"].Value = producto.UnidadesEnStock;
+
+                        comando.Parameters.Add("@UnidadesEnPedido", SqlDbType.Int);
+                        comando.Parameters["@UnidadesEnPedido"].Value = producto.UnidadesEnPedido;
+
+                        comando.Parameters.Add("@NivelDeReposicion", SqlDbType.Int);
+                        comando.Parameters["@NivelDeReposicion"].Value = producto.NivelDeReposicion;
+
+                        comando.Parameters.Add("@Suspendido", SqlDbType.Bit);
+                        comando.Parameters["@Suspendido"].Value = producto.Suspendido;
+
+                        comando.Parameters.Add("@Imagen", SqlDbType.NVarChar);
+                        comando.Parameters["@Imagen"].Value = producto.Imagen;
+
 
                         int id = Convert.ToInt32(comando.ExecuteScalar());
-                        categoria.CategoriaId = id;
+                        producto.ProductoId = id;
                     }
                 }
             }
@@ -46,18 +74,18 @@ namespace Jardines2023.Datos.Repositorios
                 throw;
             }
         }
-        public void Borrar(int categoriaId)
+        public void Borrar(int productoId)
         {
             try
             {
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string deleteQuery = "DELETE FROM Categorias WHERE CategoriaId=@CategoriaId";
+                    string deleteQuery = "DELETE FROM Productos WHERE ProductoId=@ProductoId";
                     using (var comando = new SqlCommand(deleteQuery, conn))
                     {
-                        comando.Parameters.Add("@CategoriaId", SqlDbType.Int);
-                        comando.Parameters["@CategoriaId"].Value = categoriaId;
+                        comando.Parameters.Add("@ProductoId", SqlDbType.Int);
+                        comando.Parameters["@ProductoId"].Value = productoId;
 
                         comando.ExecuteNonQuery();
                     }
@@ -69,23 +97,55 @@ namespace Jardines2023.Datos.Repositorios
                 throw;
             }
         }
-        public void Editar(Categoria categoria)
+        public void Editar(Producto producto)
         {
             try
             {
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string updateQuery = "UPDATE Categorias SET NombreCategoria=@NombreCategoria WHERE CategoriaId=@CategoriaId";
-                    using (var cmd = new SqlCommand(updateQuery, conn))
+                    string updateQuery = @"UPDATE Productos SET NombreProducto=@NombreProducto, 
+                        NombreLatin=@NombreLatin, ProveedorId=@ProveedorId, CategoriaId=@CategoriaId,
+                        PrecioUnitario=@PrecioUnitario, UnidadesEnStock=@UnidadesEnStock, 
+                        UnidadesEnPedido=@UnidadesEnPedido, NivelDeReposicion=@NivelDeReposicion,
+                        Suspendido=@Suspendido, Imagen=@Imagen WHERE ProductoId=@ProductoId";
+                    using (var comando = new SqlCommand(updateQuery, conn))
                     {
-                        cmd.Parameters.Add("@NombreCategoria", SqlDbType.NChar);
-                        cmd.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
+                        comando.Parameters.Add("@NombreProducto", SqlDbType.NVarChar);
+                        comando.Parameters["@NombreProducto"].Value = producto.NombreProducto;
 
-                        cmd.Parameters.Add("@CategoriaId", SqlDbType.Int);
-                        cmd.Parameters["@CategoriaId"].Value = categoria.CategoriaId;
+                        comando.Parameters.Add("@NombreLatin", SqlDbType.NVarChar);
+                        comando.Parameters["@NombreLatin"].Value = producto.NombreLatin;
 
-                        cmd.ExecuteNonQuery();
+                        comando.Parameters.Add("@ProveedorId", SqlDbType.Int);
+                        comando.Parameters["@ProveedorId"].Value = producto.ProveedorId;
+
+                        comando.Parameters.Add("@CategoriaId", SqlDbType.Int);
+                        comando.Parameters["@CategoriaId"].Value = producto.CategoriaId;
+
+                        comando.Parameters.Add("@PrecioUnitario", SqlDbType.Decimal);
+                        comando.Parameters["@PrecioUnitario"].Value = producto.PrecioUnitario;
+
+                        comando.Parameters.Add("@UnidadesEnStock", SqlDbType.Int);
+                        comando.Parameters["@UnidadesEnStock"].Value = producto.UnidadesEnStock;
+
+                        comando.Parameters.Add("@UnidadesEnPedido", SqlDbType.Int);
+                        comando.Parameters["@UnidadesEnPedido"].Value = producto.UnidadesEnPedido;
+
+                        comando.Parameters.Add("@NivelDeReposicion", SqlDbType.Int);
+                        comando.Parameters["@NivelDeReposicion"].Value = producto.NivelDeReposicion;
+
+                        comando.Parameters.Add("@Suspendido", SqlDbType.Bit);
+                        comando.Parameters["@Suspendido"].Value = producto.Suspendido;
+
+                        comando.Parameters.Add("@Imagen", SqlDbType.NVarChar);
+                        comando.Parameters["@Imagen"].Value = producto.Imagen;
+
+                        comando.Parameters.Add("@ProductoId", SqlDbType.Int);
+                        comando.Parameters["@ProductoId"].Value = producto.ProductoId;
+
+
+                        comando.ExecuteNonQuery();
                     }
                 }
             }
@@ -96,23 +156,27 @@ namespace Jardines2023.Datos.Repositorios
             }
 
         }
-        public List<Categoria> GetCategorias()
+        public List<ProductoListDto> GetProductos()
         {
             try
             {
-                List<Categoria> lista = new List<Categoria>();
+                List<ProductoListDto> lista = new List<ProductoListDto>();
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT CategoriaId, NombreCategoria, Descripcion FROM Categorias";
+                    conn.Open();
+                    string selectQuery = @"SELECT ProductoId, NombreProducto, NombreCategoria, PrecioUnitario
+                        UnidadesEnStock, Suspendido FROM Productos INNER JOIN Categorias
+                        ON Productos.CategoriaId=Categorias.CategoriaId
+                        ORDER BY NombreProducto";
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         using (var reader = comando.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                var categoria = ConstruirCategoria(reader);
-                                lista.Add(categoria);
+                                var producto = ConstruirProductoDto(reader);
+                                lista.Add(producto);
                             }
                         }
                     }
@@ -134,7 +198,7 @@ namespace Jardines2023.Datos.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = "SELECT COUNT(*) FROM Categorias";
+                    string selectQuery = "SELECT COUNT(*) FROM Productos";
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
                         cantidad = (int)comando.ExecuteScalar();
@@ -150,7 +214,7 @@ namespace Jardines2023.Datos.Repositorios
             }
         }
 
-        public bool Existe(Categoria categoria)
+        public bool Existe(Producto producto)
         {
             try
             {
@@ -159,25 +223,25 @@ namespace Jardines2023.Datos.Repositorios
                 {
                     conn.Open();
                     string selectQuery;
-                    if (categoria.CategoriaId == 0)
+                    if (producto.ProductoId == 0)
                     {
-                        selectQuery = "SELECT COUNT(*) FROM Categorias WHERE NombreCategoria=@NombreCategoria";
+                        selectQuery = "SELECT COUNT(*) FROM Productos WHERE NombreProducto=@NombreProducto";
 
                     }
                     else
                     {
-                        selectQuery = "SELECT COUNT(*) FROM Categorias WHERE NombreCategoria=@NombreCategoria AND CategoriaId<>@CategoriaId";
+                        selectQuery = "SELECT COUNT(*) FROM Productos WHERE NombreProducto=@NombreProducto AND ProductoId<>@ProductoId";
 
                     }
                     using (var comando = new SqlCommand(selectQuery, conn))
                     {
-                        comando.Parameters.Add("@NombreCategoria", SqlDbType.NVarChar);
-                        comando.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
+                        comando.Parameters.Add("@NombreProducto", SqlDbType.NVarChar);
+                        comando.Parameters["@NombreProducto"].Value = producto.NombreProducto;
 
-                        if (categoria.CategoriaId != 0)
+                        if (producto.ProductoId != 0)
                         {
-                            comando.Parameters.Add("@CategoriaId", SqlDbType.Int);
-                            comando.Parameters["@CategoriaId"].Value = categoria.CategoriaId;
+                            comando.Parameters.Add("@ProductoId", SqlDbType.Int);
+                            comando.Parameters["@ProductoId"].Value = producto.ProductoId;
 
                         }
 
@@ -193,16 +257,18 @@ namespace Jardines2023.Datos.Repositorios
             }
         }
 
-        public List<Categoria> GetCategoriasPorPagina(int cantidad, int pagina)
+        public List<ProductoListDto> GetProductosPorPagina(int cantidad, int pagina)
         {
-            List<Categoria> lista = new List<Categoria>();
+            List<ProductoListDto> lista = new List<ProductoListDto>();
             try
             {
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = @"SELECT CategoriaId, NombreCategoria, Descripcion FROM Categorias
-                        ORDER BY NombreCategoria
+                    string selectQuery = @"SELECT ProductoId, NombreProducto, NombreCategoria, PrecioUnitario,
+                        UnidadesEnStock, Suspendido FROM Productos INNER JOIN Categorias
+                        ON Productos.CategoriaId=Categorias.CategoriaId
+                        ORDER BY NombreProducto
                         OFFSET @cantidadRegistros ROWS 
                         FETCH NEXT @cantidadPorPagina ROWS ONLY";
                     using (var comando = new SqlCommand(selectQuery, conn))
@@ -216,8 +282,8 @@ namespace Jardines2023.Datos.Repositorios
                         {
                             while (reader.Read())
                             {
-                                var categoria = ConstruirCategoria(reader);
-                                lista.Add(categoria);
+                                var productoDto = ConstruirProductoDto(reader);
+                                lista.Add(productoDto);
                             }
                         }
                     }
@@ -231,13 +297,34 @@ namespace Jardines2023.Datos.Repositorios
             }
         }
 
-        private Categoria ConstruirCategoria(SqlDataReader reader)
+        private ProductoListDto ConstruirProductoDto(SqlDataReader reader)
         {
-            return new Categoria()
+            return new ProductoListDto
             {
-                CategoriaId = reader.GetInt32(0),
-                NombreCategoria = reader.GetString(1),
-                Descripción = reader[2] != DBNull.Value ? reader.GetString(2) : string.Empty
+                ProductoId = reader.GetInt32(0),
+                NombreProducto = reader.GetString(1),
+                Categoria = reader.GetString(2),
+                PrecioUnitario = reader.GetDecimal(3),
+                UnidadesEnStock = reader.GetInt32(4),
+                Suspendido = reader.GetBoolean(5)
+            };
+        }
+
+        private Producto ConstruirProducto(SqlDataReader reader)
+        {
+            return new Producto()
+            {
+                ProductoId = reader.GetInt32(0),
+                NombreProducto = reader.GetString(1),
+                NombreLatin=reader.GetString(2), 
+                ProveedorId=reader.GetInt32(3),
+                CategoriaId=reader.GetInt32(4),
+                PrecioUnitario=reader.GetDecimal(5),
+                UnidadesEnStock=reader.GetInt32(6),
+                UnidadesEnPedido=reader.GetInt32(7),
+                NivelDeReposicion=reader.GetInt32(8),
+                Suspendido=reader.GetBoolean(9),
+                Imagen=reader.GetString(10)
             };
         }
 

@@ -1,4 +1,5 @@
-﻿using Jardines2023.Entidades.Entidades;
+﻿using Jardines2023.Entidades.Dtos.Producto;
+using Jardines2023.Entidades.Entidades;
 using System.Collections.Generic;
 
 namespace Jardines2023.Servicios.Interfaces
@@ -9,8 +10,8 @@ namespace Jardines2023.Servicios.Interfaces
         void Borrar(int productoId);
         bool Existe(Producto producto);
         int GetCantidad();
-        List<Producto> GetProductos();
-        List<Producto> GetProductosPorPagina(int cantidad, int pagina);
+        List<ProductoListDto> GetProductos();
+        List<ProductoListDto> GetProductosPorPagina(int cantidad, int pagina);
 
     }
 }

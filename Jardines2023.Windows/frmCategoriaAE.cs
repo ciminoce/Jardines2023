@@ -100,6 +100,7 @@ namespace Jardines2023.Windows
         private bool ValidarDatos()
         {
             bool valido = true;
+            errorProvider1.Clear();
             if (string.IsNullOrEmpty(txtCategoria.Text))
             {
                 valido = false;
