@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jardines2023.Datos", "Jardi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jardines2023.Servicios", "Jardines2023.Servicios\Jardines2023.Servicios.csproj", "{9316C7F1-A389-4F38-B11F-ED4C2D63F6F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jardines2023.Comun", "Jardines2023.Comun\Jardines2023.Comun.csproj", "{3A9697F6-652D-477C-9D9E-1247E8E00342}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9316C7F1-A389-4F38-B11F-ED4C2D63F6F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9316C7F1-A389-4F38-B11F-ED4C2D63F6F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9316C7F1-A389-4F38-B11F-ED4C2D63F6F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A9697F6-652D-477C-9D9E-1247E8E00342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A9697F6-652D-477C-9D9E-1247E8E00342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A9697F6-652D-477C-9D9E-1247E8E00342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A9697F6-652D-477C-9D9E-1247E8E00342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

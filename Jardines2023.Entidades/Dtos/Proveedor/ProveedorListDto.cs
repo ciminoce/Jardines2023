@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Jardines2023.Entidades.Dtos.Proveedor
+﻿namespace Jardines2023.Entidades.Dtos.Proveedor
 {
     public class ProveedorListDto
     {
+        public int ProveedorId { get; set; }
+        public string NombreProveedor { get; set; }
+        public string NombrePais { get; set; }
+        public string NombreCiudad { get; set; }
 
     }
 }

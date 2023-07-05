@@ -1,4 +1,4 @@
-﻿using Jardines2023.Datos.Interfaces;
+﻿using Jardines2023.Comun.Interfaces;
 using Jardines2023.Entidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Jardines2023.Datos.Repositorios
+namespace Jardines2023.Comun.Repositorios
 {
     public class RepositorioCiudades : IRepositorioCiudades
     {
@@ -63,7 +63,8 @@ namespace Jardines2023.Datos.Repositorios
                 {
                     throw new Exception("Registro relacionado... Baja denegada");
                 }
-            }        }
+            }
+        }
 
         public void Editar(Ciudad ciudad)
         {
@@ -89,11 +90,11 @@ namespace Jardines2023.Datos.Repositorios
         public bool Existe(Ciudad ciudad)
         {
             int cantidad;
-            using (var con=new SqlConnection(cadenaConexion))
+            using (var con = new SqlConnection(cadenaConexion))
             {
                 con.Open();
                 string selectQuery;
-                if (ciudad.CiudadId==0)
+                if (ciudad.CiudadId == 0)
                 {
                     selectQuery = "SELECT COUNT(*) FROM Ciudades WHERE NombreCiudad=@NombreCiudad AND PaisId=@PaisId";
                 }
@@ -102,19 +103,19 @@ namespace Jardines2023.Datos.Repositorios
                     selectQuery = "SELECT COUNT(*) FROM Ciudades WHERE NombreCiudad=@NombreCiudad AND PaisId=@PaisId AND CiudadId!=@CiudadId";
 
                 }
-                using (var cmd=new SqlCommand(selectQuery,con))
+                using (var cmd = new SqlCommand(selectQuery, con))
                 {
                     cmd.Parameters.Add("@NombreCiudad", SqlDbType.NVarChar);
                     cmd.Parameters["@NombreCiudad"].Value = ciudad.NombreCiudad;
 
                     cmd.Parameters.Add("@PaisId", SqlDbType.Int);
                     cmd.Parameters["@PaisId"].Value = ciudad.PaisId;
-                    if (ciudad.CiudadId!=0)
+                    if (ciudad.CiudadId != 0)
                     {
                         cmd.Parameters.Add("@CiudadId", SqlDbType.Int);
                         cmd.Parameters["@CiudadId"].Value = ciudad.CiudadId;
                     }
-                    cantidad=Convert.ToInt32(cmd.ExecuteScalar());
+                    cantidad = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             return cantidad > 0;
@@ -167,11 +168,11 @@ namespace Jardines2023.Datos.Repositorios
         public int GetCantidad(int? paisId)
         {
             int cantidad = 0;
-            using (var con=new SqlConnection(cadenaConexion))
+            using (var con = new SqlConnection(cadenaConexion))
             {
                 con.Open();
                 string selectQuery;
-                if (paisId==null)
+                if (paisId == null)
                 {
                     selectQuery = "SELECT COUNT(*) FROM Ciudades";
 
@@ -180,7 +181,7 @@ namespace Jardines2023.Datos.Repositorios
                 {
                     selectQuery = "SELECT COUNT(*) FROM Ciudades WHERE PaisId=@PaisId";
                 }
-                using (var cmd=new SqlCommand(selectQuery,con))
+                using (var cmd = new SqlCommand(selectQuery, con))
                 {
                     if (paisId.HasValue)
                     {
@@ -200,7 +201,7 @@ namespace Jardines2023.Datos.Repositorios
             List<Ciudad> lista = new List<Ciudad>();
             try
             {
-                using(var conn=new SqlConnection(cadenaConexion))
+                using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
                     string selectQuery = "SELECT CiudadId, NombreCiudad, PaisId FROM Ciudades ORDER BY PaisId, NombreCiudad";
@@ -265,7 +266,7 @@ namespace Jardines2023.Datos.Repositorios
 
         public Ciudad GetCiudadPorId(int ciudadId)
         {
-            Ciudad ciudad=null;
+            Ciudad ciudad = null;
             try
             {
                 using (var conn = new SqlConnection(cadenaConexion))
@@ -275,7 +276,7 @@ namespace Jardines2023.Datos.Repositorios
                     using (var cmd = new SqlCommand(selectQuery, conn))
                     {
                         cmd.Parameters.Add("@CiudadId", SqlDbType.Int);
-                        cmd.Parameters["@CiudadId"].Value=ciudadId;
+                        cmd.Parameters["@CiudadId"].Value = ciudadId;
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -304,7 +305,7 @@ namespace Jardines2023.Datos.Repositorios
                 {
                     conn.Open();
                     string selectQuery;
-                    if (paisId==null)
+                    if (paisId == null)
                     {
                         selectQuery = @"SELECT CiudadId, NombreCiudad, PaisId 
                             FROM Ciudades 

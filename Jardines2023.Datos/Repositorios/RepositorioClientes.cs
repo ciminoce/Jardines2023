@@ -1,4 +1,4 @@
-﻿using Jardines2023.Datos.Interfaces;
+﻿using Jardines2023.Comun.Interfaces;
 using Jardines2023.Entidades.Dtos.Cliente;
 using Jardines2023.Entidades.Entidades;
 using System;
@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Jardines2023.Datos.Repositorios
+namespace Jardines2023.Comun.Repositorios
 {
     public class RepositorioClientes : IRepositorioClientes
     {

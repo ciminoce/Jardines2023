@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using Jardines2023.Datos.Interfaces;
+using Jardines2023.Comun.Interfaces;
 
-namespace Jardines2023.Datos.Repositorios
+namespace Jardines2023.Comun.Repositorios
 {
     public class RepositorioCategorias : IRepositorioCategorias
     {
