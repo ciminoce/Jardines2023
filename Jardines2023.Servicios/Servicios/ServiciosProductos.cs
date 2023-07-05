@@ -1,4 +1,5 @@
-﻿using Jardines2023.Comun.Repositorios;
+﻿using Jardines2023.Comun.Interfaces;
+using Jardines2023.Datos.Repositorios;
 using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
@@ -6,18 +7,18 @@ using System.Collections.Generic;
 
 namespace Jardines2023.Servicios.Servicios
 {
-    public class ServiciosCategorias : IServiciosCategorias
+    public class ServiciosProductos : IServiciosProductos
     {
-        private readonly RepositorioCategorias _repositorio;
-        public ServiciosCategorias()
+        private readonly IRepositorioProductos _repositorio;
+        public ServiciosProductos()
         {
-            _repositorio = new RepositorioCategorias();
+            _repositorio = new RepositorioProductos();
         }
-        public void Borrar(int categoriaId)
+        public void Borrar(int productoId)
         {
             try
             {
-                _repositorio.Borrar(categoriaId);
+                _repositorio.Borrar(productoId);
             }
             catch (Exception)
             {
@@ -25,11 +26,11 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
-        public List<Categoria> GetCategorias()
+        public List<Producto> GetProductos()
         {
             try
             {
-                return _repositorio.GetCategorias();
+                return _repositorio.GetProductos();
             }
             catch (Exception)
             {
@@ -50,11 +51,11 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public bool Existe(Categoria categoria)
+        public bool Existe(Producto producto)
         {
             try
             {
-                return _repositorio.Existe(categoria);
+                return _repositorio.Existe(producto);
             }
             catch (Exception)
             {
@@ -63,18 +64,18 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public void Guardar(Categoria categoria)
+        public void Guardar(Producto producto)
         {
             try
             {
-                if (categoria.CategoriaId==0)
+                if (producto.ProductoId == 0)
                 {
-                    _repositorio.Agregar(categoria);
+                    _repositorio.Agregar(producto);
 
                 }
                 else
                 {
-                    _repositorio.Editar(categoria);
+                    _repositorio.Editar(producto);
                 }
             }
             catch (Exception)
@@ -84,12 +85,11 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-
-        public List<Categoria> GetCategoriasPorPagina(int cantidad, int pagina)
+        public List<Producto> GetProductosPorPagina(int registrosPorPagina, int paginaActual)
         {
-             try
+            try
             {
-                return _repositorio.GetCategoriasPorPagina(cantidad, pagina);
+                return _repositorio.GetProductosPorPagina(registrosPorPagina, paginaActual);
             }
             catch (Exception)
             {
@@ -97,5 +97,6 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
+
     }
 }

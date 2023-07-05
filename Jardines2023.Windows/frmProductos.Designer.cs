@@ -67,9 +67,9 @@
             // 
             this.panelGrilla.Controls.Add(this.dgvDatos);
             this.panelGrilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGrilla.Location = new System.Drawing.Point(0, 25);
+            this.panelGrilla.Location = new System.Drawing.Point(0, 54);
             this.panelGrilla.Name = "panelGrilla";
-            this.panelGrilla.Size = new System.Drawing.Size(800, 365);
+            this.panelGrilla.Size = new System.Drawing.Size(800, 336);
             this.panelGrilla.TabIndex = 14;
             // 
             // dgvDatos
@@ -90,7 +90,7 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersVisible = false;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(800, 365);
+            this.dgvDatos.Size = new System.Drawing.Size(800, 336);
             this.dgvDatos.TabIndex = 2;
             // 
             // colProducto
@@ -248,79 +248,86 @@
             // 
             // tsbNuevo
             // 
+            this.tsbNuevo.Image = global::Jardines2023.Windows.Properties.Resources.file_32px;
             this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(46, 22);
+            this.tsbNuevo.Size = new System.Drawing.Size(46, 51);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsbBorrar
             // 
+            this.tsbBorrar.Image = global::Jardines2023.Windows.Properties.Resources.delete_file_32px;
             this.tsbBorrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBorrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBorrar.Name = "tsbBorrar";
-            this.tsbBorrar.Size = new System.Drawing.Size(43, 22);
+            this.tsbBorrar.Size = new System.Drawing.Size(43, 51);
             this.tsbBorrar.Text = "Borrar";
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsbEditar
             // 
+            this.tsbEditar.Image = global::Jardines2023.Windows.Properties.Resources.edit_file_32px;
             this.tsbEditar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditar.Name = "tsbEditar";
-            this.tsbEditar.Size = new System.Drawing.Size(41, 22);
+            this.tsbEditar.Size = new System.Drawing.Size(41, 51);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // tsbFiltrar
             // 
+            this.tsbFiltrar.Image = global::Jardines2023.Windows.Properties.Resources.filter_32px;
             this.tsbFiltrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbFiltrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFiltrar.Name = "tsbFiltrar";
-            this.tsbFiltrar.Size = new System.Drawing.Size(41, 22);
+            this.tsbFiltrar.Size = new System.Drawing.Size(41, 51);
             this.tsbFiltrar.Text = "Filtrar";
             this.tsbFiltrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // tsbActualizar
             // 
+            this.tsbActualizar.Image = global::Jardines2023.Windows.Properties.Resources.restart_32px;
             this.tsbActualizar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbActualizar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbActualizar.Name = "tsbActualizar";
-            this.tsbActualizar.Size = new System.Drawing.Size(63, 22);
+            this.tsbActualizar.Size = new System.Drawing.Size(63, 51);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // tsbImprimir
             // 
+            this.tsbImprimir.Image = global::Jardines2023.Windows.Properties.Resources.print_32px;
             this.tsbImprimir.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(57, 22);
+            this.tsbImprimir.Size = new System.Drawing.Size(57, 51);
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
             // 
             // tsbCerrar
             // 
+            this.tsbCerrar.Image = global::Jardines2023.Windows.Properties.Resources.close_window_32px;
             this.tsbCerrar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbCerrar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCerrar.Name = "tsbCerrar";
-            this.tsbCerrar.Size = new System.Drawing.Size(43, 22);
+            this.tsbCerrar.Size = new System.Drawing.Size(43, 51);
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -339,7 +346,7 @@
             this.tsbCerrar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(800, 54);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 

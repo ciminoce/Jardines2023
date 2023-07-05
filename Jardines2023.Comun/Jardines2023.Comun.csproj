@@ -46,6 +46,7 @@
     <Compile Include="Interfaces\IRepositorioCiudades.cs" />
     <Compile Include="Interfaces\IRepositorioClientes.cs" />
     <Compile Include="Interfaces\IRepositorioPaises.cs" />
+    <Compile Include="Interfaces\IRepositorioProductos.cs" />
     <Compile Include="Interfaces\IRepositorioProveedores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

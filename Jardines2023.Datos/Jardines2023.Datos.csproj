@@ -47,6 +47,7 @@
     <Compile Include="Repositorios\RepositorioCiudades.cs" />
     <Compile Include="Repositorios\RepositorioClientes.cs" />
     <Compile Include="Repositorios\RepositorioPaises.cs" />
+    <Compile Include="Repositorios\RepositorioProductos.cs" />
     <Compile Include="Repositorios\RepositorioProveedores.cs" />
   </ItemGroup>
   <ItemGroup>

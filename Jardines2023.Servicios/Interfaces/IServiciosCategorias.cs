@@ -5,10 +5,11 @@ namespace Jardines2023.Servicios.Interfaces
 {
     public interface IServiciosCategorias
     {
+        void Guardar(Categoria categoria);
         void Borrar(int categoriaId);
         bool Existe(Categoria categoria);
         int GetCantidad();
         List<Categoria> GetCategorias();
-        void Guardar(Categoria categoria);
+        List<Categoria> GetCategoriasPorPagina(int cantidad, int pagina);
     }
 }

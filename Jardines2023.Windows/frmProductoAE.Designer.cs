@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
             this.pbImagen = new System.Windows.Forms.PictureBox();
             this.chkSuspendido = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -46,6 +44,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrecioVta = new System.Windows.Forms.TextBox();
             this.txtProducto = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
+            this.btnAgregarCategoria = new System.Windows.Forms.Button();
+            this.btnAgregarProveedor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
@@ -53,6 +55,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Image = global::Jardines2023.Windows.Properties.Resources.search_24px;
             this.btnBuscar.Location = new System.Drawing.Point(581, 183);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(159, 52);
@@ -61,28 +64,6 @@
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(665, 278);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 66);
-            this.btnCancelar.TabIndex = 80;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(44, 278);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 66);
-            this.btnOK.TabIndex = 82;
-            this.btnOK.Text = "OK";
-            this.btnOK.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // pbImagen
             // 
@@ -241,14 +222,58 @@
             this.txtProducto.Size = new System.Drawing.Size(360, 20);
             this.txtProducto.TabIndex = 66;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Image = global::Jardines2023.Windows.Properties.Resources.cancel_24px;
+            this.btnCancelar.Location = new System.Drawing.Point(509, 287);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 49);
+            this.btnCancelar.TabIndex = 82;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Image = global::Jardines2023.Windows.Properties.Resources.ok_24px;
+            this.btnOk.Location = new System.Drawing.Point(231, 287);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 49);
+            this.btnOk.TabIndex = 83;
+            this.btnOk.Text = "OK";
+            this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarCategoria
+            // 
+            this.btnAgregarCategoria.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(425, 56);
+            this.btnAgregarCategoria.Name = "btnAgregarCategoria";
+            this.btnAgregarCategoria.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarCategoria.TabIndex = 84;
+            this.btnAgregarCategoria.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarCategoria.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarProveedor
+            // 
+            this.btnAgregarProveedor.Image = global::Jardines2023.Windows.Properties.Resources.plus_24px;
+            this.btnAgregarProveedor.Location = new System.Drawing.Point(425, 98);
+            this.btnAgregarProveedor.Name = "btnAgregarProveedor";
+            this.btnAgregarProveedor.Size = new System.Drawing.Size(36, 36);
+            this.btnAgregarProveedor.TabIndex = 84;
+            this.btnAgregarProveedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAgregarProveedor.UseVisualStyleBackColor = true;
+            // 
             // frmProductoAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 367);
-            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnAgregarProveedor);
+            this.Controls.Add(this.btnAgregarCategoria);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.pbImagen);
             this.Controls.Add(this.chkSuspendido);
             this.Controls.Add(this.label7);
@@ -277,8 +302,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.PictureBox pbImagen;
         private System.Windows.Forms.CheckBox chkSuspendido;
         private System.Windows.Forms.Label label7;
@@ -294,5 +317,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPrecioVta;
         private System.Windows.Forms.TextBox txtProducto;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnAgregarCategoria;
+        private System.Windows.Forms.Button btnAgregarProveedor;
     }
 }
