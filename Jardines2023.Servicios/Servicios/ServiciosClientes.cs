@@ -1,5 +1,5 @@
-﻿using Jardines2023.Datos.Interfaces;
-using Jardines2023.Datos.Repositorios;
+﻿using Jardines2023.Comun.Interfaces;
+using Jardines2023.Comun.Repositorios;
 using Jardines2023.Entidades.Dtos.Cliente;
 using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
@@ -11,13 +11,9 @@ namespace Jardines2023.Servicios.Servicios
     public class ServiciosClientes : IServiciosClientes
     {
         private readonly IRepositorioClientes _repositorio;
-        private readonly IRepositorioPaises _repoPais;
-        private readonly IRepositorioCiudades _repoCiudades;
         public ServiciosClientes()
         {
             _repositorio = new RepositorioClientes();
-            _repoPais = new RepositorioPaises();
-            _repoCiudades = new RepositorioCiudades();
         }
 
         public void Borrar(int clienteId)

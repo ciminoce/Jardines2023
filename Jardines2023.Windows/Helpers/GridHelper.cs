@@ -1,10 +1,6 @@
 ﻿using Jardines2023.Entidades.Dtos.Cliente;
+using Jardines2023.Entidades.Dtos.Proveedor;
 using Jardines2023.Entidades.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows.Helpers
@@ -41,6 +37,11 @@ namespace Jardines2023.Windows.Helpers
                     r.Cells[0].Value = $"{cliente.Apellido}, {cliente.Nombre}";
                     r.Cells[1].Value = cliente.NombrePais;
                     r.Cells[2].Value = cliente.NombreCiudad;
+                    break;
+                case ProveedorListDto proveedor:
+                    r.Cells[0].Value = proveedor.NombreProveedor;
+                    r.Cells[1].Value = proveedor.NombrePais;
+                    r.Cells[2].Value = proveedor.NombreCiudad;
                     break;
 
             }

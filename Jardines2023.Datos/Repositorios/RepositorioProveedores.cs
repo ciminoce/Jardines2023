@@ -196,10 +196,10 @@ namespace Jardines2023.Comun.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string selectQuery = @"SELECT ProveedorId, Nombres, Apellido, NombrePais, NombreCiudad 
+                    string selectQuery = @"SELECT ProveedorId, NombreProveedor, NombrePais, NombreCiudad 
                         FROM Proveedores INNER JOIN Paises ON Proveedores.PaisId=Paises.PaisId
                         INNER JOIN Ciudades ON Proveedores.CiudadId=Ciudades.CiudadId
-                        ORDER BY Apellido, Nombres
+                        ORDER BY NombreProveedor
                         OFFSET @cantidadRegistros ROWS 
                         FETCH NEXT @cantidadPorPagina ROWS ONLY";
                     using (var comando = new SqlCommand(selectQuery, conn))

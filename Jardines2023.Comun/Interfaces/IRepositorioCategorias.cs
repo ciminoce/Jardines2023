@@ -1,7 +1,7 @@
 ﻿using Jardines2023.Entidades.Entidades;
 using System.Collections.Generic;
 
-namespace Jardines2023.Datos.Interfaces
+namespace Jardines2023.Comun.Interfaces
 {
     public interface IRepositorioCategorias
     {

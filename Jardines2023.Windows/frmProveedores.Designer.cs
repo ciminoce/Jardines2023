@@ -43,6 +43,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
@@ -54,9 +57,6 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelInferior.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -89,6 +89,7 @@
             this.btnUltimo.Size = new System.Drawing.Size(75, 32);
             this.btnUltimo.TabIndex = 69;
             this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
             // 
             // btnSiguiente
             // 
@@ -98,6 +99,7 @@
             this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
             this.btnSiguiente.TabIndex = 70;
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnAnterior
             // 
@@ -107,6 +109,7 @@
             this.btnAnterior.Size = new System.Drawing.Size(75, 32);
             this.btnAnterior.TabIndex = 71;
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnPrimero
             // 
@@ -116,6 +119,7 @@
             this.btnPrimero.Size = new System.Drawing.Size(75, 32);
             this.btnPrimero.TabIndex = 72;
             this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // lblPaginas
             // 
@@ -205,6 +209,29 @@
             this.dgvDatos.Size = new System.Drawing.Size(800, 336);
             this.dgvDatos.TabIndex = 1;
             // 
+            // colProveedor
+            // 
+            this.colProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            this.colProveedor.ReadOnly = true;
+            // 
+            // colPais
+            // 
+            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPais.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colPais.HeaderText = "Países";
+            this.colPais.Name = "colPais";
+            this.colPais.ReadOnly = true;
+            // 
+            // colCiudad
+            // 
+            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCiudad.HeaderText = "Ciudad";
+            this.colCiudad.Name = "colCiudad";
+            this.colCiudad.ReadOnly = true;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -233,6 +260,7 @@
             this.tsbNuevo.Size = new System.Drawing.Size(46, 51);
             this.tsbNuevo.Text = "Nuevo";
             this.tsbNuevo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // tsbBorrar
             // 
@@ -243,6 +271,7 @@
             this.tsbBorrar.Size = new System.Drawing.Size(43, 51);
             this.tsbBorrar.Text = "Borrar";
             this.tsbBorrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbBorrar.Click += new System.EventHandler(this.tsbBorrar_Click);
             // 
             // tsbEditar
             // 
@@ -253,6 +282,7 @@
             this.tsbEditar.Size = new System.Drawing.Size(41, 51);
             this.tsbEditar.Text = "Editar";
             this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -278,6 +308,7 @@
             this.tsbActualizar.Size = new System.Drawing.Size(63, 51);
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbActualizar.Click += new System.EventHandler(this.tsbActualizar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -308,29 +339,7 @@
             this.tsbCerrar.Size = new System.Drawing.Size(43, 51);
             this.tsbCerrar.Text = "Cerrar";
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // colProveedor
-            // 
-            this.colProveedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
-            this.colProveedor.ReadOnly = true;
-            // 
-            // colPais
-            // 
-            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colPais.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colPais.HeaderText = "Países";
-            this.colPais.Name = "colPais";
-            this.colPais.ReadOnly = true;
-            // 
-            // colCiudad
-            // 
-            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCiudad.HeaderText = "Ciudad";
-            this.colCiudad.Name = "colCiudad";
-            this.colCiudad.ReadOnly = true;
+            this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
             // frmProveedores
             // 
@@ -342,6 +351,7 @@
             this.Controls.Add(this.panelInferior);
             this.Name = "frmProveedores";
             this.Text = "frmProveedores";
+            this.Load += new System.EventHandler(this.frmProveedores_Load);
             this.panelInferior.ResumeLayout(false);
             this.panelInferior.PerformLayout();
             this.panel1.ResumeLayout(false);

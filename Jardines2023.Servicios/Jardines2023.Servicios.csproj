@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Interfaces\IServiciosCiudades.cs" />
     <Compile Include="Interfaces\IServiciosClientes.cs" />
+    <Compile Include="Interfaces\IServiciosProveedores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interfaces\IServiciosPaises.cs" />
     <Compile Include="Interfaces\IServiciosCategorias.cs" />
@@ -50,8 +51,13 @@
     <Compile Include="Servicios\ServiciosCiudades.cs" />
     <Compile Include="Servicios\ServiciosClientes.cs" />
     <Compile Include="Servicios\ServiciosPaises.cs" />
+    <Compile Include="Servicios\ServiciosProveedores.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Jardines2023.Comun\Jardines2023.Comun.csproj">
+      <Project>{3a9697f6-652d-477c-9d9e-1247e8e00342}</Project>
+      <Name>Jardines2023.Comun</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Jardines2023.Datos\Jardines2023.Datos.csproj">
       <Project>{fc45ee78-2676-4a6d-adff-147a8514a6b0}</Project>
       <Name>Jardines2023.Datos</Name>

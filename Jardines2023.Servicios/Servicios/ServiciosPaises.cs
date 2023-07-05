@@ -1,5 +1,5 @@
-﻿using Jardines2023.Datos.Interfaces;
-using Jardines2023.Datos.Repositorios;
+﻿using Jardines2023.Comun.Interfaces;
+using Jardines2023.Comun.Repositorios;
 using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
@@ -99,11 +99,11 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual, string textoFiltro=null)
+        public List<Pais> GetPaisesPorPagina(int cantidad, int paginaActual, string textoFiltro = null)
         {
             try
             {
-                return _repositorio.GetPaisesPorPagina(cantidad,paginaActual,textoFiltro);
+                return _repositorio.GetPaisesPorPagina(cantidad, paginaActual, textoFiltro);
             }
             catch (Exception)
             {
@@ -125,7 +125,7 @@ namespace Jardines2023.Servicios.Servicios
             }
         }
 
-        public int GetCantidad(string textoFiltro=null)
+        public int GetCantidad(string textoFiltro = null)
         {
             try
             {

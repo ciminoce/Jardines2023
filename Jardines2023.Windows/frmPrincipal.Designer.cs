@@ -82,6 +82,7 @@
             this.ProveedoresButton.Text = "Proveedores";
             this.ProveedoresButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ProveedoresButton.UseVisualStyleBackColor = true;
+            this.ProveedoresButton.Click += new System.EventHandler(this.ProveedoresButton_Click);
             // 
             // ClientesButton
             // 

@@ -38,5 +38,11 @@ namespace Jardines2023.Windows
             frmClientes frm=new frmClientes();
             frm.ShowDialog(this);
         }
+
+        private void ProveedoresButton_Click(object sender, EventArgs e)
+        {
+            frmProveedores frm=new frmProveedores();
+            frm.ShowDialog(this);
+        }
     }
 }

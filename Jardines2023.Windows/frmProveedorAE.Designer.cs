@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnAgregarCiudad = new System.Windows.Forms.Button();
             this.btnAgregarPais = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -39,7 +40,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cboCiudades = new System.Windows.Forms.ComboBox();
             this.cboPaises = new System.Windows.Forms.ComboBox();
-            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.txtProveedor = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.txtCodPostal = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,7 +48,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAgregarCiudad
@@ -80,6 +85,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnOk
             // 
@@ -91,6 +97,7 @@
             this.btnOk.Text = "OK";
             this.btnOk.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // groupBox1
             // 
@@ -100,7 +107,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(476, 99);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Size = new System.Drawing.Size(200, 82);
             this.groupBox1.TabIndex = 53;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = " Teléfonos ";
@@ -156,14 +163,15 @@
             this.cboPaises.Name = "cboPaises";
             this.cboPaises.Size = new System.Drawing.Size(282, 21);
             this.cboPaises.TabIndex = 45;
+            this.cboPaises.SelectedIndexChanged += new System.EventHandler(this.cboPaises_SelectedIndexChanged);
             // 
-            // txtCliente
+            // txtProveedor
             // 
-            this.txtCliente.Location = new System.Drawing.Point(86, 32);
-            this.txtCliente.MaxLength = 255;
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(282, 20);
-            this.txtCliente.TabIndex = 43;
+            this.txtProveedor.Location = new System.Drawing.Point(86, 32);
+            this.txtProveedor.MaxLength = 255;
+            this.txtProveedor.Name = "txtProveedor";
+            this.txtProveedor.Size = new System.Drawing.Size(352, 20);
+            this.txtProveedor.TabIndex = 43;
             // 
             // txtDireccion
             // 
@@ -184,11 +192,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(37, 35);
+            this.label3.Location = new System.Drawing.Point(22, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 50;
-            this.label3.Text = "Cliente:";
+            this.label3.Text = "Proveedor:";
             // 
             // label5
             // 
@@ -226,6 +234,27 @@
             this.label1.TabIndex = 52;
             this.label1.Text = "Cod. Postal:";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 190);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 50;
+            this.label8.Text = "Email:";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(86, 187);
+            this.txtEmail.MaxLength = 255;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(590, 20);
+            this.txtEmail.TabIndex = 43;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmProveedorAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,8 +267,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cboCiudades);
             this.Controls.Add(this.cboPaises);
-            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtProveedor);
             this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCodPostal);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
@@ -250,6 +281,7 @@
             this.Text = "frmProveedorAE";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,7 +300,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cboCiudades;
         private System.Windows.Forms.ComboBox cboPaises;
-        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.TextBox txtProveedor;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.TextBox txtCodPostal;
         private System.Windows.Forms.Label label3;
@@ -276,5 +308,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -1,5 +1,5 @@
-﻿using Jardines2023.Datos.Interfaces;
-using Jardines2023.Datos.Repositorios;
+﻿using Jardines2023.Comun.Interfaces;
+using Jardines2023.Comun.Repositorios;
 using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
