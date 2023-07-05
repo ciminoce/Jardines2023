@@ -2,12 +2,19 @@
 using Jardines2023.Servicios.Interfaces;
 using Jardines2023.Windows.Helpers;
 using System;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Jardines2023.Windows
 {
     public partial class frmProductoAE : Form
     {
+        private string imagenNoDisponible = Environment.CurrentDirectory + @"\Imagenes\SinImagenDisponible.jpg";
+        private string archivoNoEncontrado = Environment.CurrentDirectory + @"\Imagenes\ArchivoNoEncontrado.jpg";
+        private string archivoImagen = string.Empty;
+        private string carpetaImagen = Environment.CurrentDirectory + @"\Imagenes\";
+
         private readonly IServiciosProductos _servicio;
         public frmProductoAE(IServiciosProductos servicio)
         {
@@ -48,7 +55,7 @@ namespace Jardines2023.Windows
                 producto.PrecioUnitario=decimal.Parse(txtPrecioVta.Text);
                 producto.UnidadesEnStock = (int)nudStock.Value;
                 producto.NivelDeReposicion = (int)nudMinimo.Value;
-
+                producto.Imagen = archivoImagen;
                 try
                 {
 
@@ -126,18 +133,64 @@ namespace Jardines2023.Windows
             base.OnLoad(e);
             CombosHelper.CargarComboCategorias(ref cboCategorias);
             CombosHelper.CargarComboProveedores(ref cboProveedores);
+
             if (producto != null)
             {
                 esEdicion = true;
                 txtProducto.Text = producto.NombreProducto;
                 txtLatin.Text = producto.NombreLatin;
-                txtPrecioVta.Text=producto.PrecioUnitario.ToString();
+                txtPrecioVta.Text = producto.PrecioUnitario.ToString();
                 nudMinimo.Value = producto.NivelDeReposicion;
                 nudStock.Value = producto.UnidadesEnStock;
                 cboCategorias.SelectedValue = producto.CategoriaId;
                 cboProveedores.SelectedValue = producto.ProveedorId;
+
+                //Veo si el producto tiene alguna imagen asociada
+                if (producto.Imagen != string.Empty)
+                {
+                    //Me aseguro que esa imagen exista
+                    if (!File.Exists($"{carpetaImagen}{producto.Imagen}"))
+                    {
+                        //Si no existe, muestro la imagen de archivo no encontrado
+                        picImagen.Image = Image.FromFile(archivoNoEncontrado);
+                    }
+                    else
+                    {
+                        //Caso contrario muestro la imagen
+                        picImagen.Image = Image.FromFile($"{carpetaImagen}{producto.Imagen}");
+                    }
+                }
+                else
+                {
+                    //Si no tiene imagen muestro Sin Imagen 
+                    picImagen.Image = Image.FromFile(imagenNoDisponible);
+                }
+
             }
         }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            //Seteo del openFileDialog
+            openFileDialog1.Multiselect = false;
+            openFileDialog1.InitialDirectory = Environment.CurrentDirectory + @"\Imagenes\";
+            openFileDialog1.Filter = "Archivos jpg (*.jpg)|*.jpg|Archivos png (*.png)|*.png|Archivos jfif (*.jfif)|*.jfif";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            DialogResult dr = openFileDialog1.ShowDialog(this);//muestro el openFileDialog
 
+            if (dr == DialogResult.OK)
+            {
+                //Veo si tengo algun imagen seleccionada
+                if (openFileDialog1.FileName == null)
+                {
+                    return;//sino me voy
+                }
+                //Tomo el nombre del archivo de imagen con su ruta
+                //archivoNombreConRuta = openFileDialog1.FileName;
+                picImagen.Image = Image.FromFile(openFileDialog1.FileName);
+                archivoImagen = openFileDialog1.FileName;//Tomo la ruta y el nombre del archivo
+            }
+
+        }
     }
 }

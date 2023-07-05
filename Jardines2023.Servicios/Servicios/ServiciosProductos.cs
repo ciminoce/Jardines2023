@@ -5,6 +5,7 @@ using Jardines2023.Entidades.Entidades;
 using Jardines2023.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Jardines2023.Servicios.Servicios
 {
@@ -69,8 +70,17 @@ namespace Jardines2023.Servicios.Servicios
         {
             try
             {
+                string nuevoNombreArchivo = null;
+                if (producto.Imagen != null && !TryStrToGuid(producto.Imagen))
+                {
+                    nuevoNombreArchivo = ObtenerNombreArchivo(Path.GetFileName(producto.Imagen));
+                    File.Copy(producto.Imagen, Environment.CurrentDirectory + $@"\Imagenes\{nuevoNombreArchivo}");
+                    producto.Imagen = nuevoNombreArchivo;
+                }
+
                 if (producto.ProductoId == 0)
                 {
+
                     _repositorio.Agregar(producto);
 
                 }
@@ -85,6 +95,27 @@ namespace Jardines2023.Servicios.Servicios
                 throw;
             }
         }
+        private string ObtenerNombreArchivo(string imagen)
+        {
+            var array = imagen.Split('.');
+            var extension = array[1];
+            var nombre = Guid.NewGuid().ToString();
+            return $"{nombre}.{extension}";
+        }
+        public bool TryStrToGuid(string s)
+        {
+            try
+            {
+                Guid value = new Guid(s);
+                return true;
+            }
+            catch (FormatException)
+            {
+                Guid value = Guid.Empty;
+                return false;
+            }
+        }
+
 
         public List<ProductoListDto> GetProductosPorPagina(int registrosPorPagina, int paginaActual)
         {

@@ -316,15 +316,15 @@ namespace Jardines2023.Datos.Repositorios
             {
                 ProductoId = reader.GetInt32(0),
                 NombreProducto = reader.GetString(1),
-                NombreLatin=reader.GetString(2), 
-                ProveedorId=reader.GetInt32(3),
-                CategoriaId=reader.GetInt32(4),
-                PrecioUnitario=reader.GetDecimal(5),
-                UnidadesEnStock=reader.GetInt32(6),
-                UnidadesEnPedido=reader.GetInt32(7),
-                NivelDeReposicion=reader.GetInt32(8),
-                Suspendido=reader.GetBoolean(9),
-                Imagen=reader.GetString(10)
+                NombreLatin = reader[2] == DBNull.Value ? string.Empty : reader.GetString(2),
+                ProveedorId = reader.GetInt32(3),
+                CategoriaId = reader.GetInt32(4),
+                PrecioUnitario = reader.GetDecimal(5),
+                UnidadesEnStock = reader.GetInt32(6),
+                UnidadesEnPedido = reader.GetInt32(7),
+                NivelDeReposicion = reader.GetInt32(8),
+                Suspendido = reader.GetBoolean(9),
+                Imagen = reader[10]==DBNull.Value?string.Empty: reader.GetString(10)
             };
         }
 
@@ -335,7 +335,6 @@ namespace Jardines2023.Datos.Repositorios
                 Producto producto = null;
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
-                    conn.Open();
                     conn.Open();
                     string selectQuery = @"SELECT ProductoId, NombreProducto, NombreLatin,
                         ProveedorId, CategoriaId, PrecioUnitario, UnidadesEnStock,

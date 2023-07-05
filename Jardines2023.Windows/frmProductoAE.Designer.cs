@@ -48,13 +48,14 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.pbImagen = new System.Windows.Forms.PictureBox();
+            this.picImagen = new System.Windows.Forms.PictureBox();
             this.txtLatin = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.nudMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,20 +85,10 @@
             0,
             0,
             0});
-            this.nudMinimo.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudMinimo.Name = "nudMinimo";
             this.nudMinimo.ReadOnly = true;
             this.nudMinimo.Size = new System.Drawing.Size(120, 20);
             this.nudMinimo.TabIndex = 75;
-            this.nudMinimo.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label6
             // 
@@ -111,20 +102,10 @@
             // nudStock
             // 
             this.nudStock.Location = new System.Drawing.Point(144, 190);
-            this.nudStock.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.nudStock.Name = "nudStock";
             this.nudStock.ReadOnly = true;
             this.nudStock.Size = new System.Drawing.Size(120, 20);
             this.nudStock.TabIndex = 76;
-            this.nudStock.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label4
             // 
@@ -260,16 +241,17 @@
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // pbImagen
+            // picImagen
             // 
-            this.pbImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagen.Location = new System.Drawing.Point(581, 32);
-            this.pbImagen.Name = "pbImagen";
-            this.pbImagen.Size = new System.Drawing.Size(159, 143);
-            this.pbImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbImagen.TabIndex = 79;
-            this.pbImagen.TabStop = false;
+            this.picImagen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picImagen.Location = new System.Drawing.Point(581, 32);
+            this.picImagen.Name = "picImagen";
+            this.picImagen.Size = new System.Drawing.Size(159, 143);
+            this.picImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImagen.TabIndex = 79;
+            this.picImagen.TabStop = false;
             // 
             // txtLatin
             // 
@@ -292,6 +274,10 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // frmProductoAE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,7 +288,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnBuscar);
-            this.Controls.Add(this.pbImagen);
+            this.Controls.Add(this.picImagen);
             this.Controls.Add(this.chkSuspendido);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.nudMinimo);
@@ -323,7 +309,7 @@
             this.Text = "frmProductoAE";
             ((System.ComponentModel.ISupportInitialize)(this.nudMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStock)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImagen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImagen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -333,7 +319,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.PictureBox pbImagen;
+        private System.Windows.Forms.PictureBox picImagen;
         private System.Windows.Forms.CheckBox chkSuspendido;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown nudMinimo;
@@ -355,5 +341,6 @@
         private System.Windows.Forms.TextBox txtLatin;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
