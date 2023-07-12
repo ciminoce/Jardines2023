@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelInferior = new System.Windows.Forms.Panel();
+            this.btnUltimo = new System.Windows.Forms.Button();
+            this.btnSiguiente = new System.Windows.Forms.Button();
+            this.btnAnterior = new System.Windows.Forms.Button();
+            this.btnPrimero = new System.Windows.Forms.Button();
             this.lblPaginas = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblPaginaActual = new System.Windows.Forms.Label();
@@ -38,27 +42,23 @@
             this.lblRegistros = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
+            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripDropDownButton();
+            this.porNombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porPaisYCiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPais = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCiudad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
-            this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
-            this.tsbEditar = new System.Windows.Forms.ToolStripButton();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripDropDownButton();
-            this.porNombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.porPaisYCiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
-            this.tsbCerrar = new System.Windows.Forms.ToolStripButton();
-            this.btnUltimo = new System.Windows.Forms.Button();
-            this.btnSiguiente = new System.Windows.Forms.Button();
-            this.btnAnterior = new System.Windows.Forms.Button();
-            this.btnPrimero = new System.Windows.Forms.Button();
             this.panelInferior.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,6 +82,46 @@
             this.panelInferior.Name = "panelInferior";
             this.panelInferior.Size = new System.Drawing.Size(800, 60);
             this.panelInferior.TabIndex = 13;
+            // 
+            // btnUltimo
+            // 
+            this.btnUltimo.Image = global::Jardines2023.Windows.Properties.Resources.last_24px;
+            this.btnUltimo.Location = new System.Drawing.Point(506, 13);
+            this.btnUltimo.Name = "btnUltimo";
+            this.btnUltimo.Size = new System.Drawing.Size(75, 32);
+            this.btnUltimo.TabIndex = 69;
+            this.btnUltimo.UseVisualStyleBackColor = true;
+            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Image = global::Jardines2023.Windows.Properties.Resources.next_24px;
+            this.btnSiguiente.Location = new System.Drawing.Point(425, 13);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
+            this.btnSiguiente.TabIndex = 70;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAnterior
+            // 
+            this.btnAnterior.Image = global::Jardines2023.Windows.Properties.Resources.previous_24px;
+            this.btnAnterior.Location = new System.Drawing.Point(344, 13);
+            this.btnAnterior.Name = "btnAnterior";
+            this.btnAnterior.Size = new System.Drawing.Size(75, 32);
+            this.btnAnterior.TabIndex = 71;
+            this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            // 
+            // btnPrimero
+            // 
+            this.btnPrimero.Image = global::Jardines2023.Windows.Properties.Resources.first_24px;
+            this.btnPrimero.Location = new System.Drawing.Point(263, 13);
+            this.btnPrimero.Name = "btnPrimero";
+            this.btnPrimero.Size = new System.Drawing.Size(75, 32);
+            this.btnPrimero.TabIndex = 72;
+            this.btnPrimero.UseVisualStyleBackColor = true;
+            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
             // 
             // lblPaginas
             // 
@@ -159,76 +199,6 @@
             this.toolStrip1.TabIndex = 17;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgvDatos);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 54);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 336);
-            this.panel1.TabIndex = 18;
-            // 
-            // dgvDatos
-            // 
-            this.dgvDatos.AllowUserToAddRows = false;
-            this.dgvDatos.AllowUserToResizeColumns = false;
-            this.dgvDatos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCliente,
-            this.colPais,
-            this.colCiudad});
-            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
-            this.dgvDatos.MultiSelect = false;
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.RowHeadersVisible = false;
-            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(800, 336);
-            this.dgvDatos.TabIndex = 1;
-            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
-            // 
-            // colCliente
-            // 
-            this.colCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            this.colCliente.ReadOnly = true;
-            // 
-            // colPais
-            // 
-            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colPais.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colPais.HeaderText = "Países";
-            this.colPais.Name = "colPais";
-            this.colPais.ReadOnly = true;
-            // 
-            // colCiudad
-            // 
-            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCiudad.HeaderText = "Ciudad";
-            this.colCiudad.Name = "colCiudad";
-            this.colCiudad.ReadOnly = true;
-            // 
             // tsbNuevo
             // 
             this.tsbNuevo.Image = global::Jardines2023.Windows.Properties.Resources.new_file_32px;
@@ -262,6 +232,11 @@
             this.tsbEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbEditar.Click += new System.EventHandler(this.tsbEditar_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
+            // 
             // tsbBuscar
             // 
             this.tsbBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -280,6 +255,7 @@
             this.porNombreToolStripMenuItem.Name = "porNombreToolStripMenuItem";
             this.porNombreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.porNombreToolStripMenuItem.Text = "Por Nombre";
+            this.porNombreToolStripMenuItem.Click += new System.EventHandler(this.porNombreToolStripMenuItem_Click);
             // 
             // porPaisYCiudadToolStripMenuItem
             // 
@@ -298,6 +274,11 @@
             this.tsbActualizar.Text = "Actualizar";
             this.tsbActualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
+            // 
             // tsbImprimir
             // 
             this.tsbImprimir.Image = global::Jardines2023.Windows.Properties.Resources.print_32px;
@@ -307,6 +288,11 @@
             this.tsbImprimir.Size = new System.Drawing.Size(57, 51);
             this.tsbImprimir.Text = "Imprimir";
             this.tsbImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
             // 
             // tsbCerrar
             // 
@@ -319,45 +305,60 @@
             this.tsbCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbCerrar.Click += new System.EventHandler(this.tsbCerrar_Click);
             // 
-            // btnUltimo
+            // panel1
             // 
-            this.btnUltimo.Image = global::Jardines2023.Windows.Properties.Resources.last_24px;
-            this.btnUltimo.Location = new System.Drawing.Point(506, 13);
-            this.btnUltimo.Name = "btnUltimo";
-            this.btnUltimo.Size = new System.Drawing.Size(75, 32);
-            this.btnUltimo.TabIndex = 69;
-            this.btnUltimo.UseVisualStyleBackColor = true;
-            this.btnUltimo.Click += new System.EventHandler(this.btnUltimo_Click);
+            this.panel1.Controls.Add(this.dgvDatos);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 54);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 336);
+            this.panel1.TabIndex = 18;
             // 
-            // btnSiguiente
+            // dgvDatos
             // 
-            this.btnSiguiente.Image = global::Jardines2023.Windows.Properties.Resources.next_24px;
-            this.btnSiguiente.Location = new System.Drawing.Point(425, 13);
-            this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(75, 32);
-            this.btnSiguiente.TabIndex = 70;
-            this.btnSiguiente.UseVisualStyleBackColor = true;
-            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToResizeColumns = false;
+            this.dgvDatos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCliente,
+            this.colPais,
+            this.colCiudad});
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 0);
+            this.dgvDatos.MultiSelect = false;
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.RowHeadersVisible = false;
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDatos.Size = new System.Drawing.Size(800, 336);
+            this.dgvDatos.TabIndex = 1;
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             // 
-            // btnAnterior
+            // colCliente
             // 
-            this.btnAnterior.Image = global::Jardines2023.Windows.Properties.Resources.previous_24px;
-            this.btnAnterior.Location = new System.Drawing.Point(344, 13);
-            this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(75, 32);
-            this.btnAnterior.TabIndex = 71;
-            this.btnAnterior.UseVisualStyleBackColor = true;
-            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
+            this.colCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            this.colCliente.ReadOnly = true;
             // 
-            // btnPrimero
+            // colPais
             // 
-            this.btnPrimero.Image = global::Jardines2023.Windows.Properties.Resources.first_24px;
-            this.btnPrimero.Location = new System.Drawing.Point(263, 13);
-            this.btnPrimero.Name = "btnPrimero";
-            this.btnPrimero.Size = new System.Drawing.Size(75, 32);
-            this.btnPrimero.TabIndex = 72;
-            this.btnPrimero.UseVisualStyleBackColor = true;
-            this.btnPrimero.Click += new System.EventHandler(this.btnPrimero_Click);
+            this.colPais.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colPais.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colPais.HeaderText = "Países";
+            this.colPais.Name = "colPais";
+            this.colPais.ReadOnly = true;
+            // 
+            // colCiudad
+            // 
+            this.colCiudad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCiudad.HeaderText = "Ciudad";
+            this.colCiudad.Name = "colCiudad";
+            this.colCiudad.ReadOnly = true;
             // 
             // frmClientes
             // 

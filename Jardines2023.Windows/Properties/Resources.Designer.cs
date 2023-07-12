@@ -153,6 +153,16 @@ namespace Jardines2023.Windows.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap details_36px {
+            get {
+                object obj = ResourceManager.GetObject("details_36px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_file_32px {
             get {
                 object obj = ResourceManager.GetObject("edit_file_32px", resourceCulture);
@@ -266,6 +276,16 @@ namespace Jardines2023.Windows.Properties {
         internal static System.Drawing.Bitmap restart_32px {
             get {
                 object obj = ResourceManager.GetObject("restart_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sales_channels_50px {
+            get {
+                object obj = ResourceManager.GetObject("sales_channels_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

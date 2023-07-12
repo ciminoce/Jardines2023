@@ -51,7 +51,10 @@
             this.tsbBorrar = new System.Windows.Forms.ToolStripButton();
             this.tsbEditar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripDropDownButton();
+            this.porNombreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porPaísToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.porPaísYCiudadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
@@ -291,13 +294,37 @@
             // 
             // tsbBuscar
             // 
+            this.tsbBuscar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.porNombreToolStripMenuItem,
+            this.porPaísToolStripMenuItem,
+            this.porPaísYCiudadToolStripMenuItem});
             this.tsbBuscar.Image = global::Jardines2023.Windows.Properties.Resources.filter_32px;
             this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(46, 51);
+            this.tsbBuscar.Size = new System.Drawing.Size(55, 51);
             this.tsbBuscar.Text = "Buscar";
             this.tsbBuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // porNombreToolStripMenuItem
+            // 
+            this.porNombreToolStripMenuItem.Name = "porNombreToolStripMenuItem";
+            this.porNombreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.porNombreToolStripMenuItem.Text = "Por Nombre";
+            this.porNombreToolStripMenuItem.Click += new System.EventHandler(this.porNombreToolStripMenuItem_Click);
+            // 
+            // porPaísToolStripMenuItem
+            // 
+            this.porPaísToolStripMenuItem.Name = "porPaísToolStripMenuItem";
+            this.porPaísToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.porPaísToolStripMenuItem.Text = "Por País";
+            // 
+            // porPaísYCiudadToolStripMenuItem
+            // 
+            this.porPaísYCiudadToolStripMenuItem.Name = "porPaísYCiudadToolStripMenuItem";
+            this.porPaísYCiudadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.porPaísYCiudadToolStripMenuItem.Text = "Por País y Ciudad";
+            this.porPaísYCiudadToolStripMenuItem.Click += new System.EventHandler(this.porPaisYCiudadToolStripMenuItem_Click);
             // 
             // tsbActualizar
             // 
@@ -385,11 +412,14 @@
         private System.Windows.Forms.ToolStripButton tsbBorrar;
         private System.Windows.Forms.ToolStripButton tsbEditar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbActualizar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbCerrar;
+        private System.Windows.Forms.ToolStripDropDownButton tsbBuscar;
+        private System.Windows.Forms.ToolStripMenuItem porNombreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porPaísToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem porPaísYCiudadToolStripMenuItem;
     }
 }
