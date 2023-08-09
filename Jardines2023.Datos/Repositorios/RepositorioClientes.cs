@@ -371,5 +371,10 @@ namespace Jardines2023.Comun.Repositorios
             return lista;
 
         }
+
+        public bool EstaRelacionado(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

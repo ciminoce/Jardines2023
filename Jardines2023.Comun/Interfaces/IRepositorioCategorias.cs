@@ -9,6 +9,7 @@ namespace Jardines2023.Comun.Interfaces
         void Borrar(int categoriaId);
         void Editar(Categoria categoria);
         bool Existe(Categoria categoria);
+        bool EstaRelacionada(Categoria categoria);
         int GetCantidad();
         List<Categoria> GetCategorias();
         List<Categoria> GetCategoriasPorPagina(int cantidad, int pagina);

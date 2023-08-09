@@ -344,5 +344,10 @@ namespace Jardines2023.Comun.Repositorios
                 throw;
             }
         }
+
+        public bool EstaRelacionada(Ciudad ciudad)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

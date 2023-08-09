@@ -31,7 +31,7 @@ namespace Jardines2023.Comun.Repositorios
                         comando.Parameters["@NombreCategoria"].Value = categoria.NombreCategoria;
 
                         comando.Parameters.Add("@Descripcion", SqlDbType.NVarChar);
-                        comando.Parameters["@Descripcion"].Value = categoria.Descripción;
+                        comando.Parameters["@Descripcion"].Value = categoria.Descripcion;
 
                         int id = Convert.ToInt32(comando.ExecuteScalar());
                         categoria.CategoriaId = id;
@@ -234,8 +234,13 @@ namespace Jardines2023.Comun.Repositorios
             {
                 CategoriaId = reader.GetInt32(0),
                 NombreCategoria = reader.GetString(1),
-                Descripción = reader[2] != DBNull.Value ? reader.GetString(2) : string.Empty
+                Descripcion = reader[2] != DBNull.Value ? reader.GetString(2) : string.Empty
             };
+        }
+
+        public bool EstaRelacionada(Categoria categoria)
+        {
+            throw new NotImplementedException();
         }
     }
 }

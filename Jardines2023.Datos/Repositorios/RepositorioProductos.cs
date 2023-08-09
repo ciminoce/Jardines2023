@@ -363,5 +363,10 @@ namespace Jardines2023.Datos.Repositorios
             }
 
         }
+
+        public bool EstaRelacionado(Producto producto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

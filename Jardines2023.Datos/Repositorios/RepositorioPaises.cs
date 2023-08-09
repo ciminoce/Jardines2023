@@ -347,5 +347,9 @@ namespace Jardines2023.Comun.Repositorios
 
         }
 
+        public bool EstaRelacionado(Pais pais)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

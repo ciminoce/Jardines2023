@@ -9,6 +9,7 @@ namespace Jardines2023.Comun.Interfaces
         void Borrar(int clienteId);
         void Editar(Cliente cliente);
         bool Existe(Cliente cliente);
+        bool EstaRelacionado(Cliente cliente);
         List<ClienteListDto> Filtrar(Pais pais);
         int GetCantidad();
         List<ClienteListDto> GetClientes();

@@ -364,5 +364,9 @@ namespace Jardines2023.Comun.Repositorios
 
         }
 
+        public bool EstaRelacionado(Proveedor proveedor)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

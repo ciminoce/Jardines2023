@@ -36,7 +36,7 @@ namespace Jardines2023.Windows
 
                 }
                 categoria.NombreCategoria = txtCategoria.Text;
-                categoria.Descripción = txtDescripcion.Text;
+                categoria.Descripcion = txtDescripcion.Text;
                 try
                 {
 
@@ -116,7 +116,7 @@ namespace Jardines2023.Windows
             {
                 esEdicion = true;
                 txtCategoria.Text = categoria.NombreCategoria;
-                txtDescripcion.Text = categoria.Descripción;
+                txtDescripcion.Text = categoria.Descripcion;
             }
         }
         public void SetCategoria(Categoria categoria)

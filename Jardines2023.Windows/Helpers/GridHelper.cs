@@ -32,7 +32,7 @@ namespace Jardines2023.Windows.Helpers
                     break;
                 case Categoria categoria:
                     r.Cells[0].Value = categoria.NombreCategoria;
-                    r.Cells[1].Value = categoria.Descripción;
+                    r.Cells[1].Value = categoria.Descripcion;
                     break;
                 case ClienteListDto cliente:
                     r.Cells[0].Value = $"{cliente.Apellido}, {cliente.Nombre}";

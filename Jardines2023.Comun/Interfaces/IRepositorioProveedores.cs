@@ -9,6 +9,7 @@ namespace Jardines2023.Comun.Interfaces
         void Borrar(int proveedorId);
         void Editar(Proveedor proveedor);
         bool Existe(Proveedor proveedor);
+        bool EstaRelacionado(Proveedor proveedor);
         List<ProveedorListDto> Filtrar(Pais pais);
         int GetCantidad();
         List<ProveedorListDto> GetProveedores();

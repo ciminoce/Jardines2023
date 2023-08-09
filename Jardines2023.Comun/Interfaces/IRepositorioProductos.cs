@@ -10,6 +10,7 @@ namespace Jardines2023.Comun.Interfaces
         void Borrar(int productoId);
         void Editar(Producto producto);
         bool Existe(Producto producto);
+        bool EstaRelacionado(Producto producto);
         int GetCantidad();
         Producto GetProductoPorId(int productoId);
         List<ProductoListDto> GetProductos();
