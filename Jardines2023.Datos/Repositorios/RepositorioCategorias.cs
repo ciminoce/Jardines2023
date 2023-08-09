@@ -73,7 +73,8 @@ namespace Jardines2023.Comun.Repositorios
                 using (var conn = new SqlConnection(cadenaConexion))
                 {
                     conn.Open();
-                    string updateQuery = "UPDATE Categorias SET NombreCategoria=@NombreCategoria WHERE CategoriaId=@CategoriaId";
+                    string updateQuery = @"UPDATE Categorias SET NombreCategoria=@NombreCategoria, 
+                                        Descripcion=@Descripcion WHERE CategoriaId=@CategoriaId";
                     using (var cmd = new SqlCommand(updateQuery, conn))
                     {
                         cmd.Parameters.Add("@NombreCategoria", SqlDbType.NChar);
