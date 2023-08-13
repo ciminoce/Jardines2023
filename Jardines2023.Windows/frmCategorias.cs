@@ -123,22 +123,18 @@ namespace Jardines2023.Windows
                 DialogResult dr = frm.ShowDialog(this);
                 if (dr == DialogResult.Cancel)
                 {
+                    GridHelper.SetearFila(r, categoriaCopia);
+
                     return;
                 }
                 categoria = frm.GetCategoria();
-                if (!_servicio.Existe(categoria))
+                if (categoria != null)
                 {
-                    _servicio.Guardar(categoria);
                     GridHelper.SetearFila(r, categoria);
-                    MessageBox.Show("Registro editado", "Mensaje",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     GridHelper.SetearFila(r, categoriaCopia);
-                    MessageBox.Show("Registro duplicado!!", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             catch (Exception ex)
