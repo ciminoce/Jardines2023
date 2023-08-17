@@ -331,12 +331,12 @@ namespace Jardines2023.Comun.Repositorios
                 Nombre = reader.GetString(1),
                 Apellido = reader.GetString(2),
                 Direccion = reader.GetString(3),
-                CodigoPostal = reader.GetString(4),
-                TelefonoFijo = reader.GetString(5),
-                TelefonoMovil=reader.GetString(6),
+                CodigoPostal =reader[4]!=DBNull.Value? reader.GetString(4):string.Empty,
+                TelefonoFijo = reader[5] != DBNull.Value ? reader.GetString(5) : string.Empty,
+                TelefonoMovil=reader[6] != DBNull.Value ? reader.GetString(6) : string.Empty,
                 PaisId = reader.GetInt32(7),
                 CiudadId = reader.GetInt32(8),
-                Email = reader.GetString(9),
+                Email = reader[9] != DBNull.Value ? reader.GetString(9) : string.Empty,
 
             };
         }
